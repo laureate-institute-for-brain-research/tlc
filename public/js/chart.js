@@ -10,6 +10,7 @@ function getQueryVariable(variable) {
   return 'NULL'
 }
 var subject = getQueryVariable('subject');
+subject = subject.toUpperCase()
 
 var birthDate = ''
 

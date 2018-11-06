@@ -10,7 +10,7 @@ function getQueryVariable(variable) {
   return 'NULL'
 }
 var subject = getQueryVariable('subject');
-//console.log(subject);
+subject = subject.toUpperCase()
 
 // $(document).ready(function(){
 //   document.getElementById('subject').innerHTML = subject

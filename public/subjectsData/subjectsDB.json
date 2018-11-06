@@ -1,20 +1,20 @@
 {
-    "Case-1" : {
+    "CASE-1" : {
         "group" : "Eating +",
         "age" : 21,
         "birthdate" : "1994-10-18"
     },
-    "Case-2" : {
+    "CASE-2" : {
         "group" : "Substance +",
         "age" : 37,
         "birthdate" : "1980-05-06"
     },
-    "Case-3" : {
+    "CASE-3" : {
         "group" : "Substance +",
         "age" : 39,
         "birthdate" : "1978-05-10"
     },
-    "Case-4" : {
+    "CASE-4" : {
         "group" : "Comorbid Depression + Anxiety",
         "age" : 56,
         "birthdate" : "1961-07-07"
