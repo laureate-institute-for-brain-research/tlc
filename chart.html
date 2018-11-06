@@ -1,0 +1,361 @@
+<!-- lc/templates/index.html -->
+<html>
+
+<head>
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Create two unequal columns that floats next to each other */
+    .column {
+        float: left;
+        padding: 10px;
+        height: 300px; /* Should be removed. Only for demonstration */
+    }
+
+    .left {
+      width: 15%;
+    }
+
+    .right {
+      width: 85%;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    h1,h4 {
+      text-align: center;
+    }
+    .rangeSlider {
+      background-color: cyan;
+      white-space: nowrap;
+      color: #FFFF;
+    }
+    /* Center the loader */
+    #loader {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 1;
+      width: 150px;
+      height: 150px;
+      margin: -75px 0 0 -75px;
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+    }
+    #footer {
+      position: relative;
+      margin-top: -180px;
+      /* negative value of footer height */
+      height: 180px;
+      clear: both;
+      background-color: red;
+    }
+
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Add animation to "page content" */
+    .animate-bottom {
+      position: relative;
+      -webkit-animation-name: animatebottom;
+      -webkit-animation-duration: 2s;
+      animation-name: animatebottom;
+      animation-duration: 2s
+    }
+
+    @-webkit-keyframes animatebottom {
+      from { bottom:-100px; opacity:0 } 
+      to { bottom:0px; opacity:1 }
+    }
+
+    @keyframes animatebottom { 
+      from{ bottom:-100px; opacity:0 } 
+      to{ bottom:0; opacity:1 }
+    }
+
+    .loader {
+      color: #2a96f3;
+      font-size: 90px;
+      text-indent: -9999em;
+      overflow: hidden;
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      margin: 72px auto;
+      position: relative;
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+      animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+    }
+    @-webkit-keyframes load6 {
+      0% {
+        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+      }
+      5%,
+      95% {
+        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+      }
+      10%,
+      59% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+      }
+      20% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+      }
+      38% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+      }
+      100% {
+        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+      }
+    }
+    @keyframes load6 {
+      0% {
+        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+      }
+      5%,
+      95% {
+        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+      }
+      10%,
+      59% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+      }
+      20% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+      }
+      38% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+      }
+      100% {
+        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+      }
+    }
+    @-webkit-keyframes round {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes round {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    </style>
+  <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.css" media="screen">
+  <link rel="stylesheet" href="https://bootswatch.com/_assets/css/custom.min.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    crossorigin="anonymous"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+  <script type="text/javascript" src="public/js/chart.js"></script>
+</head>
+
+<body style='background-color: white;'>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <a id='nav-title' class="navbar-brand" href="./">Life Chart</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a id="homenav" class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false">Overall Graphs</a>
+          <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
+            <a id='overall-count-nav-link' class="dropdown-item" href="/overall.html">Overall Mood</a>
+            <a id='bad-good-count-nav-link' class="dropdown-item" href="/good-bad.html">Good - Bad Event Counts</a>
+            <a id='drug-count-nav-link' class="dropdown-item" href="/drugs.html">Drug Counts</a>
+            <a id='people-count-nav-link' class="dropdown-item" href="/people.html">People Counts</a>
+            <a id='mental-ratio-nav-link' class="dropdown-item" href="/mental.html">Mental Health Counts</a>
+            <a id='hobbies-count-nav-link' class="dropdown-item" href="/hobbies.html">Hobbies Counts</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <h1 style="color: black; font-family: Lucida Sans Unicode" id="subject" class="animate-bottom"></h1>
+  <h4 id="lcgroup" class="animate-bottom"></h4>
+
+  <div class='graphs' style="padding: 60px; padding-top: 0px">
+
+    <div id='events' class="row" style="padding-top: 0px; height: 600px">
+      <div id="eventsPicker" style="display: none;"></div>
+      <div class="column left animate-bottom">
+        <div id='eventsPicker' style="width: 100%; padding-left: 500;"></div>
+        <br>
+        <br>
+        <br>
+        <p>Event Type</p>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="good" checked>
+          <label class="custom-control-label" for="good">Good Events</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="bad" checked>
+          <label class="custom-control-label" for="bad">Bad Events</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="change" checked>
+          <label class="custom-control-label" for="change">Change Events</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="other" checked>
+          <label class="custom-control-label" for="other">Other Events</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="period" checked>
+          <label class="custom-control-label" for="period">Period Rating</label>
+        </div>
+        <hr>
+        <p>Font Size</p>
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="#" id='font-decrease'>-</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" id='font-reset'>reset</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" id='font-increase'>+</a>
+          </li>
+        </ul>
+        <br>
+        <br>
+        <a id='download1' href="#" download="LifeChart-Events" class="btn btn-primary btn-lg">Download Chart</a>
+
+      </div>
+      <div class="column right">
+        <div id='load1wrap' style="padding: 200px; padding-left: 100px;">
+          <div id='load1' class="loader">Loading...</div>
+        </div>
+        <div id='eventsChart' class="animate-bottom"></div>
+      </div>
+
+    </div>
+
+    <div class="row" id="timeline">
+
+
+      <!-- <div id=timelineCategoryFilter"></div> -->
+      <div class="column left animate-bottom">
+        <p>Categories</p>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="drugs" checked>
+          <label class="custom-control-label" for="drugs">Drugs and Alcohol</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="mental" checked>
+          <label class="custom-control-label" for="mental">Mental Health</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="hobbies" checked>
+          <label class="custom-control-label" for="hobbies">Hobbies and Activties</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="people" checked>
+          <label class="custom-control-label" for="people">People</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="jobs" checked>
+          <label class="custom-control-label" for="jobs">Jobs</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="school" checked>
+          <label class="custom-control-label" for="school">Schools</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="residence" checked>
+          <label class="custom-control-label" for="residence">Residence</label>
+        </div>
+        <hr>
+        <p>Epoch</p>
+        <div class="btn-group-vertical">
+          <button id='all' type="button" class="btn btn-primary btn-sm">All</button>
+          <button id='b' type="button" class="btn btn-primary btn-sm">Birth - Elementary School</button>
+          <button id='c' type="button" class="btn btn-primary btn-sm">Elementary School</button>
+          <button id='d' type="button" class="btn btn-primary btn-sm">Middle School</button>
+          <button id='e' type="button" class="btn btn-primary btn-sm">High School</button>
+          <button id='f' type="button" class="btn btn-primary btn-sm">Young Adult</button>
+          <button id='g' type="button" class="btn btn-primary btn-sm">Age 25-35</button>
+          <button id='h' type="button" class="btn btn-primary btn-sm">Age 35-45</button>
+          <button id='i' type="button" class="btn btn-primary btn-sm">Age 45-55</button>
+        </div>
+        <!-- <br>
+          <br>
+          <a id='download2' href="#" download="LifeChart-Events" class="btn btn-primary btn-lg">Download Chart</a> -->
+      </div>
+      <div class="column right animate-bottom" style="background-color:#FFFF; height: 850px;">
+        <div style="padding-left: 150px; width: 90%">
+          <div id="timeline_slider"></div>
+        </div>
+        <div id="timelineCategoryFilter" style="display: none;"></div>
+        <h2 id="epochtitle">Life Time</h2>
+        <div id='load2wrap' style="padding: 200px; padding-left: 100px;">
+          <div id='load2' class="loader">Loading...</div>
+        </div>
+        <div id="timeline_chart" class="animate-bottom" style="padding-top: 0px;"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<footer style="color: black; font-family: Lucida Sans Unicode;">
+  <center>
+    <p>&copy; 2018. All rights reserved</p>
+    <p>Laureate Institute for Brain Research</p>
+  </center>
+</footer>
+<!-- Hidden Controls For the Charts -->
+
+
+</html>

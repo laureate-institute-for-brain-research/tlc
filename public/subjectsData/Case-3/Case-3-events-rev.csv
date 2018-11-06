@@ -1,0 +1,67 @@
+Age,Event Type,1,2,3,4,5,6,7,8,9,10,Start Date,End Date,Event Description,Period Rating
+0,Period,,,,,,,,,,,,,,8
+1,Period,,,,,,,,,,,,,,8
+2,Period,,,,,,,,,,,,,,8
+3,Period,,,,,,,,,,,,,,8
+4,Period,,,,,,,,,,,,,,8
+5,Period,,,,,,,,,,,,,,7
+6,Period,,,,,,,,,,,,,,7
+7,Period,,,,,,,,,,,,,,7
+8,Period,,,,,,,,,,,,,,7
+9,Period,,,,,,,,,,,,,,7
+10,Period,,,,,,,,,,,,,,7
+11,Period,,,,,,,,,,,,,,7
+12,Period,,,,,,,,,,,,,,7
+13,Period,,,,,,,,,,,,,,7
+14,Period,,,,,,,,,,,,,,10
+15,Period,,,,,,,,,,,,,,10
+16,Period,,,,,,,,,,,,,,10
+17,Period,,,,,,,,,,,,,,10
+18,Period,,,,,,,,,,,,,,10
+19,Period,,,,,,,,,,,,,,10
+20,Period,,,,,,,,,,,,,,10
+21,Period,,,,,,,,,,,,,,10
+22,Period,,,,,,,,,,,,,,10
+23,Period,,,,,,,,,,,,,,10
+24,Period,,,,,,,,,,,,,,10
+25,Period,,,,,,,,,,,,,,2
+26,Period,,,,,,,,,,,,,,2
+27,Period,,,,,,,,,,,,,,2
+28,Period,,,,,,,,,,,,,,2
+29,Period,,,,,,,,,,,,,,2
+30,Period,,,,,,,,,,,,,,2
+31,Period,,,,,,,,,,,,,,2
+32,Period,,,,,,,,,,,,,,2
+33,Period,,,,,,,,,,,,,,2
+34,Period,,,,,,,,,,,,,,2
+35,Period,,,,,,,,,,,,,,2
+36,Period,,,,,,,,,,,,,,2
+37,Period,,,,,,,,,,,,,,2
+38,Period,,,,,,,,,,,,,,2
+39,Period,,,,,,,,,,,,,,
+21,Change Event,,,,,,,,,,10,5/1/99,,Daughter born,
+25,Change Event,,,,,,,,,,10,5/12/01,,Married 1st wife,
+22,Change Event,,,,,,,,,,10,9/1/00,,First son born ,
+28,Change Event,,2,,,,,,,,,2/1/06,,Divorced 1st wife,
+2,Good Event,,,,,,,,,,10,7/20/80,,Younger brother born,
+5,Good Event,,,,,,,,8,,,1/1/83,1/1/88,Spending time with grandmother,
+6,Good Event,,,,,,,,,9,,2/21/84,,Finished in the top threel in a local car race,
+11,Good Event,,,,,,,,8,,,6/1/89,8/1/89,Church camp,
+16,Good Event,,,,,,,,8,,,9/1/94,5/1/96,Success with sport programs,
+18,Good Event,,,,,,,,,,10,2/21/96,,Highschool won state in wrestling,
+23,Good Event,,,,,,,,8,,,2/21/01,,Bought first home ,
+37,Good Event,,,,,,,,8,,,1/1/16,2/7/17,Having contact with children ,
+5,Other Event,,,,,,,,,,,2/21/80,2/21/91,Father grew/sold marijuana,
+,,,,,,,,,,,,,,,
+5,Other Event,,,,,5,,,,,,2/21/82,2/21/87,Father raised him to show no emotion. ,
+5,Other Event,,,,,,,,,,,2/21/83,2/21/97,Father IV methamphetamine and heroin user,
+,,,,,,,,,,,,,,,
+5,Other Event,,,,,,,,,,,2/21/83,2/21/90,Mother abused alcohol,
+28,Other Event,,,,,5,,,,,,2/21/07,2/21/12,Sold marijuana and cocaine for income ,
+5,Bad Event,,,3,,,,,,,,2/21/82,2/21/91,Physical abuse by father,
+15,Bad Event,,,,4,,,,,,,9/1/93,5/1/96,Constant fighting with classmates,
+18,Bad Event,,,,4,,,,,,,2/21/97,,Parents divorced,
+19,Bad Event,,,,4,,,,,,,2/21/98,,Father went to prison,
+38,Bad Event,1,,,,,,,,,,1/5/14,,Father died ,
+38,Bad Event,1,,,,,,,,,,6/2/14,,Mother died ,
+38,Bad Event,1,,,,,,,,,,3/15/15,1/20/16,Homeless ,

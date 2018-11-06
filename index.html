@@ -1,0 +1,261 @@
+<html>
+
+<head>
+    <title>Life Chart | Login</title>
+    <style>
+      .switch {
+    font-size: 25px;
+}
+
+.researcher {
+    color: white;
+}
+
+.subject {
+    color: white;
+}
+
+
+.switch label input[type=checkbox]:checked+.lever {
+    background-color: rgb(68, 68, 68) !important;
+  }
+  
+  .switch label input[type=checkbox]:checked+.lever:after {
+    background-color: rgb(255, 255, 255) !important;
+  }
+
+* {
+    box-sizing: border-box;
+}
+
+hr {
+    background-color: #aaaaaa;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+    font-size: 17px;
+}
+
+#backgroundVideo {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-width: 100%; 
+    min-height: 10%;
+    overflow:hidden;
+    width: auto;
+    height: 125%;
+    z-index: -1;
+}
+
+.content {
+    position: relative;
+    margin: auto;
+    /*left: 10%;*/
+    /*top: 100;*/
+    background: rgba(0, 0, 0, 0.7);
+    color: #f1f1f1;
+    width: 80%;
+    /*height: 100%;*/
+    padding: 10px;
+}
+
+#myBtn {
+    width: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+#myBtn:hover {
+    background: #ddd;
+    color: black;
+}
+#footer{
+    position:fixed;
+    text-align: center;
+    padding-left: 45%;
+    bottom:0;
+    left:0;
+}
+.container {
+    margin: 0 auto;
+    max-width: 900px;
+    width: 45% !important;
+}
+.mat-label {
+    position: center !important;
+    font-size: 20px !important;
+    transform: translateY(35px) ;
+    transition: all 0.5s;
+}
+.mat-input {
+    position: relative !important;
+    background: transparent !important;
+    width: 100% !important;
+
+    outline: none !important;
+    padding: 8px 0 !important;
+    font-size: 16px;
+}
+.helper-text {
+    color: white !important;
+}
+
+/* label color */
+.input-field label {
+    color: #FFFF !important;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+    color: #FFFF !important;
+}
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #FFFF !important;
+    box-shadow: 0 1px 0 0 #FFFF !important;
+}
+/* valid color */
+.input-field input[type=text].valid {
+    border-bottom: 1px solid #FFFF !important;
+    box-shadow: 0 1px 0 0 #FFFF !important;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+    color: #FFFF !important;
+}
+
+/** Add animation to "page content" */
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 2s;
+    animation-name: animatebottom;
+    animation-duration: 2s
+}
+
+@-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+}
+
+/* .picker__header select {
+    display: inline-block !important;
+} */
+
+.select-dropdown {
+    color: rgb(255, 255, 255) !important;
+  }
+
+  /* This is the dropdown color for the caret symbol */
+.caret {
+    fill: rgb(255, 255, 255) !important;
+}
+    </style>
+
+    <link rel="shortcut icon" type="image/png" href="https://res.cloudinary.com/laureate-institute-for-brain-research/image/upload/v1525986263/Life%20Chart/LIBR_full_color_logo_highres_brain_only.png" />
+
+    <!-- this is my CSS via cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+        integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(()=>{
+          $('select').formSelect();
+          $('#subjectSelect').change(function(){
+            subject = $(this).val()
+            console.log($(this).val())
+            window.location.replace("chart.html?subject=" + subject);
+            
+          })
+        })
+
+    </script>
+
+    <style>
+        .pull-right {
+            float: right !important;
+        }
+    </style>
+
+</head>
+
+<body style='background-color: white; padding-top: 0px;'>
+    <div class="content">
+        <center>
+            <a href="#">
+                <img src="https://res.cloudinary.com/laureate-institute-for-brain-research/image/upload/v1525986506/Life%20Chart/LIBR_full_color_logo_white_highres.png"
+                    height="45px">
+            </a>
+        </center>
+        <div style="text-align: center;">
+            <center>
+                <h1 style="font-size: 90px;">Life Chart</h1>
+            </center>
+            <!-- <hr> -->
+            <br>
+            <div style="padding-top: 20px; padding-left: 5%; padding-right: 5%;" id="formddiv">
+                
+                <form name="field" method='post' id='inputtForm' action='/loginResearcher'>
+                    <fieldset>
+                        <br>
+                        <div id="input" class="row">
+                            <div class="input-field col s6"></div>
+                            <div class="input-field col s6">
+                                <select id="subjectSelect">
+                                  <option value="" disabled selected>Select Example Subject ID</option>
+                                  <option value="Case-1">Case 1</option>
+                                  <option value="Case-2">Case 2</option>
+                                  <option value="Case-3">Case 3</option>
+                                  <option value="Case-4">Case 4</option>
+                                </select>
+                                <label></label>
+                    
+                            </div>
+                            
+                            <div class="input-field col s6"></div>
+                        </div>
+                        <br>
+                                          
+                    </fieldset>
+
+                </form>
+            </div>
+            <br>
+            <footer>
+              <br>
+              <p><a href="https://github.com/toujames/lifechartexamples">Git Hub Link</a></p>
+                <p style="bottom: 0;">&copy; 2018. All rights reserved</p>
+                <p style="bottom: 0;">Laureate Institute for Brain Research</p>
+                <!-- <a onclick="M.toast({html: 'I am a toast'})" class="btn">Toast!</a> -->
+            </footer>
+        </div>
+    </div>
+    <video id="backgroundVideo" preload="auto" autoplay muted loop playbackRate=.5>
+            <source src="https://res.cloudinary.com/laureate-institute-for-brain-research/video/upload/v1538520772/Life%20Chart/crop1.mp4" type="video/mp4"> Your browser does not support HTML5 video.
+        </video>
+
+    <!-- this is my JS via cdn -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+   
+</body>
+
+</html>

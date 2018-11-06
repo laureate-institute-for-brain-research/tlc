@@ -1,0 +1,23 @@
+{
+  "name": "lifechartexamples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "static.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toujames/lifechartexamples.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/toujames/lifechartexamples/issues"
+  },
+  "homepage": "https://github.com/toujames/lifechartexamples#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "static-server": "^2.2.1"
+  }
+}

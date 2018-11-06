@@ -1,0 +1,55 @@
+Age,Event Type,1,2,3,4,5,6,7,8,9,10,Start Date,End Date,Event Description,Period Rating
+0,Period,,,,,,,,,,,,,,10
+1,Period,,,,,,,,,,,,,,10
+2,Period,,,,,,,,,,,,,,10
+3,Period,,,,,,,,,,,,,,10
+4,Period,,,,,,,,,,,,,,10
+5,Period,,,,,,,,,,,,,,9
+6,Period,,,,,,,,,,,,,,9
+7,Period,,,,,,,,,,,,,,9
+8,Period,,,,,,,,,,,,,,9
+9,Period,,,,,,,,,,,,,,9
+10,Period,,,,,,,,,,,,,,9
+11,Period,,,,,,,,,,,,,,9
+12,Period,,,,,,,,,,,,,,9
+13,Period,,,,,,,,,,,,,,9
+14,Period,,,,,,,,,,,,,,8
+15,Period,,,,,,,,,,,,,,8
+16,Period,,,,,,,,,,,,,,8
+17,Period,,,,,,,,,,,,,,8
+18,Period,,,,,,,,,,,,,,2
+19,Period,,,,,,,,,,,,,,2
+20,Period,,,,,,,,,,,,,,2
+21,Period,,,,,,,,,,,,,,2
+22,Period,,,,,,,,,,,,,,2
+23,Period,,,,,,,,,,,,,,2
+24,Period,,,,,,,,,,,,,,2
+25,Period,,,,,,,,,,,,,,5
+26,Period,,,,,,,,,,,,,,5
+27,Period,,,,,,,,,,,,,,5
+28,Period,,,,,,,,,,,,,,5
+29,Period,,,,,,,,,,,,,,5
+30,Period,,,,,,,,,,,,,,5
+31,Period,,,,,,,,,,,,,,5
+32,Period,,,,,,,,,,,,,,5
+33,Period,,,,,,,,,,,,,,5
+34,Period,,,,,,,,,,,,,,5
+35,Period,,,,,,,,,,,,,,5
+36,Period,,,,,,,,,,,,,,5
+37,Period,,,,,,,,,,,,,,
+4,Change Event,,,,,,,,,,10,12/1/87,,Younger brother born,
+20,Change Event,,,,,5,,,,,,10/1/98,,Parents seperated ,
+25,Change Event,,,,,,,,8,,,10/1/05,10/1/07,1st Marriage,
+29,Change Event,,,,,,,,8,,,1/21/09,1/11/11,2nd Marriage ,
+32,Change Event,,,,,,,,8,,,5/15/13,8/9/17,3rd Marriage,
+22,Change Event,,,,,,,,,,10,8/13/03,,Daughter #1 Born,
+5,Good Event,,,,,,,,8,,,3/19/84,9/6/89,Close to younger brother,
+12,Good Event,,,,,,,,,,10,6/9/92,5/1/95,Success with soccer,
+20,Good Event,,,,,,,,,,10,9/5/01,,Son #1 born,
+7,Bad Event,1,,,,,,,,,,10/1/89,11/1/91,Sexual abuse from family member,
+16,Bad Event,,2,,,,,,,,,6/30/97,,Started to feel depressed,
+15,Bad Event,,2,,,,,,,,,1/1/94,5/1/98,Parents constantly fighting,
+20,Bad Event,1,,,,,,,,,,9/22/01,,1st DUI (Alcohol) ,
+22,Bad Event,1,,,,,,,,,,1/1/02,,2nd DUI (Cocaine) ,
+25,Bad Event,1,,,,,,,,,,8/19/06,,3rd DUI (Cocaine) ,
+25,Bad Event,1,,,,,,,,,,11/1/07,2/1/08,Prison (for felony DUI),

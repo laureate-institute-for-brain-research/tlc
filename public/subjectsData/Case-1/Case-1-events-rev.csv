@@ -1,0 +1,81 @@
+Age,Event Type,1,2,3,4,5,6,7,8,9,10,Start Date,End Date,Event Description,Period Rating
+0,Period,,,,,,,,,,,,,,7
+1,Period,,,,,,,,,,,,,,7
+2,Period,,,,,,,,,,,,,,7
+3,Period,,,,,,,,,,,,,,7
+4,Period,,,,,,,,,,,,,,7
+5,Period,,,,,,,,,,,,,,7
+6,Period,,,,,,,,,,,,,,7
+7,Period,,,,,,,,,,,,,,7
+8,Period,,,,,,,,,,,,,,7
+9,Period,,,,,,,,,,,,,,7
+10,Period,,,,,,,,,,,,,,7
+11,Period,,,,,,,,,,,,,,7
+12,Period,,,,,,,,,,,,,,5
+13,Period,,,,,,,,,,,,,,5
+14,Period,,,,,,,,,,,,,,5
+15,Period,,,,,,,,,,,,,,1
+16,Period,,,,,,,,,,,,,,1
+17,Period,,,,,,,,,,,,,,1
+18,Period,,,,,,,,,,,,,,1
+19,Period,,,,,,,,,,,,,,8
+20,Period,,,,,,,,,,,,,,8
+21,Period,,,,,,,,,,,,,,8
+2,Change Event,,,,,5,,,,,,8/11/96,,Brother #1 born,
+4,Change Event,,,,,,,,,9,,9/22/98,,Brother #2 born,
+6,Change Event,,,,,,,7,,,,5/30/00,,Sister #1 born,
+11,Change Event,,,,,,6,,,,,12/10/05,,Brother #3 born,
+14,Change Event,,,,,,6,,,,,6/10/08,,Younger cousin born,
+14,Change Event,,,,,5,,,,,,9/1/08,,Older brother started college,
+17,Change Event,,,,,,,,,,,10/14/11,,Younger cousin born,
+16,Change Event,,,,,,,,,,,1/1/16,,Sister diagnosed with eating disorder,
+16,Change Event,,,,,,,,,,,6/1/15,,Older brother distanced himself and started using drugs,
+3,Good Event,,,,,,,,,9,,6/10/08,,Younger cousin born,
+3,Good Event,,,,,,,,8,,,1/1/11,9/1/14,Daily happy moments,
+3,Good Event,,,,,,,,,,10,1/1/15,9/1/15,Family time,
+7,Good Event,,,,,,,,8,,,5/1/12,,Track Camp,
+7,Good Event,,,,,,,,,9,,5/30/00,,Sister's birth,
+7,Good Event,,,,,,,,,9,,,,Big family vacations with counsins,
+7,Good Event,,,,,,,,8,,,3/1/06,,Won track race - 5th grade,
+7,Good Event,,,,,,,,8,,,,,Enjoyed arts and crafts,
+13,Good Event,,,,,,,7,,,,,,Successful academically and in sports,
+13,Good Event,,,,,,,7,,,,,,Had good group of friends,
+13,Good Event,,,,,,,,8,,,,,Loved summertime and reading,
+13,Good Event,,,,,,,7,,,,6/10/08,,Birth of younger cousin,
+19,Good Event,,,,,,,,8,,,5/1/13,,Graduated high school,
+19,Good Event,,,,,,,,8,,,4/1/13,,Started reading again,
+19,Good Event,,,,,,,,,9,,,,Had a spiritual awakening,
+16,Good Event,,,,,,,,,9,,10/18/94,9/1/15,Friendship with older brother,
+17,Good Event,,,,,,,,,9,,8/21/11,,Making art,
+20,Good Event,,,,,,6,,,,,,,Going to college #1,
+20,Good Event,,,,,,,,8,,,,,Making friendships,
+20,Good Event,,,,,,,,,9,,,,Admitted to inpatient psychiatric hospital,
+20,Good Event,,,,,,,,,,10,,,Going to college #2,
+20,Good Event,,,,,,,,,,10,,,Moving into new apartment,
+7,Other Event,,,,4,,,,,,,,,Had back brace removed,
+7,Other Event,,2,,,,,,,,,,,Family contributed to anxiety; plucked eyelashes/eyebrows starting in 4th grade,
+13,Other Event,,,3,,,,,,,,,,Hid school problems from mom; disconnected from family,
+13,Other Event,,2,,,,,,,,,,,Became irritable and preoccupied with food and calories,
+16,Other Event,1,,,,,,,,,,,,Would restore and lose weight to make parents feel bad,
+20,Other Event,,,3,,,,,,,,,,Readmitted to inpatient psychiatric hospital after relapse,
+7,Bad Event,,,,4,,,,,,,,,Getting back brace,
+7,Bad Event,,,3,,,,,,,,,,Teased by girl in class,
+7,Bad Event,,,3,,,,,,,,,,Sensitive to others'remarks,
+6,Bad Event,,,,4,,,,,,,,,New school stressful - 6th grade,
+6,Bad Event,,,3,,,,,,,,,,Self-consciousness in - 6th grade,
+6,Bad Event,,,,4,,,,,,,,,School was stressful,
+7,Bad Event,,,,,,,,,,,,,Plucked all eyelashes/eyebrows,
+13,Bad Event,,,3,,,,,,,,,,General anxiety present constantly,
+13,Bad Event,,,3,,,,,,,,,,School stress,
+13,Bad Event,,,,4,,,,,,,,,Hated back brace,
+13,Bad Event,,,,4,,,,,,,,,Not knowing how to express feelings,
+13,Bad Event,,,,4,,,,,,,,,Hard when brother left for school,
+13,Bad Event,,,3,,,,,,,,,,Injury in 9th grade - could not do sports,
+17,Bad Event,1,,,,,,,,,,10/20/11,3/30/12,Quit attending school- had tutors for 4months ,
+16,Bad Event,1,,,,,,,,,,,,Started skipping school,
+16,Bad Event,1,,,,,,,,,,,,"Family dynamics were poor, lots of fighting ",
+16,Bad Event,1,,,,,,,,,,,,Eating disorder,
+19,Bad Event,,2,,,,,,,,,12/1/14,,Sister was raped,
+20,Bad Event,,,3,,,,,,,,8/1/14,3/1/15,Worsening eating disorder,
+20,Bad Event,,,3,,,,,,,,9/3/14,,Worst anxiety,
+21,Bad Event,,2,,,,,,,,,1/13/15,,Relapsed eating disorder and high anxiety,
