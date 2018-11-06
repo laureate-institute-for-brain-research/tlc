@@ -10,11 +10,6 @@ function getQueryVariable(variable) {
   return 'NULL'
 }
 var subject = getQueryVariable('subject');
-//console.log(subject);
-
-// $(document).ready(function(){
-//   document.getElementById('subject').innerHTML = subject
-// });
 
 // Changine the names of the subject checkbox
 $(document).ready( () => {
@@ -25,7 +20,7 @@ $(document).ready( () => {
     $('#homenav').text(subject.toUpperCase());
 
     $("#nav-title").attr('href', '/lifechartexamples')
-    $('#homenav').attr('href','chart.html?subject=' + subject.toUpperCase())
+    $('#homenav').attr('href','chart.html?subject=' + subject)
     $('#overall-count-nav-link').attr('href', 'overall.html?subject=' + subject);
     $('#bad-good-count-nav-link').attr('href', 'good-bad.html?subject=' + subject);
     $('#drug-count-nav-link').attr('href', 'drugs.html?subject=' + subject);
