@@ -10,7 +10,6 @@ function getQueryVariable(variable) {
   return 'NULL'
 }
 var subject = getQueryVariable('subject');
-subject = subject.toUpperCase()
 //console.log(subject);
 
 // $(document).ready(function(){
@@ -24,7 +23,7 @@ $(document).ready( () => {
     $('#subjectLabel').hide();
   } else {
     $("#nav-title").attr('href', '/lifechartexamples')
-    
+
     $('#homenav').text(subject.toUpperCase());
     $('#homenav').attr('href','chart.html?subject=' + subject.toUpperCase())
     $('#overall-count-nav-link').attr('href', 'overall.html?subject=' + subject);
