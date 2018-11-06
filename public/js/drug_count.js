@@ -25,7 +25,7 @@ $(document).ready( () => {
     $("#nav-title").attr('href', '/lifechartexamples')
 
     $('#homenav').text(subject.toUpperCase());
-    $('#homenav').attr('href','chart.html?subject=' + subject.toUpperCase())
+    $('#homenav').attr('href','chart.html?subject=' + subject)
     $('#overall-count-nav-link').attr('href', 'overall.html?subject=' + subject);
     $('#bad-good-count-nav-link').attr('href', 'good-bad.html?subject=' + subject);
     $('#drug-count-nav-link').attr('href', 'drugs.html?subject=' + subject);
