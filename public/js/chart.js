@@ -10,7 +10,6 @@ function getQueryVariable(variable) {
   return 'NULL'
 }
 var subject = getQueryVariable('subject');
-subject = subject.toUpperCase()
 
 var birthDate = ''
 
@@ -164,6 +163,7 @@ function getTooltipHTML(category, description, state, country, start, end) {
 // the drawTimelineChart() to then draw the chart.
 function getTimelineData() {
   // Get File
+  console.log(subject)
   $.get('public/subjectsData/' + subject + '/' + subject + '-timeline-rev.csv', function (data) {
     // console.log(data)
     drawTimelineChart(data);
