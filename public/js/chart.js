@@ -40,6 +40,8 @@ $.get('public/subjectsData/subjectsDB.json', function (data) {
 });
 // Hide Epoch Buttons Based on Age
 
+var rangeSlider; // global var
+
 
 $(document).ready(function () {
 
@@ -320,7 +322,7 @@ function drawTimelineChart(data) {
     document.getElementById('timeline')
   );
 
-  var rangeSlider = new google.visualization.ControlWrapper({
+  rangeSlider = new google.visualization.ControlWrapper({
     'controlType': 'ChartRangeFilter',
     'containerId': 'timeline_slider',
     'options': {
@@ -350,10 +352,7 @@ function drawTimelineChart(data) {
         }
       }
     },
-    // Initial range: 2015-08-10 to 2015-08-10.
-    //'state': {'range': {'start': new Date(20150810185227), 
-    //              'end': new Date(20150810205436)}
-    //  }
+
   });
 
   var categoryFilter = new google.visualization.ControlWrapper({
@@ -372,10 +371,7 @@ function drawTimelineChart(data) {
       },
 
     },
-    // Initial range: 2015-08-10 to 2015-08-10.
-    //'state': {'range': {'start': new Date(20150810185227), 
-    //              'end': new Date(20150810205436)}
-    //  }
+
   });
 
   var timelineChart = new google.visualization.ChartWrapper({
@@ -411,9 +407,7 @@ function drawTimelineChart(data) {
       })
       categoryFilter.draw()
     } else {
-      //'unchecked' event code
-      //console.log('drugs unchecked')
-      // Remove Drugs and Alcohol From the selected values
+
       index = categorySelectValues.indexOf(catstring)
       if (index > -1) {
         categorySelectValues.splice(index, 1)
@@ -438,9 +432,7 @@ function drawTimelineChart(data) {
       })
       categoryFilter.draw()
     } else {
-      //'unchecked' event code
-      //console.log('drugs unchecked')
-      // Remove Drugs and Alcohol From the selected values
+
       index = categorySelectValues.indexOf(catstring)
       if (index > -1) {
         categorySelectValues.splice(index, 1)
@@ -464,9 +456,6 @@ function drawTimelineChart(data) {
       })
       categoryFilter.draw()
     } else {
-      //'unchecked' event code
-      //console.log('drugs unchecked')
-      // Remove Drugs and Alcohol From the selected values
       index = categorySelectValues.indexOf(catstring)
       if (index > -1) {
         categorySelectValues.splice(index, 1)
@@ -490,9 +479,6 @@ function drawTimelineChart(data) {
       })
       categoryFilter.draw()
     } else {
-      //'unchecked' event code
-      //console.log('drugs unchecked')
-      // Remove Drugs and Alcohol From the selected values
       index = categorySelectValues.indexOf(catstring)
       if (index > -1) {
         categorySelectValues.splice(index, 1)
@@ -516,9 +502,6 @@ function drawTimelineChart(data) {
       })
       categoryFilter.draw()
     } else {
-      //'unchecked' event code
-      //console.log('drugs unchecked')
-      // Remove Drugs and Alcohol From the selected values
       index = categorySelectValues.indexOf(catstring)
       if (index > -1) {
         categorySelectValues.splice(index, 1)
@@ -599,6 +582,8 @@ function drawTimelineChart(data) {
   });
   $("#b").click(function () {
     //alert( "Handler for .click() called." );
+
+    
 
     rangeSlider.setState({
       'range': {
@@ -731,6 +716,14 @@ function periodDates(period, birthdate) {
   return dates
 }
 
+/**
+ * Return the age given a date and the birthdate
+ * @param {Date} date 
+ * @param {Date} birthdate 
+ */
+function getAgeFromDate(date, birthdate){
+  return moment(date).diff(moment(birthdate), 'years')
+}
 
 function getthreeword(text) {
   words = text.split(' ');
@@ -763,14 +756,25 @@ function getEventTooltipHTML(category, description, age, start, end, eventRating
   duration = getDuration(start, end);
   d1 = moment(start, 'DD/MM/YY', true).format('MMM YYYY')
   d2 = moment(end, 'DD/MM/YY', true).format('MMM YYYY')
+
+  start_and_enddate = ''
   if (start == 'Invalid Date') {
-    d1 = 'null'
+    d1 = ''
   }
   if (end == 'Invalid Date') {
-    d2 = 'null'
+    d2 = ''
   }
 
-
+  // Formatting the start and end date depending on available data
+  if (d1 == '' && d2 == ''){
+    start_and_enddate = ''
+  } else if (d1 == '' && d2 != ''){
+    start_and_enddate = d2
+  } else if (d1 != '' && d2 == ''){
+    start_and_enddate = d1
+  } else {
+    start_and_enddate = d1 + ' - ' + d2
+  }
 
 
   html = `<div style="padding:9px 12px 12px 9px;font-family: Lucida Grande; ">
@@ -791,7 +795,7 @@ function getEventTooltipHTML(category, description, age, start, end, eventRating
             <td style="padding:5px 5px 5px 5px;font-size: 12px;"><center><strong></strong>${duration}</center></td>
           </tr>
           <tr>
-            <td style="padding:5px 5px 5px 5px;font-size: 11px;"><center><i>${d1 + ' - ' + d2}</i></center></td>
+            <td style="padding:5px 5px 5px 5px;font-size: 11px;"><center><i>${start_and_enddate}</i></center></td>
           </tr>
         </table></div>`
   //console.log(html)
@@ -809,10 +813,7 @@ function isLastThreeTaken(age) {
     // console.log('triggered - 2 ' + age)
     return true
   }
-  // if ( (parseInt(age) - 1).toString() in moodrating){
-  //   // console.log('triggered - 1 ' + age)
-  //   return true
-  // }
+
   return false
 
 }
@@ -878,9 +879,7 @@ function getStyle(start, end) {
     enddate = moment(end)
     duration = moment.duration(enddate.diff(startdate))
     diffDays = duration.days()
-    // returns a star shape if it's a duration event
-    // console.log('start: '+ startdate)
-    // console.log('end: '+ enddate)
+
 
     return 'point { shape-type: star; size: 9; sides: ' + diffDays + '; visible: true; }'
   }
@@ -896,10 +895,10 @@ function filterDescription(value) {
   }
 }
 
+
+
 function drawEventsChart() {
   // Some raw data (not necessarily accurate)
-
-
   var progressBar = document.getElementById("eventProgess");
 
   $.get('public/subjectsData/' + subject + '/' + subject + '-events-rev.csv', function (data) {
@@ -919,27 +918,6 @@ function drawEventsChart() {
 
 
       periodrating = getNewMoodRating(age, getNumber(row[15]))[1]
-
-      // periodrating = getNumber(row[8])
-      //moodrating[age] = [row[8]]
-      //moodrating[age] = [periodrating]
-
-      // goodrating = getNumber(row[1])
-      // //newgoodrating = getNumber(row[2])
-      // newgoodrating = getNewMoodRating(age, goodrating)
-
-
-      // badrating = getNumber(row[2])
-      // //newbadrating = getNumber(row[4])
-      // newbadrating = getNewMoodRating(age, badrating)
-
-      // changerating = getNumber(row[3])
-      // //newchangerating = getNumber(row[6])
-      // newchangerating = getNewMoodRating(age, changerating)
-
-      // otherrating = getNumber(row[4])
-      // //newotherrating = getNumber(row[8])
-      // newotherrating = getNewMoodRating(age, otherrating)
 
       eventtype = row[1]
 
@@ -1013,14 +991,8 @@ function drawEventsChart() {
         ewightnew, eighttooltip, getthreeword(eventdes), eventdes, getStyle(startdate, enddate),
         ninenew, ninetooltip, getthreeword(eventdes), eventdes, getStyle(startdate, enddate),
         tennew, tentooltip, getthreeword(eventdes), eventdes, getStyle(startdate, enddate),
-
-        // newbadrating, badTooltip, badAnnotate, eventdes,
-        // newchangerating, changeTooltip, changeAnnotate, eventdes,
-        // newotherrating, otherTooltip, otherAnnotate, eventdes,
         periodrating,
         eventtype,
-        //startdate, enddate,
-        //period, periodrating
       ]
 
       //console.log(finalRow);
@@ -1233,18 +1205,6 @@ function drawEventsChart() {
       'type': 'string',
       'role': 'style'
     })
-    // data.addColumn('number', 'Bad Events');
-    // data.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}})
-    // data.addColumn({'type': 'string', 'role': 'annotation'})
-    // data.addColumn({'type': 'string', 'role': 'annotationText'})
-    // data.addColumn('number', 'Change Events');
-    // data.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}})
-    // data.addColumn({'type': 'string', 'role': 'annotation'})
-    // data.addColumn({'type': 'string', 'role': 'annotationText'})
-    // data.addColumn('number', 'Other Events');
-    // data.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}})
-    // data.addColumn({'type': 'string', 'role': 'annotation'})
-    // data.addColumn({'type': 'string', 'role': 'annotationText'})
 
 
     data.addColumn('number', 'Period Rating');
@@ -1253,41 +1213,9 @@ function drawEventsChart() {
       'role': 'domain'
     });
 
-    //data.addColumn( {type: 'date', id: 'Start Date'});
-    //data.addColumn( {type: 'date', id: 'End Date'});
-    //data.addColumn( {type: 'string', id: 'Type'});
-
-
-
-    //data.addColumn({'type': 'string', 'role': 'annotation'})
-
-
-    //data.addColumn( {type: 'number', id: 'Period Rating'});
-    // console.log(finalData)
-
     data.addRows(finalData)
 
-    //console.log(finalData[finalData.length - 1][0]);
-
-
-
-    //console.log('age: in the drawchar: ' + LC_AGE)
     var options = {
-      //dataOpacity: .8,
-      // crosshair: { 
-      //   trigger: 'both',
-      //   opacity: .3,
-      //   focused: {
-      //     opacity: .01
-      //   }},
-      //colors: ['#0E0CE5','#0E09AB','#000672','#000339','#000000',
-      // '#3A0700','#750F00','#B01600','#EB1E00'],
-      // explorer : {
-
-      //   zoomDelta: 1.05,
-      //   keepInBounds: true
-      // },
-      //title: 'Events Chart',
       height: 550,
       enableInteractivity: true,
       focusTarget: 'datum',
@@ -1299,12 +1227,20 @@ function drawEventsChart() {
         gridlines: {
           color: 'white'
         },
+        viewWindow : {
+          min: null,
+          max: null
+        },
         ticks: _.range(0, 11, 2)
       },
       hAxis: {
         title: 'Age',
         minValue: 0,
         maxValue: 10,
+        viewWindow : {
+          min: null,
+          max: null
+        },
         ticks: _.range(0, LC_AGE + 3, 3)
       },
       legend: {
@@ -1435,6 +1371,83 @@ function drawEventsChart() {
     });
 
 
+    // Changes the event chart when the range slider is changed
+    google.visualization.events.addListener(rangeSlider, 'statechange', function () {
+
+      options.hAxis.viewWindow.max = getAgeFromDate(rangeSlider.getState().range.end, birthDate)
+      min = getAgeFromDate(rangeSlider.getState().range.start, birthDate)
+      if(min == -1){
+        min = 0
+      }
+      options.hAxis.viewWindow.min = min
+      
+      // console.log(options.hAxis.viewWindow)
+      options.hAxis.ticks = null
+      comboChart.setOptions(options)
+      comboChart.draw()
+    });
+
+
+
+    $('#all').click(function(){
+      options.hAxis.viewWindow.max = LC_AGE
+      options.hAxis.viewWindow.min = 0
+      // options.hAxis.ticks = null
+      comboChart.setOptions(options)
+      comboChart.draw()
+    })
+    $('#b').click(function(){
+      options.hAxis.viewWindow.max = 6
+      options.hAxis.viewWindow.min = 0
+      options.hAxis.ticks = null
+      comboChart.setOptions(options)
+      comboChart.draw()
+    })
+
+    $('#c').click(function(){
+      options.hAxis.viewWindow.max = 10
+      options.hAxis.viewWindow.min = 6
+      options.hAxis.ticks = null
+      comboChart.setOptions(options)
+      comboChart.draw()
+    })
+    $('#d').click(function(){
+      options.hAxis.viewWindow.max = 14
+      options.hAxis.viewWindow.min = 10
+      options.hAxis.ticks = null
+      comboChart.setOptions(options)
+      comboChart.draw()
+    })
+    $('#e').click(function(){
+      options.hAxis.viewWindow.max = 18
+      options.hAxis.viewWindow.min = 14
+      options.hAxis.ticks = null
+      comboChart.setOptions(options)
+      comboChart.draw()
+    })
+    $('#f').click(function(){
+      options.hAxis.viewWindow.max = 25
+      options.hAxis.viewWindow.min = 18
+      options.hAxis.ticks = null
+      comboChart.setOptions(options)
+      comboChart.draw()
+    })
+    $('#g').click(function(){
+      options.hAxis.viewWindow.max = 35
+      options.hAxis.viewWindow.min = 25
+      options.hAxis.ticks = null
+      comboChart.setOptions(options)
+      comboChart.draw()
+    })
+    $('#h').click(function(){
+      options.hAxis.viewWindow.max = 45
+      options.hAxis.viewWindow.min = 35
+      options.hAxis.ticks = null
+      comboChart.setOptions(options)
+      comboChart.draw()
+    })
+
+
 
     $('#good').change(function () {
       eventstring = 'Good Event'
@@ -1447,9 +1460,6 @@ function drawEventsChart() {
         })
         eventCategoryFilter.draw()
       } else {
-        //'unchecked' event code
-        //console.log('drugs unchecked')
-        // Remove Drugs and Alcohol From the selected values
         index = eventSelected.indexOf(eventstring)
         if (index > -1) {
           eventSelected.splice(index, 1)
@@ -1474,9 +1484,6 @@ function drawEventsChart() {
         })
         eventCategoryFilter.draw()
       } else {
-        //'unchecked' event code
-        //console.log('drugs unchecked')
-        // Remove Drugs and Alcohol From the selected values
         index = eventSelected.indexOf(eventstring)
         if (index > -1) {
           eventSelected.splice(index, 1)
@@ -1487,7 +1494,6 @@ function drawEventsChart() {
         eventCategoryFilter.draw()
       }
 
-      //console.log(eventSelected)
     });
 
     $('#change').change(function () {
@@ -1501,9 +1507,7 @@ function drawEventsChart() {
         })
         eventCategoryFilter.draw()
       } else {
-        //'unchecked' event code
-        //console.log('drugs unchecked')
-        // Remove Drugs and Alcohol From the selected values
+
         index = eventSelected.indexOf(eventstring)
         if (index > -1) {
           eventSelected.splice(index, 1)
@@ -1528,9 +1532,7 @@ function drawEventsChart() {
         })
         eventCategoryFilter.draw()
       } else {
-        //'unchecked' event code
-        //console.log('drugs unchecked')
-        // Remove Drugs and Alcohol From the selected values
+
         index = eventSelected.indexOf(eventstring)
         if (index > -1) {
           eventSelected.splice(index, 1)
@@ -1555,9 +1557,7 @@ function drawEventsChart() {
         })
         eventCategoryFilter.draw()
       } else {
-        //'unchecked' event code
-        //console.log('drugs unchecked')
-        // Remove Drugs and Alcohol From the selected values
+
         index = eventSelected.indexOf(eventstring)
         if (index > -1) {
           eventSelected.splice(index, 1)
@@ -1573,16 +1573,10 @@ function drawEventsChart() {
 
     var fontsize = 12
 
-    // annotations: {
-    //     textStyle: {
-    //       fontSize: 12,
-    //     }
-
     $('#font-decrease').click(function () {
 
       var opt = comboChart.getOptions()
-      //fontsize = opt['fontSize']
-      //console.log(opt)
+
       fontsize = fontsize - 1
       // //console.log(opt)
       opt['annotations'] = {
@@ -1592,15 +1586,13 @@ function drawEventsChart() {
       }
       comboChart.setOptions(opt)
       comboChart.draw()
-      //alert('less than!');
 
     })
 
     $('#font-reset').click(function () {
 
       var opt = comboChart.getOptions()
-      //fontsize = opt['fontSize']
-      //console.log(opt)
+
       fontsize = 12
       // //console.log(opt)
       opt['annotations'] = {
@@ -1610,14 +1602,12 @@ function drawEventsChart() {
       }
       comboChart.setOptions(opt)
       comboChart.draw()
-      //alert('less than!');
 
     })
 
     $('#font-increase').click(function () {
       var opt = comboChart.getOptions()
-      //fontsize = opt['fontSize']
-      //console.log(opt)
+
       fontsize = fontsize + 1
       // //console.log(opt)
       opt['annotations'] = {
@@ -1630,21 +1620,10 @@ function drawEventsChart() {
       //
     })
 
-
-
-
-
-
-    // var chart = new google.visualization.ComboChart(document.getElementById('events'));
-    // chart.draw(data, options);
-    // document.getElementById("eventProgess").style.display = "none";
-    // set the link to the download link the the event chart
-
-    //var imageUri = chartWrapper.getChart().getImageURI();
-
-
-    //console.log(chart.getImageURI())
-
   });
 
+}
+
+function changeEventView(state){
+  console.log(state)
 }

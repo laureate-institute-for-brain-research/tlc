@@ -216,7 +216,7 @@ function drawChart(dataTable) {
     }
     
   }
-  //console.log(finalData)
+  console.log(finalData)
   var data = new google.visualization.DataTable();
 
   // // document.getElementById('countchart').innerHTML = dataTable;
@@ -335,12 +335,6 @@ function drawChart(dataTable) {
   var dashboard = new google.visualization.Dashboard(
     document.getElementById('drugs')
     );
-
-
-  // var chart_lines = new google.visualization.ComboChart(document.getElementById('countchart'));
-  // chart_lines.draw(data, chartoptions);
-
-
 
   var groupCategoryFilter = new google.visualization.ControlWrapper({
         'controlType': 'CategoryFilter',
@@ -620,56 +614,4 @@ function drawChart(dataTable) {
       comboChart.draw()
       //
     })
-
-
-
-  //data.addColumn('string', 'Group');
-  // data.addColumn('string', 'Period');
-  // data.addColumn('number', 'Depression');
-  // data.addColumn({id:'i0', type:'number', role:'interval'});
-  // data.addColumn({id:'i1', type:'number', role:'interval'});
-  // data.addColumn('number', 'Anxiety');
-  // data.addColumn({id:'a0', type:'number', role:'interval'});
-  // data.addColumn({id:'a1', type:'number', role:'interval'});
-  // data.addColumn({type: 'string', id: 'Group', role : 'domain'});
-  // // data.addColumn({id:'i2', type:'number', role:'interval'});
-  // // data.addColumn({id:'i2', type:'number', role:'interval'});
-  // // data.addColumn({id:'i2', type:'number', role:'interval'});
-  // // data.addColumn({id:'i2', type:'number', role:'interval'});
-
-  // datatable = [
-  //     ['1',  100, 90, 110,null, null, null,'Depression'],
-  //     ['2',  120, 95, 130,130, 105, 140,'Anxiety'],
-  //     ['3',  130, 105, 140,null, null, null,'Depression'],
-  //     ['4',  90, 85, 95,80, 77, 83,'Anxiety'],
-  //     ['5',  70, 74, 63,null, null, null,'Depression'],
-  //     ['6',  30, 39, 22,130,140, 105,'Anxiety'],
-  //     ['7',  80, 77, 83,null, null, null,'Depression'],
-  //     ['8',  100, 90, 110,120, 95, 130,'Anxiety']]
-
-  // console.log(datatable);
-  // data.addRows(datatable);
-
-  // The intervals data as narrow lines (useful for showing raw source data)
-  // var options_lines = {
-  //     height: 800,
-  //     title: 'Line intervals, default',
-  //     curveType: 'function',
-  //     lineWidth: 4,
-  //     intervals: { 'style':'bars' },
-  //     series : {
-  //       0: {
-  //         type : 'line',
-  //         interpolateNulls : true
-  //       },
-  //       1: {
-  //         type : 'line',
-  //         interpolateNulls : false
-  //       }
-  //     }
-  //     // legend: 'none'
-  // };
-
-  // var chart_lines = new google.visualization.ComboChart(document.getElementById('countchart'));
-  // chart_lines.draw(data, options_lines);
 }
