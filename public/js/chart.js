@@ -291,22 +291,10 @@ function drawTimelineChart(data) {
 
   var options = {
     //width : '100%',
-    height: 800,
+    height: 900,
     tooltip: {
       isHtml: true
     },
-    //
-    //colors: ['#182843','#21385E', '#2A487A', '#325896', '#3B68B2','#4C7AC5','#678ECF'],
-    //colors: colorsp,
-    // timeline: { 
-    //   showRowLabels: true ,
-    //   //colorByRowLabel: true,
-    //   groupByRowLabel: true,
-    //       //rowLabelStyle: {fontName: 'Lucida Sans Unicode', fontSize: 13, color: 'black' },
-    //   showBarLabels: true
-    //       //barLabelStyle: { fontName: 'Lucida Sans Unicode', fontSize: 10 }
-    // },
-    // backgroundColor: '#000',
     avoidOverlappingGridLines: true,
     // height: 100%,
     forceIFrame: false,
@@ -315,6 +303,9 @@ function drawTimelineChart(data) {
         count: 10
       }
     },
+    timeline : {
+      showBarLabels: true
+    }
 
   };
 
@@ -386,6 +377,23 @@ function drawTimelineChart(data) {
   categoryFilter.setState({
     'selectedValues': categorySelectValues
   })
+
+  // Sets the stroke of the bars to black on the category chart
+  google.visualization.events.addListener(timelineChart, 'ready', function () {
+    var container = document.getElementById('timeline_chart')
+    var rectangles = container.getElementsByTagName('rect');
+    var adjustY = 25;
+    var adjustX = 15;
+    for(var i=0; i<rectangles.length; i++){
+      if (i >= 8){
+        rectangles[i].setAttribute('stroke',"#000000")
+      }
+     
+    }
+
+});
+
+  
 
   dashboard.bind([rangeSlider, categoryFilter], timelineChart);
   dashboard.draw(data);
@@ -1337,10 +1345,6 @@ function drawEventsChart() {
         },
 
       },
-      // Initial range: 2015-08-10 to 2015-08-10.
-      //'state': {'range': {'start': new Date(20150810185227), 
-      //              'end': new Date(20150810205436)}
-      //  }
     });
 
     var comboChart = new google.visualization.ChartWrapper({
@@ -1350,8 +1354,6 @@ function drawEventsChart() {
 
     });
 
-    //dashboard.bind(rangeSlider, timelineChart);
-    //dashboard.draw(data);
 
     eventSelected = ['Good Event', 'Bad Event', 'Change Event', 'Other Event', 'Period']
     eventCategoryFilter.setState({
@@ -1446,7 +1448,6 @@ function drawEventsChart() {
       comboChart.setOptions(options)
       comboChart.draw()
     })
-
 
 
     $('#good').change(function () {
@@ -1622,8 +1623,4 @@ function drawEventsChart() {
 
   });
 
-}
-
-function changeEventView(state){
-  console.log(state)
 }

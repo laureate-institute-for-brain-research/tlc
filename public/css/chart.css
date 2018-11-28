@@ -168,3 +168,6 @@
     }
   }
 
+#timeline_chart{
+    overflow: auto;
+}
