@@ -13,11 +13,14 @@ var subject = getQueryVariable('subject');
 subject = subject.toUpperCase()
 
 var birthDate = ''
+var group = ''
 
 $.get('public/subjectsData/subjectsDB.json', function (data) {
   subjectJSON = data
   birthDate = subjectJSON[subject].birthdate
-  $('#lcgroup').text(subjectJSON[subject].group)
+
+  group =  subjectJSON[subject].group
+
   console.log(subject)
   LC_AGE = parseInt(subjectJSON[subject].age);
   console.log('Age: ' + LC_AGE);
@@ -46,7 +49,7 @@ var rangeSlider; // global var
 $(document).ready(function () {
 
   $("#nav-title").attr('href', '/lifechartexamples')
-  document.getElementById('subject').innerHTML = subject.toUpperCase().replace('-',' ')
+  document.getElementById('subject').innerHTML = subject.toUpperCase().replace('-',' ') + ' - ' + group
   document.getElementById('homenav').innerHTML = subject.toUpperCase()
 
   $('#homenav').attr('href','chart.html?subject=' + subject)
@@ -291,7 +294,7 @@ function drawTimelineChart(data) {
 
   var options = {
     //width : '100%',
-    height: 1000,
+    height: '100%',
     tooltip: {
       isHtml: true
     },
@@ -615,7 +618,7 @@ function drawTimelineChart(data) {
     })
     rangeSlider.draw()
     timelineChart.draw();
-    $('#epochtitle').html('Life Time');
+    $('#epochtitle').html('All Epochs');
   });
   $("#b").click(function () {
     //alert( "Handler for .click() called." );
@@ -1278,16 +1281,17 @@ function drawEventsChart() {
           min: null,
           max: null
         },
-        ticks: _.range(0, LC_AGE + 3, 3)
+        ticks: _.range(0, LC_AGE + 4, 3)
       },
       legend: {
         position: 'none',
         'alignment': 'center'
       },
       chartArea: {
-        left: 155,
-        width: '90%',
-        //height: '600px',
+        top: 20,
+        left: 50,
+        width: '100%',
+        height: '85%',
       },
       //curveType : 'funtion',
       //steppedArea

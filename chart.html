@@ -18,8 +18,8 @@
   <script type="text/javascript" src="public/js/chart.js"></script>
 </head>
 
-<body style='background-color: white;'>
-  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+<body style='background-color: white; padding-top: 90px;'>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" >
     <a id='nav-title' class="navbar-brand" href="./">Tulsa Life Chart</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -53,16 +53,11 @@
     </div>
   </nav>
   <h1 style="color: black; font-family: Lucida Sans Unicode" id="subject" class="animate-bottom"></h1>
-  <h4 id="lcgroup" class="animate-bottom"></h4>
-
   <div class='graphs' style="padding: 60px; padding-top: 0px">
-
-    <div id='events' class="row" style="padding-top: 0px; height: 600px">
+    <div id='events' class="row" style="padding-top: 0px; height: 550px; padding-bottom: 0px;">
       <div id="eventsPicker" style="display: none;"></div>
       <div class="column left animate-bottom">
         <div id='eventsPicker' style="width: 100%; padding-left: 500;"></div>
-        <br>
-        <br>
         <br>
         <p>Event Type</p>
         <div class="custom-control custom-checkbox">
@@ -165,17 +160,15 @@
           <div id="timeline_slider"></div>
         </div>
         <div id="timelineCategoryFilter" style="display: none;"></div>
-        <h2 id="epochtitle">Life Time</h2>
+        <h2 id="epochtitle">All Epochs</h2>
         <div id='load2wrap' style="padding: 200px; padding-left: 100px;">
           <div id='load2' class="loader">Loading...</div>
         </div>
-        <div id="timeline_chart" class="animate-bottom" style="padding-top: 0px;"></div>
+        <div id="timeline_chart" class="animate-bottom" style="padding-top: 0px; height: 1000px;"></div>
       </div>
     </div>
   </div>
 </body>
-<br>
-<br>
 <br>
 <footer style="color: black; font-family: Lucida Sans Unicode;">
   <center>
