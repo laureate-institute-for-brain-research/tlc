@@ -291,7 +291,7 @@ function drawTimelineChart(data) {
 
   var options = {
     //width : '100%',
-    height: 900,
+    height: 1000,
     tooltip: {
       isHtml: true
     },
@@ -390,6 +390,35 @@ function drawTimelineChart(data) {
       }
      
     }
+
+    var g = container.getElementsByTagName("svg")[0].getElementsByTagName("g")[1];
+    var dates = g.getElementsByTagName('text')
+
+    
+
+
+    container.getElementsByTagName("svg")[0].parentNode.style.top = '40px';
+    container.getElementsByTagName("svg")[0].style.overflow = 'visible';
+    var height = Number(g.getElementsByTagName("text")[0].getAttribute('y')) + 15;
+
+    for(var i=0; i< dates.length; i++){
+      y = dates[i].getAttribute('y')
+      x = dates[i].getAttribute('x')
+      date = dates[i].innerHTML
+      tick = document.createElement('text')
+      tick.setAttribute('height', - y)
+      tick.setAttribute('x', x)
+      tick.setAttribute('transform','translate(0,-'+y+')');
+      tick.setAttribute('text-anchor','middle');
+      tick.innerHTML = date
+
+      // container.append(tick)
+      // console.log(date +' ' + y)
+    }
+
+  
+    // g.setAttribute('transform','translate(0,-'+height+')');
+    // g = null;
 
 });
 
