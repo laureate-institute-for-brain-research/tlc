@@ -239,12 +239,12 @@ function drawTimelineChart(data) {
     tooltiphtml = getTooltipHTML(category, description, state, country, startdate, enddate);
 
     if (enddate != 'Invalid Date') {
-      console.log(startdate._d)
+      // console.log(startdate._d)
       finalData.push([category, annotext, colorMap[category], tooltiphtml, startdate._d, enddate._d, birthdate, assesseddate]);
     }
   }
 
-  console.log(finalData)
+  // console.log(finalData)
 
   var data = new google.visualization.DataTable();
   // Inserting Date to the data object
@@ -394,34 +394,46 @@ function drawTimelineChart(data) {
      
     }
 
-    var g = container.getElementsByTagName("svg")[0].getElementsByTagName("g")[1];
-    var dates = g.getElementsByTagName('text')
-
+    var g = container.getElementsByTagName("svg")[0].getElementsByTagName("g")[1]; // the Y axis labels for google cahrt
     
-
 
     container.getElementsByTagName("svg")[0].parentNode.style.top = '40px';
     container.getElementsByTagName("svg")[0].style.overflow = 'visible';
     var height = Number(g.getElementsByTagName("text")[0].getAttribute('y')) + 15;
+    
+    previousg = g.previousElementSibling // previous dom element after g
+    g.setAttribute('id','og')
+    newg = g.cloneNode(true); // copy the same
+    newg.setAttribute('id', 'newg')
+    newg.setAttribute('transform','translate(0,-'+height+')');
 
-    for(var i=0; i< dates.length; i++){
-      y = dates[i].getAttribute('y')
-      x = dates[i].getAttribute('x')
-      date = dates[i].innerHTML
-      tick = document.createElement('text')
-      tick.setAttribute('height', - y)
-      tick.setAttribute('x', x)
-      tick.setAttribute('transform','translate(0,-'+y+')');
-      tick.setAttribute('text-anchor','middle');
-      tick.innerHTML = date
+    var dates = newg.getElementsByTagName('text')
+    for(var i=0; i<dates.length; i++){
 
-      // container.append(tick)
-      // console.log(date +' ' + y)
+      date = getAgeFromDate(dates[i].innerHTML, birthdate) // the date on the x axis
+      // console.log(date)
+
+
+      // if Nan, don't show the text
+      if(isNaN(date)){
+        dates[i].style.display = "none"
+      }
+
+      if(dates[i].getAttribute('font-weight') == 'bold'){
+        y = dates[i].getAttribute('y')
+        dates[i].setAttribute('y', y - 15) 
+        // offests the y position to place it 15 pixel height above the line
+
+      }
+
+
+      dates[i].innerHTML = date
     }
-
-  
-    // g.setAttribute('transform','translate(0,-'+height+')');
-    // g = null;
+    previousg.after(newg)
+    // previousg.append(g)
+    // g.nextElementSibling = newg
+    // newg.append(g)
+    g = null;
 
 });
 
@@ -751,7 +763,7 @@ function periodDates(period, birthdate) {
     start: start,
     end: end
   }
-  console.log(dates)
+  // console.log(dates)
 
   return dates
 }
@@ -1040,7 +1052,7 @@ function drawEventsChart() {
       finalData.push(finalRow);
     }
 
-    console.log(finalData);
+    // console.log(finalData);
 
     var data = new google.visualization.DataTable();
     data.addColumn('number', 'Age');
