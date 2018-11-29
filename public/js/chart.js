@@ -1256,7 +1256,7 @@ function drawEventsChart() {
     data.addRows(finalData)
 
     var options = {
-      height: 550,
+      height: 445,
       enableInteractivity: true,
       focusTarget: 'datum',
       tooltip: {
@@ -1271,7 +1271,7 @@ function drawEventsChart() {
           min: null,
           max: null
         },
-        ticks: _.range(0, 11, 2)
+        ticks: _.range(0, 11, 1)
       },
       hAxis: {
         title: 'Age',
