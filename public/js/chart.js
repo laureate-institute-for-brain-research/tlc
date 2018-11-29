@@ -736,9 +736,9 @@ function periodDates(period, birthdate) {
   var end;
   if (period == 'b') {
     start = moment(new Date(birthdate))._d
-    end = moment(birthdate).add(5, 'years')._d
+    end = moment(birthdate).add(6, 'years')._d
   } else if (period == 'c') {
-    start = moment(birthdate).add(5, 'years')._d
+    start = moment(birthdate).add(6, 'years')._d
     end = moment(birthdate).add(10, 'years')._d
   } else if (period == 'd') {
     start = moment(birthdate).add(10, 'years')._d
