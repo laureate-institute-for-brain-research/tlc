@@ -15,6 +15,8 @@ subject = subject.toUpperCase()
 var birthDate = ''
 var group = ''
 
+
+
 $.get('public/subjectsData/subjectsDB.json', function (data) {
   subjectJSON = data
   birthDate = subjectJSON[subject].birthdate
@@ -43,7 +45,8 @@ $.get('public/subjectsData/subjectsDB.json', function (data) {
 });
 // Hide Epoch Buttons Based on Age
 
-var rangeSlider; // global var
+var rangeSlider; // gloval variable for the range slider
+var dashboard; // used for timeline chart
 
 
 $(document).ready(function () {
@@ -74,7 +77,7 @@ google.charts.setOnLoadCallback(getTimelineData);
 
 
 // Draw Events Chart
-google.charts.setOnLoadCallback(drawEventsChart);
+// google.charts.setOnLoadCallback(drawEventsChart);
 
 
 function stringToArray(string) {
@@ -169,7 +172,7 @@ function getTooltipHTML(category, description, state, country, start, end) {
 // the drawTimelineChart() to then draw the chart.
 function getTimelineData() {
   // Get File
-  console.log(subject)
+  // console.log(subject)
   $.get('public/subjectsData/' + subject + '/' + subject + '-timeline-rev.csv', function (data) {
     // console.log(data)
     drawTimelineChart(data);
@@ -180,20 +183,16 @@ function getTimelineData() {
 
 
 function drawTimelineChart(data) {
-
-  //document.getElementById('test').innerHTML = data;
   var finalData = [];
 
   fileArray = stringToArray(data);
-  //console.log(fileArray)
 
-  //console.log(testdata);
-  //data.addRows(finalData);
+
   colorpalette = ['#358E96', '#3EA8B2', '#51BAC3', '#6CC5CD', '#86D0D7', '#A1DBE1', '#BCE6EA']
   // Raingbow:
   color1 = ['#e74c3c', '#e67e22', '#2980b9', '#f39c12', '#f1c40f', '#16a085', '#2980b9', '#2c3e50']
   color2 = ['#e84393', '#d63031', '#e17055', '#fdcb6e', '#00b894', '#00cec9', '#6c5ce7', '#b2bec3']
-  color3 = ['#EA2027', '#EE5A24', '#FFC312', '#009432', '#0652DD', '#9980FA', '#D980FA', '#ED4C67']
+  color3 = ['#EA2027', '#EE5A24', '#FFC312', '#009432', '#0652DD', '#9980FA', '#D980FA', '#ED4C67'] // group decided on this
   color5 = ['#FC427B', '#FD7272', '#FD7272', '#F97F51', '#55E6C1', '#25CCF7', '#1B9CFC', '#D6A2E8']
   color6 = ['#fc5c65', '#fd9644', '#fed330', '#26de81', '#2bcbba', '#45aaf2', '#4b7bec', '#a55eea']
   color7 = ['#BC4943', '#C55F5A', '#CE7571', '#D78C88', '#DFA29F', '#E7B9B7', '#EFD0CF', '#F7E8E7']
@@ -249,47 +248,16 @@ function drawTimelineChart(data) {
   var data = new google.visualization.DataTable();
   // Inserting Date to the data object
 
-  data.addColumn({
-    type: 'string',
-    id: 'Category'
-  });
+  data.addColumn({ type: 'string',id: 'Category'});
   //data.addColumn({ type: 'string', 'role': 'annotation'});
-  data.addColumn({
-    type: 'string',
-    id: 'Name'
-  });
-  data.addColumn({
-    type: 'string',
-    role: 'style'
-  });
+  data.addColumn({ type: 'string', id: 'Name'});
+  data.addColumn({ type: 'string', role: 'style'});
 
-
-  data.addColumn({
-    type: 'string',
-    role: 'tooltip',
-    p: {
-      'html': true
-    }
-  });
-  data.addColumn({
-    type: 'date',
-    id: 'Start'
-  });
-  data.addColumn({
-    type: 'date',
-    id: 'End'
-  });
-  data.addColumn({
-    type: 'date',
-    id: 'birthdate',
-    role: 'domain'
-  });
-  data.addColumn({
-    type: 'date',
-    id: 'assesseddate',
-    role: 'domain'
-  });
-
+  data.addColumn({type: 'string', role: 'tooltip', p: {'html': true } });
+  data.addColumn({type: 'date',id: 'Start'});
+  data.addColumn({type: 'date',id: 'End'});
+  data.addColumn({type: 'date',id: 'birthdate',role: 'domain'});
+  data.addColumn({type: 'date',id: 'assesseddate',role: 'domain'});
   data.addRows(finalData);
 
   var options = {
@@ -312,7 +280,7 @@ function drawTimelineChart(data) {
 
   };
 
-  var dashboard = new google.visualization.Dashboard(
+  dashboard = new google.visualization.Dashboard(
     document.getElementById('timeline')
   );
 
@@ -381,7 +349,9 @@ function drawTimelineChart(data) {
     'selectedValues': categorySelectValues
   })
 
-  // Sets the stroke of the bars to black on the category chart
+
+  // Sets the stroke of the bars to black on the category chart &
+  // Puts the age at the top of the chart
   google.visualization.events.addListener(timelineChart, 'ready', function () {
     var container = document.getElementById('timeline_chart')
     var rectangles = container.getElementsByTagName('rect');
@@ -396,18 +366,19 @@ function drawTimelineChart(data) {
 
     var g = container.getElementsByTagName("svg")[0].getElementsByTagName("g")[1]; // the Y axis labels for google cahrt
     
-
     container.getElementsByTagName("svg")[0].parentNode.style.top = '40px';
     container.getElementsByTagName("svg")[0].style.overflow = 'visible';
     var height = Number(g.getElementsByTagName("text")[0].getAttribute('y')) + 15;
     
-    previousg = g.previousElementSibling // previous dom element after g
-    g.setAttribute('id','og')
-    newg = g.cloneNode(true); // copy the same
-    newg.setAttribute('id', 'newg')
-    newg.setAttribute('transform','translate(0,-'+height+')');
 
-    var dates = newg.getElementsByTagName('text')
+
+    previousg = g.previousElementSibling // previous dom element after g
+    g.setAttribute('id','og') // name the orignal g tag og
+    newg = g.cloneNode(true); // copy the same
+    newg.setAttribute('id', 'newg') // id the new g
+    newg.setAttribute('transform','translate(0,-'+height+')'); // put the newg in the top by transform
+
+    var dates = newg.getElementsByTagName('text') // get all the texts (the hAxis labels of the timeline chart)
     for(var i=0; i<dates.length; i++){
 
       date = getAgeFromDate(dates[i].innerHTML, birthdate) // the date on the x axis
@@ -419,14 +390,15 @@ function drawTimelineChart(data) {
         dates[i].style.display = "none"
       }
 
+      // if bolded(means there was a month)
+      // place the age a little higher up
+
       if(dates[i].getAttribute('font-weight') == 'bold'){
         y = dates[i].getAttribute('y')
         dates[i].setAttribute('y', y - 15) 
         // offests the y position to place it 15 pixel height above the line
 
       }
-
-
       dates[i].innerHTML = date
     }
     previousg.after(newg)
@@ -441,6 +413,10 @@ function drawTimelineChart(data) {
 
   dashboard.bind([rangeSlider, categoryFilter], timelineChart);
   dashboard.draw(data);
+
+
+  // Load/Execute the the function to make the eventchar when its' ready
+  google.visualization.events.addOneTimeListener(dashboard, 'ready', drawEventsChart)
 
   //console.log(rangeSlider.getState())
 
@@ -870,7 +846,11 @@ function isLastThreeTaken(age) {
 
 }
 
-
+/**
+ * Re adjust the position since it overlap
+ * @param {Int} age 
+ * @param {Int} mood 
+ */
 function getNewMoodRating(age, mood) {
   // mood already in that corresponding age
   // return a shifted mood
@@ -885,7 +865,7 @@ function getNewMoodRating(age, mood) {
       // even more
       if (isLastThreeTaken(age)) {
         return [age, parseFloat(mood) + DODGE_WIDTH * 1.5]
-        //console.log('triggered')
+        console.log('triggered')
       } else {
         return [age, parseFloat(mood) + DODGE_WIDTH]
       }
@@ -1058,212 +1038,57 @@ function drawEventsChart() {
     data.addColumn('number', 'Age');
 
     data.addColumn('number', 'One');
-    data.addColumn({
-      'type': 'string',
-      'role': 'tooltip',
-      'p': {
-        'html': true
-      }
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotation'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotationText'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'style'
-    })
+    data.addColumn({'type': 'string','role': 'tooltip','p': {'html': true}})
+    data.addColumn({'type': 'string','role': 'annotation'})
+    data.addColumn({'type': 'string','role': 'annotationText'})
+    data.addColumn({'type': 'string','role': 'style'})
     data.addColumn('number', 'Two');
-    data.addColumn({
-      'type': 'string',
-      'role': 'tooltip',
-      'p': {
-        'html': true
-      }
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotation'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotationText'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'style'
-    })
+    data.addColumn({'type': 'string','role': 'tooltip', 'p': {'html': true}})
+    data.addColumn({'type': 'string','role': 'annotation'})
+    data.addColumn({'type': 'string','role': 'annotationText'})
+    data.addColumn({'type': 'string','role': 'style'})
     data.addColumn('number', 'Three');
-    data.addColumn({
-      'type': 'string',
-      'role': 'tooltip',
-      'p': {
-        'html': true
-      }
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotation'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotationText'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'style'
-    })
+    data.addColumn({'type': 'string','role': 'tooltip','p': { 'html': true}})
+    data.addColumn({'type': 'string','role': 'annotation'})
+    data.addColumn({'type': 'string','role': 'annotationText'})
+    data.addColumn({'type': 'string','role': 'style'})
     data.addColumn('number', 'Four');
-    data.addColumn({
-      'type': 'string',
-      'role': 'tooltip',
-      'p': {
-        'html': true
-      }
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotation'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotationText'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'style'
-    })
+    data.addColumn({'type': 'string','role': 'tooltip','p': {'html': true}})
+    data.addColumn({'type': 'string','role': 'annotation'})
+    data.addColumn({'type': 'string','role': 'annotationText'})
+    data.addColumn({'type': 'string','role': 'style'})
     data.addColumn('number', 'Five');
-    data.addColumn({
-      'type': 'string',
-      'role': 'tooltip',
-      'p': {
-        'html': true
-      }
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotation'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotationText'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'style'
-    })
+    data.addColumn({'type': 'string','role': 'tooltip','p': {'html': true}})
+    data.addColumn({'type': 'string','role': 'annotation'})
+    data.addColumn({'type': 'string','role': 'annotationText'})
+    data.addColumn({'type': 'string','role': 'style'})
     data.addColumn('number', 'Six');
-    data.addColumn({
-      'type': 'string',
-      'role': 'tooltip',
-      'p': {
-        'html': true
-      }
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotation'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotationText'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'style'
-    })
+    data.addColumn({'type': 'string','role': 'tooltip','p': {'html': true}})
+    data.addColumn({'type': 'string','role': 'annotation'})
+    data.addColumn({'type': 'string','role': 'annotationText'})
+    data.addColumn({'type': 'string','role': 'style'})
     data.addColumn('number', 'Seven');
-    data.addColumn({
-      'type': 'string',
-      'role': 'tooltip',
-      'p': {
-        'html': true
-      }
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotation'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotationText'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'style'
-    })
+    data.addColumn({'type': 'string','role': 'tooltip','p': {'html': true}})
+    data.addColumn({'type': 'string','role': 'annotation'})
+    data.addColumn({'type': 'string','role': 'annotationText'})
+    data.addColumn({'type': 'string','role': 'style'})
     data.addColumn('number', 'Eight');
-    data.addColumn({
-      'type': 'string',
-      'role': 'tooltip',
-      'p': {
-        'html': true
-      }
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotation'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotationText'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'style'
-    })
+    data.addColumn({'type': 'string','role': 'tooltip','p': {'html': true}})
+    data.addColumn({'type': 'string','role': 'annotation'})
+    data.addColumn({'type': 'string','role': 'annotationText'})
+    data.addColumn({'type': 'string','role': 'style'})
     data.addColumn('number', 'Nine');
-    data.addColumn({
-      'type': 'string',
-      'role': 'tooltip',
-      'p': {
-        'html': true
-      }
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotation'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotationText'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'style'
-    })
+    data.addColumn({'type': 'string','role': 'tooltip', 'p': {'html': true}})
+    data.addColumn({'type': 'string','role': 'annotation'})
+    data.addColumn({'type': 'string','role': 'annotationText'})
+    data.addColumn({'type': 'string','role': 'style'})
     data.addColumn('number', 'Ten');
-    data.addColumn({
-      'type': 'string',
-      'role': 'tooltip',
-      'p': {
-        'html': true
-      }
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotation'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'annotationText'
-    })
-    data.addColumn({
-      'type': 'string',
-      'role': 'style'
-    })
-
-
+    data.addColumn({'type': 'string','role': 'tooltip','p': {'html': true}})
+    data.addColumn({'type': 'string','role': 'annotation'})
+    data.addColumn({'type': 'string','role': 'annotationText'})
+    data.addColumn({'type': 'string','role': 'style'})
     data.addColumn('number', 'Period Rating');
-    data.addColumn({
-      'type': 'string',
-      'role': 'domain'
-    });
+    data.addColumn({'type': 'string','role': 'domain'});
 
     data.addRows(finalData)
 
@@ -1406,6 +1231,12 @@ function drawEventsChart() {
     })
 
     eventdashboard.bind(eventCategoryFilter, comboChart);
+
+    // Event Dashboard needs to be drawn after the timeline dashboard is ready becase
+    // it utilizes the rangeslider 
+    google.visualization.events.addListener(rangeSlider, 'ready', function () {
+
+    })
     eventdashboard.draw(data);
 
     $('#load1wrap').attr('style', "display: none;")
@@ -1417,19 +1248,57 @@ function drawEventsChart() {
       document.getElementById('download1').download = subject + "-LifeChart-Events"
     });
 
+    // Alter Annotation Text position when the points are close
+    google.visualization.events.addListener(comboChart, 'ready', function () {
+      var container = document.getElementById('eventsChart')
+      var g = container.getElementsByTagName('g');
+
+      // loops through all the g tags
+      for(var i=0; i < g.length; i++){
+
+        // probably not a good solution
+        // Since sometime the x axis label count is differnt
+        if ( i < 25){
+          continue; // 26th g tag is the text, all previous is tages are the horizontal and vertical labels
+        }
+
+        nextg = g[i].nextElementSibling
+
+        try{
+          if(nextg.nextElementSibling != null){
+
+            text = nextg.getElementsByTagName('text')[1]
+            console.log(text)
+          }
+        } catch(e){
+
+        }
+        
+      }
+   
+    });
+
 
     // Changes the event chart when the range slider is changed
     google.visualization.events.addListener(rangeSlider, 'statechange', function () {
 
-      options.hAxis.viewWindow.max = getAgeFromDate(rangeSlider.getState().range.end, birthDate)
-      min = getAgeFromDate(rangeSlider.getState().range.start, birthDate)
+      max = getAgeFromDate(rangeSlider.getState().range.end, birthDate)   // max determined by the range slider
+      min = getAgeFromDate(rangeSlider.getState().range.start, birthDate) // min determined by the range slider
+
+      // range slider chooses the age a a year before the subjec's birth date
+      // so if it is -1, than it sets the events chart minimum window to age 0
       if(min == -1){
         min = 0
       }
+
+      options.hAxis.viewWindow.max = max
       options.hAxis.viewWindow.min = min
+
+      // Change the Timeline title depending on where in the range it is set are in
+      changeTimelineTitle(min, max)
       
       // console.log(options.hAxis.viewWindow)
-      options.hAxis.ticks = null
+      options.hAxis.ticks = _.range(0, LC_AGE + 4, 1)
       comboChart.setOptions(options)
       comboChart.draw()
     });
@@ -1668,4 +1537,49 @@ function drawEventsChart() {
 
   });
 
+}
+
+/**
+ * Changes the Timeline Title depedning on range
+ * @param {Int} startAge 
+ * @param {*} endAge 
+ */
+function changeTimelineTitle(startAge, endAge){
+
+  $(document).ready(function(){
+    $('#epochtitle').html("Age: " + startAge + ' - ' + endAge);
+    // if(startAge >= 0 && endAge < 6){
+    //   $('#epochtitle').html("Birth-Elementary School Years");
+    //   console.log('b')
+    //   console.log(startAge + ' - ' + endAge)
+    // } else if(startAge >= 6 && endAge < 10){
+    //   $('#epochtitle').html("Elementary School Years");
+    //   console.log('c')
+    //   console.log(startAge + ' - ' + endAge)
+    // } else if(startAge >= 10 && endAge < 14){
+    //   $('#epochtitle').html("Middle School Years");
+    //   console.log('d')
+    //   console.log(startAge + ' - ' + endAge)
+    // } else if(startAge >= 14 && endAge < 18){
+    //   $('#epochtitle').html("High School Years");
+    //   console.log('e')
+    //   console.log(startAge + ' - ' + endAge)
+    // } else if(startAge >= 18 && endAge < 25){
+    //   $('#epochtitle').html("Young Adult Years");
+    //   console.log('f')
+    //   console.log(startAge + ' - ' + endAge)
+    // } else if(startAge >= 25 && endAge < 35){
+    //   $('#epochtitle').html("Age: 25-35");
+    //   console.log('g')
+    //   console.log(startAge + ' - ' + endAge)
+    // } else if(startAge >= 35 && endAge < 45){
+    //   $('#epochtitle').html("Age: 35-45");
+    //   console.log('g')
+    //   console.log(startAge + ' - ' + endAge)
+    // } else {
+    //   $('#epochtitle').html("All Epochs");
+    //   console.log('?')
+    //   console.log(startAge + ' - ' + endAge)
+    // }
+  })
 }
