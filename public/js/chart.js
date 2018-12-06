@@ -352,6 +352,35 @@ function drawTimelineChart(data) {
 // call function onReady function when timeilnechart is read
   google.visualization.events.addListener(timelineChart, 'ready', onReady); 
   
+  
+  //Put The text always on the right of the box if it it's small box
+  function putTextLeft(){
+    var container = document.getElementById('timeline_chart')
+    var rectangles = container.getElementsByTagName('rect');
+    for(var i=0; i<rectangles.length; i++){
+      if(rectangles[i].getAttribute('width') <= 200){
+        if(i > 8){
+          text = rectangles[i].nextSibling
+
+          if(text != null && text.tagName == 'text' && text.getAttribute('text-anchor') == 'end'){
+            rectangleX = parseInt(rectangles[i].getAttribute('x'))
+            rectangleWidth = parseInt(rectangles[i].getAttribute('width'))
+            currentX = parseInt(text.getAttribute('x'))
+            newX = rectangleX + rectangleWidth + 5
+            // console.log(text.innerHTML + ': ' + text.getAttribute('x'))
+            currentX = currentX + rectangleWidth
+            text.setAttribute('x', newX + '')
+            text.setAttribute('text-anchor', 'start')
+            // console.log(text.innerHTML + ': ' + text.getAttribute('x'))
+
+          }
+        }
+        
+      }
+      
+    }
+  }
+
 
   /**
    * Function used to call methods pertaining to the timelinechart
@@ -367,30 +396,9 @@ function drawTimelineChart(data) {
       rectangles[i].setAttribute('stroke',"#000000")
     }
 
-    //Put The text always on the right of the box if it it's smal
-    for(var i=0; i<rectangles.length; i++){
-      if(rectangles[i].getAttribute('width') <= 35){
-        if(i > 8){
-          text = rectangles[i].getElementsByTagName('text')
+    putTextLeft()
 
-          if(text != null){
-            // currentX = text.getAttribute('x')
-            // console.log(text.innerHTML + ': ' + text.getAttribute('x'))
-            // currentX = currentX + 115
-            // text.setAttribute('x', currentX.toString)
-            // console.log(text.innerHTML + ': ' + text.getAttribute('x'))
-
-          }
-        }
-        
-        
-
-
-        //currentXposition = text.getAttribute('x')
-        //text.setAttribute('x', currentXposition + 100 )
-      }
-      
-    }
+    
 
 
 
