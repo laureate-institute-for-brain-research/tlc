@@ -349,21 +349,80 @@ function drawTimelineChart(data) {
     'selectedValues': categorySelectValues
   })
 
+// call function onReady function when timeilnechart is read
+  google.visualization.events.addListener(timelineChart, 'ready', onReady); 
+  
 
-  // Sets the stroke of the bars to black on the category chart &
-  // Puts the age at the top of the chart
-  google.visualization.events.addListener(timelineChart, 'ready', function () {
+  /**
+   * Function used to call methods pertaining to the timelinechart
+   */
+  function onReady(){
     var container = document.getElementById('timeline_chart')
     var rectangles = container.getElementsByTagName('rect');
     var adjustY = 25;
     var adjustX = 15;
+    
+    // Add Black Borderin
     for(var i=0; i<rectangles.length; i++){
-      if (i >= 8){
-        rectangles[i].setAttribute('stroke',"#000000")
-      }
-     
+      rectangles[i].setAttribute('stroke',"#000000")
     }
 
+    //Put The text always on the right of the box if it it's smal
+    for(var i=0; i<rectangles.length; i++){
+      if(rectangles[i].getAttribute('width') <= 35){
+        if(i > 8){
+          text = rectangles[i].getElementsByTagName('text')
+
+          if(text != null){
+            // currentX = text.getAttribute('x')
+            // console.log(text.innerHTML + ': ' + text.getAttribute('x'))
+            // currentX = currentX + 115
+            // text.setAttribute('x', currentX.toString)
+            // console.log(text.innerHTML + ': ' + text.getAttribute('x'))
+
+          }
+        }
+        
+        
+
+
+        //currentXposition = text.getAttribute('x')
+        //text.setAttribute('x', currentXposition + 100 )
+      }
+      
+    }
+
+
+
+    // Keeps the Black Bordering on the events
+    google.visualization.events.addListener(timelineChart.getChart(), 'onmouseout', function(element){
+      var container = document.getElementById('timeline_chart')
+      var rectangles = container.getElementsByTagName('rect');
+      var adjustY = 25;
+      var adjustX = 15;
+      
+      for(var i=0; i<rectangles.length; i++){
+        
+        rectangles[i].setAttribute('stroke',"#000000")
+        
+      }
+    })
+  }
+  
+
+  // Setting the stroke of the timeline group of the blac border after the hover.
+  google.visualization.events.addListener(timelineChart, 'ready', function(){
+    
+    $('#table_div tr').mouseover(function (e) {
+      // do something
+      console.log('on hover event')
+  });
+  })
+
+
+  // Puts the age at the top of the timeilne chart
+  google.visualization.events.addListener(timelineChart, 'ready', function () {
+    var container = document.getElementById('timeline_chart')
     var g = container.getElementsByTagName("svg")[0].getElementsByTagName("g")[1]; // the Y axis labels for google cahrt
     
     container.getElementsByTagName("svg")[0].parentNode.style.top = '40px';
@@ -407,13 +466,10 @@ function drawTimelineChart(data) {
     // newg.append(g)
     g = null;
 
-});
-
-  
+});  
 
   dashboard.bind([rangeSlider, categoryFilter], timelineChart);
   dashboard.draw(data);
-
 
   // Load/Execute the the function to make the eventchar when its' ready
   google.visualization.events.addOneTimeListener(dashboard, 'ready', drawEventsChart)
@@ -753,6 +809,12 @@ function getAgeFromDate(date, birthdate){
   return moment(date).diff(moment(birthdate), 'years')
 }
 
+
+/**
+ * returns the 1st three word of the string if
+ * available
+ * @param {String} text 
+ */
 function getthreeword(text) {
   words = text.split(' ');
 
@@ -767,6 +829,11 @@ function getthreeword(text) {
   }
 }
 
+
+/**
+ * Turn the string to a float, if null, than it returns null
+ * @param {String} string 
+ */
 function getNumber(string) {
   if (string == '') {
     return null
@@ -776,6 +843,15 @@ function getNumber(string) {
 }
 
 
+/**
+ * Returns the tooltip html used to graph the the tooltips
+ * @param {String} category 
+ * @param {String} description 
+ * @param {Integer} age 
+ * @param {Date} start 
+ * @param {Date} end 
+ * @param {String} eventRating 
+ */
 function getEventTooltipHTML(category, description, age, start, end, eventRating) {
   // body...
   var m_names = new Array("Jan", "Feb", "Mar",
@@ -832,6 +908,11 @@ function getEventTooltipHTML(category, description, age, start, end, eventRating
 }
 var moodrating = {}
 
+
+/**
+ * Used to dodge position of the age
+ * @param {String} age 
+ */
 function isLastThreeTaken(age) {
   if ((parseInt(age) - 3).toString() in moodrating) {
     //console.log('triggered - 3 ' + age)
@@ -917,7 +998,11 @@ function getStyle(start, end) {
   }
 }
 
-
+/**
+ * Used to Filter the description text.
+ * 
+ * @param {String} value 
+ */
 function filterDescription(value) {
   //console.log(value);
   if (value == undefined) {
@@ -929,6 +1014,9 @@ function filterDescription(value) {
 
 
 
+/**
+ * Use to get the events data  and draw the events chart
+ */
 function drawEventsChart() {
   // Some raw data (not necessarily accurate)
   var progressBar = document.getElementById("eventProgess");
@@ -936,7 +1024,7 @@ function drawEventsChart() {
   $.get('public/subjectsData/' + subject + '/' + subject + '-events-rev.csv', function (data) {
     var finalData = [];
 
-    console.log('events data')
+    // console.log('events data')
     // console.log(data)
 
     fileArray = stringToArray(data);
@@ -1232,11 +1320,6 @@ function drawEventsChart() {
 
     eventdashboard.bind(eventCategoryFilter, comboChart);
 
-    // Event Dashboard needs to be drawn after the timeline dashboard is ready becase
-    // it utilizes the rangeslider 
-    google.visualization.events.addListener(rangeSlider, 'ready', function () {
-
-    })
     eventdashboard.draw(data);
 
     $('#load1wrap').attr('style', "display: none;")
@@ -1268,7 +1351,7 @@ function drawEventsChart() {
           if(nextg.nextElementSibling != null){
 
             text = nextg.getElementsByTagName('text')[1]
-            console.log(text)
+            // console.log(text)
           }
         } catch(e){
 
@@ -1432,7 +1515,6 @@ function drawEventsChart() {
         })
         eventCategoryFilter.draw()
       }
-
 
     });
 
