@@ -358,7 +358,7 @@ function drawTimelineChart(data) {
     var container = document.getElementById('timeline_chart')
     var rectangles = container.getElementsByTagName('rect');
     for(var i=0; i<rectangles.length; i++){
-      if(rectangles[i].getAttribute('width') <= 200){
+      if(parseInt(rectangles[i].getAttribute('width')) <= 200){
         if(i > 8){
           text = rectangles[i].nextSibling
 
@@ -366,11 +366,12 @@ function drawTimelineChart(data) {
             rectangleX = parseInt(rectangles[i].getAttribute('x'))
             rectangleWidth = parseInt(rectangles[i].getAttribute('width'))
             currentX = parseInt(text.getAttribute('x'))
-            newX = rectangleX + rectangleWidth + 5
+            newX = rectangleX  + 5
             // console.log(text.innerHTML + ': ' + text.getAttribute('x'))
             currentX = currentX + rectangleWidth
-            text.setAttribute('x', newX + '')
             text.setAttribute('text-anchor', 'start')
+            text.setAttribute('x', newX + '')
+            
             // console.log(text.innerHTML + ': ' + text.getAttribute('x'))
 
           }
@@ -397,13 +398,9 @@ function drawTimelineChart(data) {
     }
 
     putTextLeft()
-
-    
-
-
-
     // Keeps the Black Bordering on the events
     google.visualization.events.addListener(timelineChart.getChart(), 'onmouseout', function(element){
+      putTextLeft()
       var container = document.getElementById('timeline_chart')
       var rectangles = container.getElementsByTagName('rect');
       var adjustY = 25;
@@ -417,17 +414,6 @@ function drawTimelineChart(data) {
     })
   }
   
-
-  // Setting the stroke of the timeline group of the blac border after the hover.
-  google.visualization.events.addListener(timelineChart, 'ready', function(){
-    
-    $('#table_div tr').mouseover(function (e) {
-      // do something
-      console.log('on hover event')
-  });
-  })
-
-
   // Puts the age at the top of the timeilne chart
   google.visualization.events.addListener(timelineChart, 'ready', function () {
     var container = document.getElementById('timeline_chart')
