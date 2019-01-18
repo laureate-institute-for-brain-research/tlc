@@ -21,7 +21,12 @@ $.get('public/subjectsData/subjectsDB.json', function (data) {
   subjectJSON = data
   birthDate = subjectJSON[subject].birthdate
 
-  group =  subjectJSON[subject].group
+  
+  $(document).ready(function(){
+    group =  subjectJSON[subject].group
+    document.getElementById('subject').innerHTML = subject.toUpperCase().replace('-',' ') + ' - ' + group
+  })
+  
 
   console.log(subject)
   LC_AGE = parseInt(subjectJSON[subject].age);
@@ -52,7 +57,7 @@ var dashboard; // used for timeline chart
 $(document).ready(function () {
 
   $("#nav-title").attr('href', '/lifechartexamples')
-  document.getElementById('subject').innerHTML = subject.toUpperCase().replace('-',' ') + ' - ' + group
+  
   document.getElementById('homenav').innerHTML = subject.toUpperCase()
 
   $('#homenav').attr('href','chart.html?subject=' + subject)
