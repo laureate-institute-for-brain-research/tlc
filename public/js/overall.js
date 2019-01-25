@@ -299,7 +299,11 @@ function drawChart(dataTable) {
   var fontsize = 13
   var chartoptions = {
     //curveType: 'function',
-    'intervals': { 'style' : 'bars' },
+    'intervals': { 
+      'style' : 'bars' ,
+      'lineWidth' : 2,
+      'barWidth' : .10
+    },
     'lineWidth': linewidth,
     'fontSize' : fontsize,
     'chartArea' : {
@@ -320,7 +324,14 @@ function drawChart(dataTable) {
         {v: 7, f: '35-45'},
         {v: 8, f: '45-55'},
         {v: 9, f: ''}
-      ]
+      ],
+      textStyle : {
+        'fontSize' : 11
+      },
+      textPosition : 'out',
+      viewWindow : {
+        max: 
+      }
       // ticks : ['Birth-Elementary School','Elementary School',
       // 'Middle School','High School','Young Adult',
       // '25-35','35-45','45-44']
@@ -378,7 +389,7 @@ function drawChart(dataTable) {
 
     google.visualization.events.addListener(comboChart, 'ready', function(){
       document.getElementById('download1').href = comboChart.getChart().getImageURI();
-      document.getElementById('download1').download = "LifeChart-Drug-Counts"
+      document.getElementById('download1').download = "LifeChart-Overall-Mood"
     });
 
     $('#anxiety').change(function() {
