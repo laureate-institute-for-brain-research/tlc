@@ -171,3 +171,13 @@
 #timeline_chart{
     overflow: auto;
 }
+
+
+div.google-visualization-tooltip > ul > li > span {
+  color: #ff0000 !important;
+}
+
+.ajp-green{
+  color : rgb(36, 92, 17) !important;
+  background-color :  rgb(36, 92, 17) !important;
+}

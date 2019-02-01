@@ -83,6 +83,14 @@ function getTableData(){
   )
 }
 
+function swap(json){
+  var ret = {};
+  for(var key in json){
+    ret[json[key]] = key;
+  }
+  return ret;
+}
+
 function stringToArray(string) {
   // body...
   var line = string.split(/\r?\n/);
@@ -218,27 +226,33 @@ function drawChart(dataTable) {
     }
     
   }
-  //console.log(finalData)
+  console.log(finalData)
   var data = new google.visualization.DataTable();
 
   // // document.getElementById('countchart').innerHTML = dataTable;
 
   data.addColumn({'type' : 'number', 'id' : 'Period', 'role': 'domain'});
+
   data.addColumn('number', 'Anxiety');
   data.addColumn({id:'a0', type:'number', role:'interval'});
   data.addColumn({id:'a1', type:'number', role:'interval'});
+
   data.addColumn('number', 'Comorbid Depression + Anxiety');
   data.addColumn({id:'b0', type:'number', role:'interval'});
   data.addColumn({id:'b1', type:'number', role:'interval'});
+
   data.addColumn('number', 'Depression');
   data.addColumn({id:'c0', type:'number', role:'interval'});
   data.addColumn({id:'c1', type:'number', role:'interval'});
+
   data.addColumn('number', 'Eating +');
   data.addColumn({id:'d0', type:'number', role:'interval'});
   data.addColumn({id:'d1', type:'number', role:'interval'});
+
   data.addColumn('number', 'Healthy Control');
   data.addColumn({id:'e0', type:'number', role:'interval'});
   data.addColumn({id:'e1', type:'number', role:'interval'});
+
   data.addColumn('number', 'Substance +');
   data.addColumn({id:'f0', type:'number', role:'interval'});
   data.addColumn({id:'f1', type:'number', role:'interval'});
@@ -247,51 +261,64 @@ function drawChart(dataTable) {
   }
   data.addColumn({'type' : 'string', 'role': 'domain'});
   
-  serieslines = {}
-  if (subject != 'NULL'){
-    serieslines = {
-      0 : {
-        type: 'line'
-      },
-      1 : {
-        type : 'line'
-      },
-      2 : {
-        type : 'line'
-      },
-      3 : {
-        type : 'line'
-      },
-      4 : {
-        type : 'line'
-      },
-      5 : {
-        type : 'line'
-      },
-      6 : {
-        type : 'line'
-      }
+  groupColor = {
+    'Anxiety' : '#c20f1e',
+    'Comorbid Depression + Anxiety' : '#005e9d',
+    'Depression' : '#00aeea',
+    'Eating +' : '#ffc938',
+    'Healthy Control' : '#4c4c4e',
+    'Substance +' : '#42833f',
+    'subject' : '#85338a',
+    'background' : '#ded7c4',
+    'gridline' : '#f6ebe0'
+  }
+
+  rgbaMap = {
+    '#c20f1e' : 'rgba(194, 15, 30, 0.2)',
+    '#005e9d' : 'rgba(0,94,157,0.2)',
+    '#00aeea' : 'rgba(0,174,234, 0.2)', 
+    '#ffc938' : 'rgba(255,201,56, 0.2)',
+    '#4c4c4e' : 'rgba(76, 76, 78, 0.2)',
+    '#42833f' : 'rgba(66,131,63, 0.2)',
+    '#85338a' : 'rgba(133,51,138, 0.2)'
+
+  }
+
+  seriesColors = [] // Array of just the colors // used later for legend
+  for(k in groupColor) seriesColors.push(groupColor[k])
+
+  serieslines = {
+    0 : {
+      type: 'line',
+      color : groupColor['Anxiety'],
+      // lineWidth : 7
+    },
+    1 : {
+      type : 'line',
+      color : groupColor['Comorbid Depression + Anxiety']
+    },
+    2 : {
+      type : 'line',
+      color : groupColor['Depression']
+    },
+    3 : {
+      type : 'line',
+      color : groupColor['Eating +']
+    },
+    4 : {
+      type : 'line',
+      color : groupColor['Healthy Control']
+    },
+    5 : {
+      type : 'line',
+      color : groupColor['Substance +']
     }
-  }else {
-    serieslines = {
-      0 : {
-        type: 'line'
-      },
-      1 : {
-        type : 'line'
-      },
-      2 : {
-        type : 'line'
-      },
-      3 : {
-        type : 'line'
-      },
-      4 : {
-        type : 'line'
-      },
-      5 : {
-        type : 'line'
-      }
+    
+  }
+  if (subject != 'NULL'){
+    serieslines[6] = {
+      type : 'line',
+      color : groupColor['subject']
     }
   }
 
@@ -300,36 +327,74 @@ function drawChart(dataTable) {
   var linewidth = 4;
   var fontsize = 13
   var chartoptions = {
+    title : 'How many [drug types] were you exposed to?',
+    subtitle: 'How many [drug types] were you exposed to?',
+    'height' : 650,
     //curveType: 'function',
-    'intervals': { 'style' : 'bars' },
+    'intervals': { 
+      'style' : 'bars' ,
+      'lineWidth' : 1.1,
+      'barWidth' : .09,
+      'color' : 'black'
+    },
     'lineWidth': linewidth,
     'fontSize' : fontsize,
     'chartArea' : {
-      left: 30,
-      top: 30,
-      width: '100%'
-
+      left: 70,
+      top: 60,
+      width: '90%',
+      height : '70%',
+      backgroundColor : groupColor.background
+    },
+    'vAxis' :{
+      title : 'Number of Drug Types',
+      titleTextStyle : {
+        fontSize : 15,
+        italic : false
+      },
+      ticks : [
+        {v : -.5, f : ''},
+        {v : 0, f : '0'},
+        {v : .5, f : ''},
+        {v : 1, f : '1'},
+        {v : 1.5, f : ''},
+        {v : 2, f : '2'},
+        {v : 2.5, f : ''},
+        {v : 3, f : '3'},
+        {v : 3.5, f : ''},
+        {v : 4, f : ''},
+      ]
+      
     },
     'hAxis': { 
       ticks : [
         {v: 0, f: ''},
-        {v: 1, f: 'Birth-Elementary School'},
-        {v: 2, f: 'Elementary School'},
-        {v: 3, f: 'Middle School'},
-        {v: 4, f: 'High School'},
-        {v: 5, f: 'Young Adult'},
+        {v: 1, f: 'Birth-Elementary\nSchool'},
+        {v: 2, f: 'Elementary\nSchool'},
+        {v: 3, f: 'Middle\nSchool'},
+        {v: 4, f: 'High\nSchool'},
+        {v: 5, f: 'Young\nAdult'},
         {v: 6, f: '25-35'},
         {v: 7, f: '35-45'},
         {v: 8, f: '45-55'},
         {v: 9, f: ''}
-      ]
+      ],
+      textStyle : {
+        'fontSize' : 15
+      },
+      textPosition : 'out',
+      gridlines : {
+        color : groupColor.gridline
+      }
+      
+      
       // ticks : ['Birth-Elementary School','Elementary School',
       // 'Middle School','High School','Young Adult',
       // '25-35','35-45','45-44']
     },
     'series' : serieslines,
     'legend' : { 
-      position : 'top'
+      position : 'bottom'
     }
   }
 
@@ -337,12 +402,6 @@ function drawChart(dataTable) {
   var dashboard = new google.visualization.Dashboard(
     document.getElementById('drugs')
     );
-
-
-  // var chart_lines = new google.visualization.ComboChart(document.getElementById('countchart'));
-  // chart_lines.draw(data, chartoptions);
-
-
 
   var groupCategoryFilter = new google.visualization.ControlWrapper({
         'controlType': 'CategoryFilter',
@@ -374,6 +433,9 @@ function drawChart(dataTable) {
 
     });
 
+    // var comboChart = new google.visualization.ComboChart(document.getElementById('countchart'))
+
+
     groupSelected = ['Anxiety', 'Comorbid Depression + Anxiety', 'Depression', 'Eating +','Healthy Control ', 'Substance +']
 
     if (subject != 'NULL'){
@@ -381,13 +443,103 @@ function drawChart(dataTable) {
     }
     groupCategoryFilter.setState({'selectedValues' : groupSelected})
 
+    
+   
+   
+
     dashboard.bind(groupCategoryFilter, comboChart);
     dashboard.draw(data);
+    var chartDiv = document.getElementById('countchart');
+
+    function selected(col){
+      if (col){
+        // clicked a legend
+        // console.log(e)
+        label = data.getColumnLabel(col)
+        if( label == 'CASE-1' || label == 'CASE-2' || label == 'CASE-3' || label == 'CASE-4'){
+          label = "subject"
+        } 
+        Array.prototype.forEach.call(chartDiv.getElementsByTagName('path'), function(rect) {
+          // console.log(rect)
+          if (seriesColors.indexOf(rect.getAttribute('stroke')) > -1) {
+            // console.log(rgbaMap[rect.getAttribute('stroke')])
+
+            if(rect.getAttribute('stroke') == groupColor[label]){
+              
+              
+            }else {
+              // Decrease Opacity on the other category
+              rect.setAttribute('stroke', rgbaMap[rect.getAttribute('stroke')]);
+            }
+          }
+
+          // Intervals
+          if(rect.getAttribute('stroke') == '#000000'){
+            // console.log(rect)
+            rect.setAttribute('stroke', 'rgba(0,0,0,0.2)');
+          }
+        });
+      }
+    }
+
+    function unselect(){
+      Array.prototype.forEach.call(chartDiv.getElementsByTagName('path'), function(rect) {
+
+        if(rect.getAttribute('stroke') in swap(rgbaMap)){
+          // console.log(rect.getAttribute('stroke'))
+          rect.setAttribute('stroke', swap(rgbaMap)[rect.getAttribute('stroke')])
+        }
+
+        // Intervals
+        if(rect.getAttribute('stroke') == 'rgba(0,0,0,0.2)' ){
+          rect.setAttribute('stroke', '#000000');
+        }
+      });
+    }
+
+    
+    google.visualization.events.addListener(comboChart, 'ready', function(){
+      google.visualization.events.addListener(comboChart.getChart(), 'onmouseover', function(e){
+        selected(e.column)
+      });
+    })
+
+    // Undo what I did with onmouseover
+    google.visualization.events.addListener(comboChart, 'ready', function(){
+      google.visualization.events.addListener(comboChart.getChart(), 'onmouseout', function(e){
+        
+        unselect()
+      });
+    })
+
+    
+    google.visualization.events.addListener(comboChart, 'select', function(){
+      select = dashboard.getSelection()
+      
+      console.log('selected')
+      // Make the rest of the lines decrease opacity when current 
+      // column is selected.
+      // console.log(selected)
+
+      
+      // if length is 0, we deselected
+      if (select.length > 0){
+        // if row is undefined, we clicked the legend
+        if(select[0].row == undefined){
+          selected(select[0].column)
+        }
+      
+      }else {
+        unselect()
+      }
+      
+    });
 
     google.visualization.events.addListener(comboChart, 'ready', function(){
       document.getElementById('download1').href = comboChart.getChart().getImageURI();
-      document.getElementById('download1').download = "LifeChart-Drug-Counts"
+      document.getElementById('download1').download = "LifeChart-Overall-Mood"
     });
+
 
     $('#anxiety').change(function() {
         eventstring = 'Anxiety'
@@ -622,56 +774,4 @@ function drawChart(dataTable) {
       comboChart.draw()
       //
     })
-
-
-
-  //data.addColumn('string', 'Group');
-  // data.addColumn('string', 'Period');
-  // data.addColumn('number', 'Depression');
-  // data.addColumn({id:'i0', type:'number', role:'interval'});
-  // data.addColumn({id:'i1', type:'number', role:'interval'});
-  // data.addColumn('number', 'Anxiety');
-  // data.addColumn({id:'a0', type:'number', role:'interval'});
-  // data.addColumn({id:'a1', type:'number', role:'interval'});
-  // data.addColumn({type: 'string', id: 'Group', role : 'domain'});
-  // // data.addColumn({id:'i2', type:'number', role:'interval'});
-  // // data.addColumn({id:'i2', type:'number', role:'interval'});
-  // // data.addColumn({id:'i2', type:'number', role:'interval'});
-  // // data.addColumn({id:'i2', type:'number', role:'interval'});
-
-  // datatable = [
-  //     ['1',  100, 90, 110,null, null, null,'Depression'],
-  //     ['2',  120, 95, 130,130, 105, 140,'Anxiety'],
-  //     ['3',  130, 105, 140,null, null, null,'Depression'],
-  //     ['4',  90, 85, 95,80, 77, 83,'Anxiety'],
-  //     ['5',  70, 74, 63,null, null, null,'Depression'],
-  //     ['6',  30, 39, 22,130,140, 105,'Anxiety'],
-  //     ['7',  80, 77, 83,null, null, null,'Depression'],
-  //     ['8',  100, 90, 110,120, 95, 130,'Anxiety']]
-
-  // console.log(datatable);
-  // data.addRows(datatable);
-
-  // The intervals data as narrow lines (useful for showing raw source data)
-  // var options_lines = {
-  //     height: 800,
-  //     title: 'Line intervals, default',
-  //     curveType: 'function',
-  //     lineWidth: 4,
-  //     intervals: { 'style':'bars' },
-  //     series : {
-  //       0: {
-  //         type : 'line',
-  //         interpolateNulls : true
-  //       },
-  //       1: {
-  //         type : 'line',
-  //         interpolateNulls : false
-  //       }
-  //     }
-  //     // legend: 'none'
-  // };
-
-  // var chart_lines = new google.visualization.ComboChart(document.getElementById('countchart'));
-  // chart_lines.draw(data, options_lines);
 }

@@ -1,6 +1,6 @@
-<!-- lc/templates/index.html -->
 <html>
   <head>
+      <meta charset="utf-8"/>
     <style>
     h1,h4 {
       text-align: center;
@@ -98,7 +98,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
-
+    <link rel="stylesheet" href="/public/css/chart.css">
     <script type="text/javascript" src="public/js/overall.js">
 
     </script>
@@ -139,17 +139,15 @@
     <h1 style="color: black; font-family: Lucida Sans Unicode" id="subject" class="animate-bottom">Overall Mood Ratings</h1>
     <h4 id="subject-h4" class="animate-bottom"></h4>
 
-    <div id='graph' style="padding: 60px">
-      <div id ='mental' class="row" style="padding-top: 0px;">
+    <div id='graph' style="padding-top: 0px">
+      <div id ='mental' class="row" style="padding: 60px; padding-top: 0px;">
         
         <div class="column left animate-bottom">
           <div style="width: 100%; padding-left: 500;"></div>
           <br>
-          <br>
-          <br>
           <p>Group</p>
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="anxiety" checked>
+            <input type="checkbox" class="custom-control-input ajp-green" id="anxiety" checked>
             <label class="custom-control-label" for="anxiety">Anxiety</label>
           </div>
           <div class="custom-control custom-checkbox">
@@ -214,9 +212,9 @@
       </div>
     </div>
   </body>
-  <footer style="color: black; font-family: Lucida Sans Unicode">
+  <footer style="color: black; font-family: Lucida Sans Unicode; padding-top: 400px;">
     <center>
-      <p>&copy; 2018. All rights reserved</p>
+      <p>&copy; 2019. All rights reserved</p>
       <p>Laureate Institute for Brain Research</p>
     </center>
   </footer>
