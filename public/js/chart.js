@@ -469,6 +469,18 @@ function drawTimelineChart(data) {
 
   dashboard.bind([rangeSlider, categoryFilter], timelineChart);
   dashboard.draw(data);
+   //create trigger to resizeEnd event     
+   $(window).resize(function() {
+    if(this.resizeTO) clearTimeout(this.resizeTO);
+    this.resizeTO = setTimeout(function() {
+        $(this).trigger('resizeEnd');
+    }, 500);
+  });
+
+  //redraw graph when window resize is completed  
+  $(window).on('resizeEnd', function() {
+    dashboard.draw(data)
+  });
 
   // Load/Execute the the function to make the eventchar when its' ready
   google.visualization.events.addOneTimeListener(dashboard, 'ready', drawEventsChart)
@@ -1321,6 +1333,19 @@ function drawEventsChart() {
 
     eventdashboard.draw(data);
 
+       //create trigger to resizeEnd event     
+       $(window).resize(function() {
+        if(this.resizeTO) clearTimeout(this.resizeTO);
+        this.resizeTO = setTimeout(function() {
+            $(this).trigger('resizeEnd');
+        }, 500);
+      });
+  
+      //redraw graph when window resize is completed  
+      $(window).on('resizeEnd', function() {
+        eventdashboard.draw(data)
+      });
+
     $('#load1wrap').attr('style', "display: none;")
     $('#load1').attr('style', "display: none;")
     $('#load1wrap').attr('style', "padding: 0px;")
@@ -1616,6 +1641,8 @@ function drawEventsChart() {
       //
     })
 
+ 
+
   });
 
 }
@@ -1664,3 +1691,5 @@ function changeTimelineTitle(startAge, endAge){
     // }
   })
 }
+
+

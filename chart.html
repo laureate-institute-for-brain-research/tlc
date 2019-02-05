@@ -19,7 +19,7 @@
 </head>
 
 <body style='background-color: white; padding-top: 90px;'>
-  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" >
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
     <a id='nav-title' class="navbar-brand" href="./">Tulsa Life Chart</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -52,12 +52,18 @@
       </ul>
     </div>
   </nav>
+
   <h1 style="color: black; font-family: Lucida Sans Unicode" id="subject" class="animate-bottom"></h1>
-  <div class='graphs' style="padding: 60px; padding-top: 0px;">
-    <div id='events' class="row" style="padding-top: 0px; height: 450; padding-bottom: 0px;">
-      <div id="eventsPicker" style="display: none;"></div>
-      <div class="column left animate-bottom">
-        <div id='eventsPicker' style="width: 100%; padding-left: 500;"></div>
+
+  <div class="container">
+    <div class="row" style="padding: 10px;">
+      <div id="timeline_slider" style="width: 100%"></div>
+    </div>
+
+
+    <div class="row">
+      <div class="col" style="max-width: 240px; min-width: 240px;">
+        <div id='eventsPicker' style="display: none;"></div>
         <br>
         <p>Event Type</p>
         <div class="custom-control custom-checkbox">
@@ -95,23 +101,28 @@
         </ul>
         <br>
         <br>
-        <a id='download1' href="#" download="LifeChart-Events" class="btn btn-primary btn-lg">Download Chart</a>
-
+        <a id='download1' href="#" download="LifeChart-Events" class="btn btn-secondary btn-lg">Download Chart</a>
       </div>
-      <div class="column right">
+
+      <div class="col-md-auto" style="min-width: 900px;">
         <div id='load1wrap' style="padding: 200px; padding-left: 100px;">
           <div id='load1' class="loader">Loading...</div>
         </div>
         <div id='eventsChart' class="animate-bottom"></div>
       </div>
-
     </div>
+    <hr>
 
-    <div class="row" id="timeline">
-
-
-      <!-- <div id=timelineCategoryFilter"></div> -->
-      <div class="column left animate-bottom">
+    <div class="row">
+      <div class="col" style="min-width: 900px;">
+        <div id="timelineCategoryFilter" style="display: none;"></div>
+        <h2 id="epochtitle">All Epochs</h2>
+        <div id='load2wrap' style="padding: 200px; padding-left: 100px;">
+          <div id='load2' class="loader">Loading...</div>
+        </div>
+        <div id="timeline_chart" class="animate-bottom" style="padding-top: 0px; height: 1000px;"></div>
+      </div>
+      <div class="col" style="max-width: 190px;">
         <p>Categories</p>
         <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="drugs" checked>
@@ -144,35 +155,23 @@
         <hr>
         <p>Epoch</p>
         <div class="btn-group-vertical">
-          <button id='all' type="button" class="btn btn-primary btn-sm">All</button>
-          <button id='b' type="button" class="btn btn-primary btn-sm">Birth - Elementary School</button>
-          <button id='c' type="button" class="btn btn-primary btn-sm">Elementary School</button>
-          <button id='d' type="button" class="btn btn-primary btn-sm">Middle School</button>
-          <button id='e' type="button" class="btn btn-primary btn-sm">High School</button>
-          <button id='f' type="button" class="btn btn-primary btn-sm">Young Adult</button>
-          <button id='g' type="button" class="btn btn-primary btn-sm">Age 25-35</button>
-          <button id='h' type="button" class="btn btn-primary btn-sm">Age 35-45</button>
-          <button id='i' type="button" class="btn btn-primary btn-sm">Age 45-55</button>
+          <button id='all' type="button" class="btn btn-secondary btn-sm">All</button>
+          <button id='b' type="button" class="btn btn-secondary btn-sm">Birth - Elementary School</button>
+          <button id='c' type="button" class="btn btn-secondary btn-sm">Elementary School</button>
+          <button id='d' type="button" class="btn btn-secondary btn-sm">Middle School</button>
+          <button id='e' type="button" class="btn btn-secondary btn-sm">High School</button>
+          <button id='f' type="button" class="btn btn-secondary btn-sm">Young Adult</button>
+          <button id='g' type="button" class="btn btn-secondary btn-sm">Age 25-35</button>
+          <button id='h' type="button" class="btn btn-secondary btn-sm">Age 35-45</button>
+          <button id='i' type="button" class="btn btn-secondary btn-sm">Age 45-55</button>
         </div>
-      </div>
-      <div class="column right animate-bottom" style="background-color:#FFFF; height: 1000px;">
-        <div style="width: 100%">
-          <div id="timeline_slider"></div>
-        </div>
-        <div id="timelineCategoryFilter" style="display: none;"></div>
-        <h2 id="epochtitle">All Epochs</h2>
-        <div id='load2wrap' style="padding: 200px; padding-left: 100px;">
-          <div id='load2' class="loader">Loading...</div>
-        </div>
-        <div id="timeline_chart" class="animate-bottom" style="padding-top: 0px; height: 1000px;"></div>
       </div>
     </div>
   </div>
 </body>
-<br>
 <footer style="color: black; font-family: Lucida Sans Unicode;">
   <center>
-    <p>&copy; 2018. All rights reserved</p>
+    <p>&copy; 2019. All rights reserved</p>
     <p>Laureate Institute for Brain Research</p>
   </center>
 </footer>
