@@ -1532,10 +1532,6 @@ function drawEventsChart() {
     $('#load1').attr('style', "display: none;")
     $('#load1wrap').attr('style', "padding: 0px;")
 
-    google.visualization.events.addListener(comboChart, 'ready', function () {
-      document.getElementById('download1').href = comboChart.getChart().getImageURI();
-      document.getElementById('download1').download = subject + "-LifeChart-Events"
-    });
 
     google.visualization.events.addListener(comboChart, 'ready', function () {
 
@@ -1915,11 +1911,26 @@ function drawEventsChart() {
       //
     })
 
+    
+
+
+
 
 
   });
 
 }
+
+$(document).ready(function(){
+  $('#download1').on('click', function(){
+    $('#subject, #eventsChart, #epochtitle, #timeline_chart').printThis({
+      importCSS: false,
+      header: "<h1>Tulsa Life Chart</h1>"
+    });
+  })
+})
+
+
 
 /**
  * Changes the Timeline Title depedning on range
