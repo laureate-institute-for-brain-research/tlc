@@ -1600,7 +1600,7 @@ function drawEventsChart() {
                   // console.log(width)
                   // line.style.filter = 'alpha(opacity=' + op * 100 + ")";
                   width += width + 1
-                }, 5);
+                }, 25);
                 break
               }
             }
