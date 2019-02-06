@@ -329,10 +329,10 @@ function drawTimelineChart(data) {
         'chartType': 'TimeLine',
         'chartOptions': {
           //'width': 1000,
-          'height': 70,
+          'height': 35,
           'chartArea': {
             'width': '100%', // make sure this is the same for the chart and control so the axes align right
-            'height': '80%'
+            'height': '100%'
           },
 
           //'snapToData' : true
@@ -1567,6 +1567,22 @@ function drawEventsChart() {
               durationyear = parseInt(innerstring.split('\n')[1].split(/,?\s+/)[1])
               if (durationyear != '0' && interface.getYLocation(currentrating) != null) {
 
+                // Try to keep within the chart area
+                maxWidth = interface.getChartAreaBoundingBox().width // usually always 420
+                pointB = interface.getXLocation(age + durationyear)
+                
+                
+                if (pointB >= maxWidth ){
+                  console.log('width too big')
+                  pointB = maxWidth + 50 // +50 offset from the actual chart
+
+                }
+                // console.log('ageLoc: ' + interface.getXLocation(age))
+                // console.log('bLoc: ' + pointB)
+
+                finallinewidthpx =  pointB - interface.getXLocation(age) // Filtered Duration Line
+                line.style.width = finallinewidthpx + "px";
+
                 // console.log(interface.getYLocation(currentrating))
                 line.style.display = 'block';
                 line.style.background = getColorFromRating(parseInt(currentrating))
@@ -1574,32 +1590,9 @@ function drawEventsChart() {
                 line.style.position = "absolute";
                 line.style.left = interface.getXLocation(age) + "px";
                 line.style.top = interface.getYLocation(currentrating) + "px";
-                line.style.height = '4px'
-                // line.classList = 'w3-animate-left'
+                line.style.height = '5px'
+                line.classList = 'durationLine'
 
-                line.style.opacity = op;
-                width = 0
-                // Try to keep within the chart aread
-                maxWidth = interface.getChartAreaBoundingBox().width
-                finallinewidthpx = interface.getXLocation(age + durationyear) - interface.getXLocation(age)
-                if (interface.getXLocation(age) + finallinewidthpx >= maxWidth ){
-                  console.log('width too big')
-                  finallinewidthpx = maxWidth - (interface.getXLocation(age + durationyear) - interface.getXLocation(age))
-                }
-              
-            
-                
-                var op = 0.1; // initial opacity
-                var timer = setInterval(function () {
-                  if (width > finallinewidthpx) {
-                    clearInterval(timer);
-                  }
-                  // line.style.opacity = op;
-                  line.style.width = width + "px";
-                  // console.log(width)
-                  // line.style.filter = 'alpha(opacity=' + op * 100 + ")";
-                  width += width + 1
-                }, 25);
                 break
               }
             }
