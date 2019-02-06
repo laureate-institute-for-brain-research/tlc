@@ -1565,9 +1565,10 @@ function drawEventsChart() {
 
             if (innerstring.includes('Years')) {
               durationyear = parseInt(innerstring.split('\n')[1].split(/,?\s+/)[1])
-              if (durationyear != '0') {
+              if (durationyear != '0' && interface.getYLocation(currentrating) != null) {
+
                 
-                console.log(data.getValue(e.row, 12))
+                console.log(interface.getYLocation(currentrating))
                 line.style.display = 'block';
                 line.style.background = "#2e68c7";
 
@@ -1921,6 +1922,7 @@ function drawEventsChart() {
 
 }
 
+// For Print Button
 $(document).ready(function(){
   $('#download1').on('click', function(){
     $('#subject, #eventsChart, #epochtitle, #timeline_chart').printThis({
