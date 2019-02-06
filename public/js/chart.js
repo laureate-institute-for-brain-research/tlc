@@ -1927,7 +1927,9 @@ $(document).ready(function(){
   $('#download1').on('click', function(){
     $('#subject, #eventsChart, #epochtitle, #timeline_chart').printThis({
       importCSS: false,
-      header: "<h1>Tulsa Life Chart</h1>"
+      // header: "<h1>Tulsa Life Chart</h1>",
+      footer: null,
+      pageTitle: "Tulsa Life Chart"
     });
   })
 })
