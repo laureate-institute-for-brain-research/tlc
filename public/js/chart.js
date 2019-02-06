@@ -21,12 +21,12 @@ $.get('public/subjectsData/subjectsDB.json', function (data) {
   subjectJSON = data
   birthDate = subjectJSON[subject].birthdate
 
-  
-  $(document).ready(function(){
-    group =  subjectJSON[subject].group
-    document.getElementById('subject').innerHTML = subject.toUpperCase().replace('-',' ') + ' - ' + group
+
+  $(document).ready(function () {
+    group = subjectJSON[subject].group
+    document.getElementById('subject').innerHTML = subject.toUpperCase().replace('-', ' ') + ' - ' + group
   })
-  
+
 
   console.log(subject)
   LC_AGE = parseInt(subjectJSON[subject].age);
@@ -57,10 +57,10 @@ var dashboard; // used for timeline chart
 $(document).ready(function () {
 
   $("#nav-title").attr('href', '/lifechartexamples')
-  
+
   document.getElementById('homenav').innerHTML = subject.toUpperCase()
 
-  $('#homenav').attr('href','chart.html?subject=' + subject)
+  $('#homenav').attr('href', 'chart.html?subject=' + subject)
   $('#overall-count-nav-link').attr('href', 'overall.html?subject=' + subject);
   $('#bad-good-count-nav-link').attr('href', 'good-bad.html?subject=' + subject);
   $('#drug-count-nav-link').attr('href', 'drugs.html?subject=' + subject);
@@ -253,21 +253,50 @@ function drawTimelineChart(data) {
   var data = new google.visualization.DataTable();
   // Inserting Date to the data object
 
-  data.addColumn({ type: 'string',id: 'Category'});
+  data.addColumn({
+    type: 'string',
+    id: 'Category'
+  });
   //data.addColumn({ type: 'string', 'role': 'annotation'});
-  data.addColumn({ type: 'string', id: 'Name'});
-  data.addColumn({ type: 'string', role: 'style'});
+  data.addColumn({
+    type: 'string',
+    id: 'Name'
+  });
+  data.addColumn({
+    type: 'string',
+    role: 'style'
+  });
 
-  data.addColumn({type: 'string', role: 'tooltip', p: {'html': true } });
-  data.addColumn({type: 'date',id: 'Start'});
-  data.addColumn({type: 'date',id: 'End'});
-  data.addColumn({type: 'date',id: 'birthdate',role: 'domain'});
-  data.addColumn({type: 'date',id: 'assesseddate',role: 'domain'});
+  data.addColumn({
+    type: 'string',
+    role: 'tooltip',
+    p: {
+      'html': true
+    }
+  });
+  data.addColumn({
+    type: 'date',
+    id: 'Start'
+  });
+  data.addColumn({
+    type: 'date',
+    id: 'End'
+  });
+  data.addColumn({
+    type: 'date',
+    id: 'birthdate',
+    role: 'domain'
+  });
+  data.addColumn({
+    type: 'date',
+    id: 'assesseddate',
+    role: 'domain'
+  });
   data.addRows(finalData);
 
   var options = {
     //width : '100%',
-    height: '100%',
+    height: 670,
     tooltip: {
       isHtml: true
     },
@@ -279,7 +308,7 @@ function drawTimelineChart(data) {
         count: 10
       }
     },
-    timeline : {
+    timeline: {
       showBarLabels: true
     }
 
@@ -354,36 +383,36 @@ function drawTimelineChart(data) {
     'selectedValues': categorySelectValues
   })
 
-// call function onReady function when timeilnechart is read
-  google.visualization.events.addListener(timelineChart, 'ready', onReady); 
-  
-  
+  // call function onReady function when timeilnechart is read
+  google.visualization.events.addListener(timelineChart, 'ready', onReady);
+
+
   //Put The text always on the right of the box if it it's small box
-  function putTextLeft(){
+  function putTextLeft() {
     var container = document.getElementById('timeline_chart')
     var rectangles = container.getElementsByTagName('rect');
-    for(var i=0; i<rectangles.length; i++){
-      if(parseInt(rectangles[i].getAttribute('width')) <= 200){
-        if(i > 8){
+    for (var i = 0; i < rectangles.length; i++) {
+      if (parseInt(rectangles[i].getAttribute('width')) <= 200) {
+        if (i > 8) {
           text = rectangles[i].nextSibling
 
-          if(text != null && text.tagName == 'text' && text.getAttribute('text-anchor') == 'end'){
+          if (text != null && text.tagName == 'text' && text.getAttribute('text-anchor') == 'end') {
             rectangleX = parseInt(rectangles[i].getAttribute('x'))
             rectangleWidth = parseInt(rectangles[i].getAttribute('width'))
             currentX = parseInt(text.getAttribute('x'))
-            newX = rectangleX  + 5
+            newX = rectangleX + 5
             // console.log(text.innerHTML + ': ' + text.getAttribute('x'))
             currentX = currentX + rectangleWidth
             text.setAttribute('text-anchor', 'start')
             text.setAttribute('x', newX + '')
-            
+
             // console.log(text.innerHTML + ': ' + text.getAttribute('x'))
 
           }
         }
-        
+
       }
-      
+
     }
   }
 
@@ -391,69 +420,69 @@ function drawTimelineChart(data) {
   /**
    * Function used to call methods pertaining to the timelinechart
    */
-  function onReady(){
+  function onReady() {
     var container = document.getElementById('timeline_chart')
     var rectangles = container.getElementsByTagName('rect');
     var adjustY = 25;
     var adjustX = 15;
-    
+
     // Add Black Borderin
-    for(var i=0; i<rectangles.length; i++){
-      rectangles[i].setAttribute('stroke',"#000000")
+    for (var i = 0; i < rectangles.length; i++) {
+      rectangles[i].setAttribute('stroke', "#000000")
     }
 
     putTextLeft()
     // Keeps the Black Bordering on the events
-    google.visualization.events.addListener(timelineChart.getChart(), 'onmouseout', function(element){
+    google.visualization.events.addListener(timelineChart.getChart(), 'onmouseout', function (element) {
       putTextLeft()
       var container = document.getElementById('timeline_chart')
       var rectangles = container.getElementsByTagName('rect');
       var adjustY = 25;
       var adjustX = 15;
-      
-      for(var i=0; i<rectangles.length; i++){
-        
-        rectangles[i].setAttribute('stroke',"#000000")
-        
+
+      for (var i = 0; i < rectangles.length; i++) {
+
+        rectangles[i].setAttribute('stroke', "#000000")
+
       }
     })
   }
-  
+
   // Puts the age at the top of the timeilne chart
   google.visualization.events.addListener(timelineChart, 'ready', function () {
     var container = document.getElementById('timeline_chart')
     var g = container.getElementsByTagName("svg")[0].getElementsByTagName("g")[1]; // the Y axis labels for google cahrt
-    
+
     container.getElementsByTagName("svg")[0].parentNode.style.top = '40px';
     container.getElementsByTagName("svg")[0].style.overflow = 'visible';
     var height = Number(g.getElementsByTagName("text")[0].getAttribute('y')) + 15;
-    
+
 
 
     previousg = g.previousElementSibling // previous dom element after g
-    g.setAttribute('id','og') // name the orignal g tag og
+    g.setAttribute('id', 'og') // name the orignal g tag og
     newg = g.cloneNode(true); // copy the same
     newg.setAttribute('id', 'newg') // id the new g
-    newg.setAttribute('transform','translate(0,-'+height+')'); // put the newg in the top by transform
+    newg.setAttribute('transform', 'translate(0,-' + height + ')'); // put the newg in the top by transform
 
     var dates = newg.getElementsByTagName('text') // get all the texts (the hAxis labels of the timeline chart)
-    for(var i=0; i<dates.length; i++){
+    for (var i = 0; i < dates.length; i++) {
 
       date = getAgeFromDate(dates[i].innerHTML, birthdate) // the date on the x axis
       // console.log(date)
 
 
       // if Nan, don't show the text
-      if(isNaN(date)){
+      if (isNaN(date)) {
         dates[i].style.display = "none"
       }
 
       // if bolded(means there was a month)
       // place the age a little higher up
 
-      if(dates[i].getAttribute('font-weight') == 'bold'){
+      if (dates[i].getAttribute('font-weight') == 'bold') {
         y = dates[i].getAttribute('y')
-        dates[i].setAttribute('y', y - 15) 
+        dates[i].setAttribute('y', y - 15)
         // offests the y position to place it 15 pixel height above the line
 
       }
@@ -465,20 +494,20 @@ function drawTimelineChart(data) {
     // newg.append(g)
     g = null;
 
-});  
+  });
 
   dashboard.bind([rangeSlider, categoryFilter], timelineChart);
   dashboard.draw(data);
-   //create trigger to resizeEnd event     
-   $(window).resize(function() {
-    if(this.resizeTO) clearTimeout(this.resizeTO);
-    this.resizeTO = setTimeout(function() {
-        $(this).trigger('resizeEnd');
+  //create trigger to resizeEnd event     
+  $(window).resize(function () {
+    if (this.resizeTO) clearTimeout(this.resizeTO);
+    this.resizeTO = setTimeout(function () {
+      $(this).trigger('resizeEnd');
     }, 500);
   });
 
   //redraw graph when window resize is completed  
-  $(window).on('resizeEnd', function() {
+  $(window).on('resizeEnd', function () {
     dashboard.draw(data)
   });
 
@@ -678,7 +707,7 @@ function drawTimelineChart(data) {
   $("#b").click(function () {
     //alert( "Handler for .click() called." );
 
-    
+
 
     rangeSlider.setState({
       'range': {
@@ -816,7 +845,7 @@ function periodDates(period, birthdate) {
  * @param {Date} date 
  * @param {Date} birthdate 
  */
-function getAgeFromDate(date, birthdate){
+function getAgeFromDate(date, birthdate) {
   return moment(date).diff(moment(birthdate), 'years')
 }
 
@@ -881,11 +910,11 @@ function getEventTooltipHTML(category, description, age, start, end, eventRating
   }
 
   // Formatting the start and end date depending on available data
-  if (d1 == '' && d2 == ''){
+  if (d1 == '' && d2 == '') {
     start_and_enddate = ''
-  } else if (d1 == '' && d2 != ''){
+  } else if (d1 == '' && d2 != '') {
     start_and_enddate = d2
-  } else if (d1 != '' && d2 == ''){
+  } else if (d1 != '' && d2 == '') {
     start_and_enddate = d1
   } else {
     start_and_enddate = d1 + ' - ' + d2
@@ -907,7 +936,7 @@ function getEventTooltipHTML(category, description, age, start, end, eventRating
             <td style="padding:5px 5px 5px 5px;font-size: 12px;"><center><strong>Age: </strong>${age}</center></td>
           </tr>
           <tr>
-            <td style="padding:5px 5px 5px 5px;font-size: 12px;"><center><strong></strong>${duration}</center></td>
+            <td style="padding:5px 5px 5px 5px;font-size: 12px;"><center><strong></strong><span id = 'duration_format'>${duration}</span></center></td>
           </tr>
           <tr>
             <td style="padding:5px 5px 5px 5px;font-size: 11px;"><center><i>${start_and_enddate}</i></center></td>
@@ -1137,62 +1166,215 @@ function drawEventsChart() {
     data.addColumn('number', 'Age');
 
     data.addColumn('number', 'One');
-    data.addColumn({'type': 'string','role': 'tooltip','p': {'html': true}})
-    data.addColumn({'type': 'string','role': 'annotation'})
-    data.addColumn({'type': 'string','role': 'annotationText'})
-    data.addColumn({'type': 'string','role': 'style'})
+    data.addColumn({
+      'type': 'string',
+      'role': 'tooltip',
+      'p': {
+        'html': true
+      }
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotation'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotationText'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'style'
+    })
     data.addColumn('number', 'Two');
-    data.addColumn({'type': 'string','role': 'tooltip', 'p': {'html': true}})
-    data.addColumn({'type': 'string','role': 'annotation'})
-    data.addColumn({'type': 'string','role': 'annotationText'})
-    data.addColumn({'type': 'string','role': 'style'})
+    data.addColumn({
+      'type': 'string',
+      'role': 'tooltip',
+      'p': {
+        'html': true
+      }
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotation'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotationText'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'style'
+    })
     data.addColumn('number', 'Three');
-    data.addColumn({'type': 'string','role': 'tooltip','p': { 'html': true}})
-    data.addColumn({'type': 'string','role': 'annotation'})
-    data.addColumn({'type': 'string','role': 'annotationText'})
-    data.addColumn({'type': 'string','role': 'style'})
+    data.addColumn({
+      'type': 'string',
+      'role': 'tooltip',
+      'p': {
+        'html': true
+      }
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotation'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotationText'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'style'
+    })
     data.addColumn('number', 'Four');
-    data.addColumn({'type': 'string','role': 'tooltip','p': {'html': true}})
-    data.addColumn({'type': 'string','role': 'annotation'})
-    data.addColumn({'type': 'string','role': 'annotationText'})
-    data.addColumn({'type': 'string','role': 'style'})
+    data.addColumn({
+      'type': 'string',
+      'role': 'tooltip',
+      'p': {
+        'html': true
+      }
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotation'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotationText'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'style'
+    })
     data.addColumn('number', 'Five');
-    data.addColumn({'type': 'string','role': 'tooltip','p': {'html': true}})
-    data.addColumn({'type': 'string','role': 'annotation'})
-    data.addColumn({'type': 'string','role': 'annotationText'})
-    data.addColumn({'type': 'string','role': 'style'})
+    data.addColumn({
+      'type': 'string',
+      'role': 'tooltip',
+      'p': {
+        'html': true
+      }
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotation'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotationText'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'style'
+    })
     data.addColumn('number', 'Six');
-    data.addColumn({'type': 'string','role': 'tooltip','p': {'html': true}})
-    data.addColumn({'type': 'string','role': 'annotation'})
-    data.addColumn({'type': 'string','role': 'annotationText'})
-    data.addColumn({'type': 'string','role': 'style'})
+    data.addColumn({
+      'type': 'string',
+      'role': 'tooltip',
+      'p': {
+        'html': true
+      }
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotation'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotationText'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'style'
+    })
     data.addColumn('number', 'Seven');
-    data.addColumn({'type': 'string','role': 'tooltip','p': {'html': true}})
-    data.addColumn({'type': 'string','role': 'annotation'})
-    data.addColumn({'type': 'string','role': 'annotationText'})
-    data.addColumn({'type': 'string','role': 'style'})
+    data.addColumn({
+      'type': 'string',
+      'role': 'tooltip',
+      'p': {
+        'html': true
+      }
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotation'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotationText'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'style'
+    })
     data.addColumn('number', 'Eight');
-    data.addColumn({'type': 'string','role': 'tooltip','p': {'html': true}})
-    data.addColumn({'type': 'string','role': 'annotation'})
-    data.addColumn({'type': 'string','role': 'annotationText'})
-    data.addColumn({'type': 'string','role': 'style'})
+    data.addColumn({
+      'type': 'string',
+      'role': 'tooltip',
+      'p': {
+        'html': true
+      }
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotation'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotationText'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'style'
+    })
     data.addColumn('number', 'Nine');
-    data.addColumn({'type': 'string','role': 'tooltip', 'p': {'html': true}})
-    data.addColumn({'type': 'string','role': 'annotation'})
-    data.addColumn({'type': 'string','role': 'annotationText'})
-    data.addColumn({'type': 'string','role': 'style'})
+    data.addColumn({
+      'type': 'string',
+      'role': 'tooltip',
+      'p': {
+        'html': true
+      }
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotation'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotationText'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'style'
+    })
     data.addColumn('number', 'Ten');
-    data.addColumn({'type': 'string','role': 'tooltip','p': {'html': true}})
-    data.addColumn({'type': 'string','role': 'annotation'})
-    data.addColumn({'type': 'string','role': 'annotationText'})
-    data.addColumn({'type': 'string','role': 'style'})
+    data.addColumn({
+      'type': 'string',
+      'role': 'tooltip',
+      'p': {
+        'html': true
+      }
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotation'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'annotationText'
+    })
+    data.addColumn({
+      'type': 'string',
+      'role': 'style'
+    })
     data.addColumn('number', 'Period Rating');
-    data.addColumn({'type': 'string','role': 'domain'});
+    data.addColumn({
+      'type': 'string',
+      'role': 'domain'
+    });
 
     data.addRows(finalData)
 
     var options = {
-      height: 445,
+      height: 350,
       enableInteractivity: true,
       focusTarget: 'datum',
       tooltip: {
@@ -1203,7 +1385,7 @@ function drawEventsChart() {
         gridlines: {
           color: 'white'
         },
-        viewWindow : {
+        viewWindow: {
           min: null,
           max: null
         },
@@ -1213,7 +1395,7 @@ function drawEventsChart() {
         title: 'Age',
         minValue: 0,
         maxValue: 10,
-        viewWindow : {
+        viewWindow: {
           min: null,
           max: null
         },
@@ -1333,18 +1515,18 @@ function drawEventsChart() {
 
     eventdashboard.draw(data);
 
-       //create trigger to resizeEnd event     
-       $(window).resize(function() {
-        if(this.resizeTO) clearTimeout(this.resizeTO);
-        this.resizeTO = setTimeout(function() {
-            $(this).trigger('resizeEnd');
-        }, 500);
-      });
-  
-      //redraw graph when window resize is completed  
-      $(window).on('resizeEnd', function() {
-        eventdashboard.draw(data)
-      });
+    //create trigger to resizeEnd event     
+    $(window).resize(function () {
+      if (this.resizeTO) clearTimeout(this.resizeTO);
+      this.resizeTO = setTimeout(function () {
+        $(this).trigger('resizeEnd');
+      }, 500);
+    });
+
+    //redraw graph when window resize is completed  
+    $(window).on('resizeEnd', function () {
+      eventdashboard.draw(data)
+    });
 
     $('#load1wrap').attr('style', "display: none;")
     $('#load1').attr('style', "display: none;")
@@ -1355,46 +1537,138 @@ function drawEventsChart() {
       document.getElementById('download1').download = subject + "-LifeChart-Events"
     });
 
+    google.visualization.events.addListener(comboChart, 'ready', function () {
+
+      // Add Duration Line on Hover
+      google.visualization.events.addListener(comboChart.getChart(), 'onmouseover', function (e) {
+
+        if (e.row && e.column) {
+          // Clicked on point
+
+          var el = document.getElementById('eventsChart');
+          var line = document.createElement("div");
+          line.id = 'duration_line'
+          var interface = comboChart.getChart().getChartLayoutInterface();
+
+
+          // Get the Duration Begin, End
+          currentrating = data.getValue(e.row, e.column)
+          age = data.getValue(e.row, 0)
+          eventhtml = data.getValue(e.row, 27) // HTML Of the current event point
+
+
+          var htmlobj = document.createElement('div');
+          htmlobj.innerHTML = eventhtml;
+          var tr = htmlobj.getElementsByTagName('tr');
+          // duration = htmlobj.getElementById('duration_format')
+
+          // console.log(tr)
+          for (var i = 0; i < tr.length; i++) {
+
+            innerstring = tr[i].innerText
+
+            if (innerstring.includes('Years')) {
+              durationyear = parseInt(innerstring.split('\n')[1].split(/,?\s+/)[1])
+              if (durationyear != '0') {
+                
+                console.log(data.getValue(e.row, 12))
+                line.style.display = 'block';
+                line.style.background = "#2e68c7";
+
+                line.style.position = "absolute";
+                line.style.left = interface.getXLocation(age) + "px";
+                line.style.top = interface.getYLocation(currentrating) + "px";
+                line.style.height = '4px'
+                // line.classList = 'w3-animate-left'
+
+                line.style.opacity = op;
+                width = 0
+                // Try to keep within the chart aread
+                maxWidth = interface.getChartAreaBoundingBox().width
+                finallinewidthpx = interface.getXLocation(age + durationyear) - interface.getXLocation(age)
+                if (interface.getXLocation(age) + finallinewidthpx >= maxWidth ){
+                  console.log('width too big')
+                  finallinewidthpx = maxWidth - (interface.getXLocation(age + durationyear) - interface.getXLocation(age))
+                }
+              
+            
+                
+                var op = 0.1; // initial opacity
+                var timer = setInterval(function () {
+                  if (width > finallinewidthpx) {
+                    clearInterval(timer);
+                  }
+                  // line.style.opacity = op;
+                  line.style.width = width + "px";
+                  // console.log(width)
+                  // line.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                  width += width + 1
+                }, 5);
+                break
+              }
+            }
+          }
+
+
+          // 
+
+          el.appendChild(line);
+
+        }
+      });
+
+      // Delete Duration Line on Hover
+      google.visualization.events.addListener(comboChart.getChart(), 'onmouseout', function (e) {
+        var el = document.getElementById('eventsChart');
+        var line = document.getElementById("duration_line");
+        el.removeChild(line);
+
+      });
+
+
+    });
+
+
     // Alter Annotation Text position when the points are close
     google.visualization.events.addListener(comboChart, 'ready', function () {
       var container = document.getElementById('eventsChart')
       var g = container.getElementsByTagName('g');
 
       // loops through all the g tags
-      for(var i=0; i < g.length; i++){
+      for (var i = 0; i < g.length; i++) {
 
         // probably not a good solution
         // Since sometime the x axis label count is differnt
-        if ( i < 25){
+        if (i < 25) {
           continue; // 26th g tag is the text, all previous is tages are the horizontal and vertical labels
         }
 
         nextg = g[i].nextElementSibling
 
-        try{
-          if(nextg.nextElementSibling != null){
+        try {
+          if (nextg.nextElementSibling != null) {
 
             text = nextg.getElementsByTagName('text')[1]
             // console.log(text)
           }
-        } catch(e){
+        } catch (e) {
 
         }
-        
+
       }
-   
+
     });
 
 
     // Changes the event chart when the range slider is changed
     google.visualization.events.addListener(rangeSlider, 'statechange', function () {
 
-      max = getAgeFromDate(rangeSlider.getState().range.end, birthDate)   // max determined by the range slider
+      max = getAgeFromDate(rangeSlider.getState().range.end, birthDate) // max determined by the range slider
       min = getAgeFromDate(rangeSlider.getState().range.start, birthDate) // min determined by the range slider
 
       // range slider chooses the age a a year before the subjec's birth date
       // so if it is -1, than it sets the events chart minimum window to age 0
-      if(min == -1){
+      if (min == -1) {
         min = 0
       }
 
@@ -1403,7 +1677,7 @@ function drawEventsChart() {
 
       // Change the Timeline title depending on where in the range it is set are in
       changeTimelineTitle(min, max)
-      
+
       // console.log(options.hAxis.viewWindow)
       options.hAxis.ticks = _.range(0, LC_AGE + 4, 1)
       comboChart.setOptions(options)
@@ -1412,14 +1686,14 @@ function drawEventsChart() {
 
 
 
-    $('#all').click(function(){
+    $('#all').click(function () {
       options.hAxis.viewWindow.max = LC_AGE
       options.hAxis.viewWindow.min = 0
       // options.hAxis.ticks = null
       comboChart.setOptions(options)
       comboChart.draw()
     })
-    $('#b').click(function(){
+    $('#b').click(function () {
       options.hAxis.viewWindow.max = 6
       options.hAxis.viewWindow.min = 0
       options.hAxis.ticks = null
@@ -1427,42 +1701,42 @@ function drawEventsChart() {
       comboChart.draw()
     })
 
-    $('#c').click(function(){
+    $('#c').click(function () {
       options.hAxis.viewWindow.max = 10
       options.hAxis.viewWindow.min = 6
       options.hAxis.ticks = null
       comboChart.setOptions(options)
       comboChart.draw()
     })
-    $('#d').click(function(){
+    $('#d').click(function () {
       options.hAxis.viewWindow.max = 14
       options.hAxis.viewWindow.min = 10
       options.hAxis.ticks = null
       comboChart.setOptions(options)
       comboChart.draw()
     })
-    $('#e').click(function(){
+    $('#e').click(function () {
       options.hAxis.viewWindow.max = 18
       options.hAxis.viewWindow.min = 14
       options.hAxis.ticks = null
       comboChart.setOptions(options)
       comboChart.draw()
     })
-    $('#f').click(function(){
+    $('#f').click(function () {
       options.hAxis.viewWindow.max = 25
       options.hAxis.viewWindow.min = 18
       options.hAxis.ticks = null
       comboChart.setOptions(options)
       comboChart.draw()
     })
-    $('#g').click(function(){
+    $('#g').click(function () {
       options.hAxis.viewWindow.max = 35
       options.hAxis.viewWindow.min = 25
       options.hAxis.ticks = null
       comboChart.setOptions(options)
       comboChart.draw()
     })
-    $('#h').click(function(){
+    $('#h').click(function () {
       options.hAxis.viewWindow.max = 45
       options.hAxis.viewWindow.min = 35
       options.hAxis.ticks = null
@@ -1641,7 +1915,7 @@ function drawEventsChart() {
       //
     })
 
- 
+
 
   });
 
@@ -1652,44 +1926,9 @@ function drawEventsChart() {
  * @param {Int} startAge 
  * @param {*} endAge 
  */
-function changeTimelineTitle(startAge, endAge){
+function changeTimelineTitle(startAge, endAge) {
 
-  $(document).ready(function(){
+  $(document).ready(function () {
     $('#epochtitle').html("Age: " + startAge + ' - ' + endAge);
-    // if(startAge >= 0 && endAge < 6){
-    //   $('#epochtitle').html("Birth-Elementary School Years");
-    //   console.log('b')
-    //   console.log(startAge + ' - ' + endAge)
-    // } else if(startAge >= 6 && endAge < 10){
-    //   $('#epochtitle').html("Elementary School Years");
-    //   console.log('c')
-    //   console.log(startAge + ' - ' + endAge)
-    // } else if(startAge >= 10 && endAge < 14){
-    //   $('#epochtitle').html("Middle School Years");
-    //   console.log('d')
-    //   console.log(startAge + ' - ' + endAge)
-    // } else if(startAge >= 14 && endAge < 18){
-    //   $('#epochtitle').html("High School Years");
-    //   console.log('e')
-    //   console.log(startAge + ' - ' + endAge)
-    // } else if(startAge >= 18 && endAge < 25){
-    //   $('#epochtitle').html("Young Adult Years");
-    //   console.log('f')
-    //   console.log(startAge + ' - ' + endAge)
-    // } else if(startAge >= 25 && endAge < 35){
-    //   $('#epochtitle').html("Age: 25-35");
-    //   console.log('g')
-    //   console.log(startAge + ' - ' + endAge)
-    // } else if(startAge >= 35 && endAge < 45){
-    //   $('#epochtitle').html("Age: 35-45");
-    //   console.log('g')
-    //   console.log(startAge + ' - ' + endAge)
-    // } else {
-    //   $('#epochtitle').html("All Epochs");
-    //   console.log('?')
-    //   console.log(startAge + ' - ' + endAge)
-    // }
   })
 }
-
-
