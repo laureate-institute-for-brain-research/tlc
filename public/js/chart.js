@@ -1567,10 +1567,9 @@ function drawEventsChart() {
               durationyear = parseInt(innerstring.split('\n')[1].split(/,?\s+/)[1])
               if (durationyear != '0' && interface.getYLocation(currentrating) != null) {
 
-                
-                console.log(interface.getYLocation(currentrating))
+                // console.log(interface.getYLocation(currentrating))
                 line.style.display = 'block';
-                line.style.background = "#2e68c7";
+                line.style.background = getColorFromRating(parseInt(currentrating))
 
                 line.style.position = "absolute";
                 line.style.left = interface.getXLocation(age) + "px";
@@ -1919,6 +1918,54 @@ function drawEventsChart() {
 
 
   });
+
+}
+
+/**
+ * Returns the color give rating
+ * @param {Number} rating 
+ */
+function getColorFromRating(rating){
+  if(rating == 1){
+    return '#0E09AB'
+  }
+  if (rating == 2){
+    return '#0E09AB'
+  }
+
+  if (rating == 3){
+    return '#000339'
+  }
+
+  if (rating == 4){
+    return '#000000'
+  }
+
+  if (rating == 5){
+    return '#000000'
+  }
+
+  if (rating == 6){
+    return '#3A0700'
+  }
+
+  if (rating == 7){
+    return '#750F00'
+  }
+
+  if (rating == 8){
+    return '#B01600'
+  }
+  if (rating == 9){
+    return '#EB1E00'
+  }
+  if (rating == 10){
+    return '#666666'
+  }
+
+  // Default
+  return '#2e68c7'
+
 
 }
 
