@@ -296,7 +296,7 @@ function drawTimelineChart(data) {
 
   var options = {
     //width : '100%',
-    height: 900,
+    // height: 900,
     tooltip: {
       isHtml: true
     },
