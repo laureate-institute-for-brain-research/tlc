@@ -109,7 +109,7 @@ h4 {
 }
 
 .loader {
-  color: #2a96f3;
+  color: #2e68c7;
   font-size: 90px;
   text-indent: -9999em;
   overflow: hidden;
@@ -216,7 +216,7 @@ div.google-visualization-tooltip > ul > li > span {
 }
 
 /* Animation for the Duration Line */
-.durationLine {
+.durationLineAnimation {
   -webkit-animation: dude 0.45s 1 forwards;
   -moz-animation: dude 0.45s 1 forwards;
   -o-animation: dude 0.45s 1 forwards;

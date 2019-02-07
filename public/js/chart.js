@@ -17,6 +17,7 @@ var group = ''
 
 
 
+
 $.get('public/subjectsData/subjectsDB.json', function (data) {
   subjectJSON = data
   birthDate = subjectJSON[subject].birthdate
@@ -697,7 +698,7 @@ function drawTimelineChart(data) {
     rangeSlider.setState({
       'range': {
         'start': periodDates('b', birthDate).start,
-        'end': new Date()
+        'end': new Date() // by default the age at birthdate
       }
     })
     rangeSlider.draw()
@@ -847,6 +848,16 @@ function periodDates(period, birthdate) {
  */
 function getAgeFromDate(date, birthdate) {
   return moment(date).diff(moment(birthdate), 'years')
+}
+
+
+/**
+ * Returns the birthday offset by age
+ * @param {Integer} age Year
+ * @param {Date} birthdate Birtdate
+ */
+function getDateFromAge(age,birthdate) {
+  return moment(birthdate).add(age, 'years');
 }
 
 
@@ -1069,9 +1080,17 @@ function drawEventsChart() {
 
     fileArray = stringToArray(data);
 
+    // 2D array of age, rating) of all events
+    eventTuple = []
+
     for (var i = 1; i < fileArray.length - 1; i++) {
       row = fileArray[i]
 
+      for(var j = 2; j<= 11; j++){
+        if(row[j] != ""){
+          eventTuple.push([row[0], row[j]])
+        }
+      }
 
 
       age = parseInt(row[0])
@@ -1083,6 +1102,8 @@ function drawEventsChart() {
 
       one = getNumber(row[2])
       onenew = getNewMoodRating(age, getNumber(row[2]))[1]
+      
+      
 
       two = getNumber(row[3])
       twonew = getNewMoodRating(age, getNumber(row[3]))[1]
@@ -1374,7 +1395,7 @@ function drawEventsChart() {
     data.addRows(finalData)
 
     var options = {
-      height: 350,
+      height: 370,
       enableInteractivity: true,
       focusTarget: 'datum',
       tooltip: {
@@ -1417,46 +1438,56 @@ function drawEventsChart() {
 
         0: {
           type: 'scatter',
-          color: '#0E0CE5'
+          color: '#0E0CE5',
+          
         },
 
         1: {
           type: 'scatter',
-          color: '#0E09AB'
+          color: '#0E09AB',
+          
         },
 
         2: {
           type: 'scatter',
-          color: '#000672'
+          color: '#000672',
+        
         },
         // Other Event
         3: {
           type: 'scatter',
-          color: '#000339'
+          color: '#000339',
+          
         },
         4: {
           type: 'scatter',
-          color: '#000000'
+          color: '#000000',
+          
         },
         5: {
           type: 'scatter',
-          color: '#000000'
+          color: '#000000',
+          
         },
         6: {
           type: 'scatter',
-          color: '#3A0700'
+          color: '#3A0700',
+          
         },
         7: {
           type: 'scatter',
-          color: '#750F00'
+          color: '#750F00',
+          
         },
         8: {
           type: 'scatter',
-          color: '#B01600'
+          color: '#B01600',
+          
         },
         9: {
           type: 'scatter',
-          color: '#EB1E00'
+          color: '#EB1E00',
+          
         },
         // Period Rating
         10: {
@@ -1469,6 +1500,13 @@ function drawEventsChart() {
 
       },
       annotations: {
+        highContrast : false,
+        datum : {
+          stem : {
+            length: 0,
+            color: "#000000"
+          }
+        },
         textStyle: {
           fontSize: 12,
         }
@@ -1511,9 +1549,144 @@ function drawEventsChart() {
       'selectedValues': eventSelected
     })
 
-    eventdashboard.bind(eventCategoryFilter, comboChart);
+    /**
+     * Returns JSON object of age(x) and rating(y)
+     * @param {String} columnLabel Column Label 
+     */
+    function getAgeFromThreeWord(columnLabel){
 
+      rowindex = 0
+      
+      for(var i = 0; i < fileArray.length; i++){
+        row = fileArray[i]
+        eventdes = filterDescription(row[14])
+        annotext = getthreeword(eventdes)
+        if(columnLabel == annotext){
+          return row[0]
+        }
+      }
+    }
+
+    /**
+     * Returns Rating given column label
+     * @param {String} columnLabel Column Label 
+     */
+    function getRatingFromThreeWord(columnLabel){
+
+      rowindex = 0
+      
+      for(var i = 0; i < fileArray.length; i++){
+        row = fileArray[i]
+        eventdes = filterDescription(row[14])
+        annotext = getthreeword(eventdes)
+        if(columnLabel == annotext){
+          for(var j = 2; j<= 11; j++){
+            if(row[j] != ""){
+              return row[j]
+            }
+          }
+        }
+      }
+    }
+
+
+    // Return True If there is an event offset ages from current event
+    function closeYposition(age, rating, offset){
+      result = false
+      eventTuple.forEach(function(anEvent){
+        if( rating == parseInt(anEvent[1]) && parseInt(anEvent[0]) == age + offset ){
+
+          result =  true
+        }
+      })
+      return result
+    }
+
+    // Returns True if the offsetTrigger of the same age, rating has
+    // already been triggered
+    offsetAgeRating = []
+    
+    function alreadyOffset(rowAge, mRating){
+      result = false
+      count = 0
+      offsetAgeRating.forEach(function(anEvent){
+        if( mRating == parseInt(anEvent[1]) && parseInt(anEvent[0]) == rowAge  ){
+          
+          if(count >=2){
+            result =  true
+          }
+          count++
+          
+        }
+      })
+      return result
+    }
+
+
+
+    var container = document.getElementById('eventsChart');
+
+    // move annotations
+    var observer = new MutationObserver(function () {
+      Array.prototype.forEach.call(container.getElementsByTagName('text'), function(annotation) {
+        if ((annotation.getAttribute('text-anchor') === 'middle') &&
+            (annotation.getAttribute('fill') === '#750f00' ||
+            annotation.getAttribute('fill') === '#0e0ce5' ||
+            annotation.getAttribute('fill') === '#0e09ab' ||
+            annotation.getAttribute('fill') === '#000672' ||
+            annotation.getAttribute('fill') === '#000339' ||
+            annotation.getAttribute('fill') === '#000000' ||
+            annotation.getAttribute('fill') === '#3A0700' ||
+            annotation.getAttribute('fill') === '#750f00' ||
+            annotation.getAttribute('fill') === '#B01600' ||
+            annotation.getAttribute('fill') === '#eb1e00' ||
+            annotation.getAttribute('fill') === '#b01600' ||
+            annotation.getAttribute('fill') === '#eb1e00' ||
+            annotation.getAttribute('fill') === '#ffffff'
+            )) {
+          var chartLayout = comboChart.getChart().getChartLayoutInterface();
+
+          label = annotation.innerHTML
+          rowAge = parseInt(getAgeFromThreeWord(label))
+          mRating = parseInt(getRatingFromThreeWord(label))
+
+
+          // console.log({'label': label, 'age' : rowAge, 'mood' : mRating })
+          if(closeYposition(rowAge, mRating, 3)){
+            console.log('closed distance')
+            // if(alreadyOffset(rowAge, mRating)){
+            //   annotation.setAttribute('y',chartLayout.getYLocation(mRating ) + 50);
+            //   console.log('already offsetd')
+            //   console.log(label)
+            // }
+            annotation.setAttribute('y',chartLayout.getYLocation(mRating ) - 15);
+            offsetAgeRating.push([rowAge, mRating])
+            
+          }
+
+          annotation.setAttribute('x',chartLayout.getXLocation(rowAge + 2.7));
+          
+          
+        }
+      });
+
+      
+
+
+    });
+    observer.observe(container, {
+      childList: true,
+      subtree: true
+    });
+
+
+    eventdashboard.bind(eventCategoryFilter, comboChart);
     eventdashboard.draw(data);
+
+    // console.log(data)
+
+
+ 
 
     //create trigger to resizeEnd event     
     $(window).resize(function () {
@@ -1537,6 +1710,8 @@ function drawEventsChart() {
 
       // Add Duration Line on Hover
       google.visualization.events.addListener(comboChart.getChart(), 'onmouseover', function (e) {
+
+        // adjustTextPosition()
 
         if (e.row && e.column) {
           // Clicked on point
@@ -1563,6 +1738,7 @@ function drawEventsChart() {
 
             innerstring = tr[i].innerText
 
+            // If the Duration of the clicked point has Years, then we will add a duration line
             if (innerstring.includes('Years')) {
               durationyear = parseInt(innerstring.split('\n')[1].split(/,?\s+/)[1])
               if (durationyear != '0' && interface.getYLocation(currentrating) != null) {
@@ -1570,17 +1746,17 @@ function drawEventsChart() {
                 // Try to keep within the chart area
                 maxWidth = interface.getChartAreaBoundingBox().width // usually always 420
                 pointB = interface.getXLocation(age + durationyear)
-                
-                
-                if (pointB >= maxWidth ){
-                  console.log('width too big')
+
+
+                if (pointB >= maxWidth) {
+                  // console.log('width too big')
                   pointB = maxWidth + 50 // +50 offset from the actual chart
 
                 }
                 // console.log('ageLoc: ' + interface.getXLocation(age))
                 // console.log('bLoc: ' + pointB)
 
-                finallinewidthpx =  pointB - interface.getXLocation(age) // Filtered Duration Line
+                finallinewidthpx = pointB - interface.getXLocation(age) // Filtered Duration Line
                 line.style.width = finallinewidthpx + "px";
 
                 // console.log(interface.getYLocation(currentrating))
@@ -1591,7 +1767,7 @@ function drawEventsChart() {
                 line.style.left = interface.getXLocation(age) + "px";
                 line.style.top = interface.getYLocation(currentrating) + "px";
                 line.style.height = '5px'
-                line.classList = 'durationLine'
+                line.classList = 'durationLineAnimation'
 
                 break
               }
@@ -1606,11 +1782,11 @@ function drawEventsChart() {
         }
       });
 
-      // Delete Duration Line on Hover
+      // Delete Duration Line on Mouse out
       google.visualization.events.addListener(comboChart.getChart(), 'onmouseout', function (e) {
         var el = document.getElementById('eventsChart');
         var line = document.getElementById("duration_line");
-        el.removeChild(line);
+        el.removeChild(line); // Removes the duration line dic on mouse out
 
       });
 
@@ -1619,34 +1795,7 @@ function drawEventsChart() {
 
 
     // Alter Annotation Text position when the points are close
-    google.visualization.events.addListener(comboChart, 'ready', function () {
-      var container = document.getElementById('eventsChart')
-      var g = container.getElementsByTagName('g');
-
-      // loops through all the g tags
-      for (var i = 0; i < g.length; i++) {
-
-        // probably not a good solution
-        // Since sometime the x axis label count is differnt
-        if (i < 25) {
-          continue; // 26th g tag is the text, all previous is tages are the horizontal and vertical labels
-        }
-
-        nextg = g[i].nextElementSibling
-
-        try {
-          if (nextg.nextElementSibling != null) {
-
-            text = nextg.getElementsByTagName('text')[1]
-            // console.log(text)
-          }
-        } catch (e) {
-
-        }
-
-      }
-
-    });
+    // google.visualization.events.addListener(comboChart, 'ready', adjustTextPosition);
 
 
     // Changes the event chart when the range slider is changed
@@ -1661,7 +1810,7 @@ function drawEventsChart() {
         min = 0
       }
 
-      options.hAxis.viewWindow.max = max
+      options.hAxis.viewWindow.max = max + 1 // Show extra age after to show events on the max age
       options.hAxis.viewWindow.min = min
 
       // Change the Timeline title depending on where in the range it is set are in
@@ -1904,7 +2053,7 @@ function drawEventsChart() {
       //
     })
 
-    
+
 
 
 
@@ -1918,41 +2067,41 @@ function drawEventsChart() {
  * Returns the color give rating
  * @param {Number} rating 
  */
-function getColorFromRating(rating){
-  if(rating == 1){
+function getColorFromRating(rating) {
+  if (rating == 1) {
     return '#0E09AB'
   }
-  if (rating == 2){
+  if (rating == 2) {
     return '#0E09AB'
   }
 
-  if (rating == 3){
+  if (rating == 3) {
     return '#000339'
   }
 
-  if (rating == 4){
+  if (rating == 4) {
     return '#000000'
   }
 
-  if (rating == 5){
+  if (rating == 5) {
     return '#000000'
   }
 
-  if (rating == 6){
+  if (rating == 6) {
     return '#3A0700'
   }
 
-  if (rating == 7){
+  if (rating == 7) {
     return '#750F00'
   }
 
-  if (rating == 8){
+  if (rating == 8) {
     return '#B01600'
   }
-  if (rating == 9){
+  if (rating == 9) {
     return '#EB1E00'
   }
-  if (rating == 10){
+  if (rating == 10) {
     return '#666666'
   }
 
@@ -1963,8 +2112,8 @@ function getColorFromRating(rating){
 }
 
 // For Print Button
-$(document).ready(function(){
-  $('#download1').on('click', function(){
+$(document).ready(function () {
+  $('#download1').on('click', function () {
     $('#subject, #eventsChart, #epochtitle, #timeline_chart').printThis({
       importCSS: false,
       // header: "<h1>Tulsa Life Chart</h1>",
@@ -1973,6 +2122,8 @@ $(document).ready(function(){
     });
   })
 })
+
+
 
 
 
