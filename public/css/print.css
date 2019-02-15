@@ -1,14 +1,16 @@
 /* CSS For Printing */
 #eventsChart{
+    position: block;
     width: auto;
-    height: 400px;
+    height: 380px;
 }
 
 #epochtitle{
-    height: 8px;
+    width: auto;
+    height: 10px;
 }
 
 #timeline_chart{
     width: auto;
-    height: 700px;
+    height: 800px;
 }
