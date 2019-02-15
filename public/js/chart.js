@@ -2218,7 +2218,7 @@ $(document).ready(function () {
     $('#subject, #eventsChart, #epochtitle, #timeline_chart').printThis({
       importCSS: false,
       loadCSS: 'public/css/print.css',
-      debug: true,
+      debug: false,
       // header: "<h1>Tulsa Life Chart</h1>",
       footer: null,
       pageTitle: "Tulsa Life Chart"
