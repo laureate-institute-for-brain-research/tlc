@@ -856,7 +856,7 @@ function getAgeFromDate(date, birthdate) {
  * @param {Integer} age Year
  * @param {Date} birthdate Birtdate
  */
-function getDateFromAge(age,birthdate) {
+function getDateFromAge(age, birthdate) {
   return moment(birthdate).add(age, 'years');
 }
 
@@ -1086,8 +1086,8 @@ function drawEventsChart() {
     for (var i = 1; i < fileArray.length - 1; i++) {
       row = fileArray[i]
 
-      for(var j = 2; j<= 11; j++){
-        if(row[j] != ""){
+      for (var j = 2; j <= 11; j++) {
+        if (row[j] != "") {
           eventTuple.push([row[0], row[j]])
         }
       }
@@ -1102,8 +1102,8 @@ function drawEventsChart() {
 
       one = getNumber(row[2])
       onenew = getNewMoodRating(age, getNumber(row[2]))[1]
-      
-      
+
+
 
       two = getNumber(row[3])
       twonew = getNewMoodRating(age, getNumber(row[3]))[1]
@@ -1395,7 +1395,8 @@ function drawEventsChart() {
     data.addRows(finalData)
 
     var options = {
-      height: 370,
+      height: 445,
+      width: 910,
       enableInteractivity: true,
       focusTarget: 'datum',
       tooltip: {
@@ -1439,55 +1440,55 @@ function drawEventsChart() {
         0: {
           type: 'scatter',
           color: '#0E0CE5',
-          
+
         },
 
         1: {
           type: 'scatter',
           color: '#0E09AB',
-          
+
         },
 
         2: {
           type: 'scatter',
           color: '#000672',
-        
+
         },
         // Other Event
         3: {
           type: 'scatter',
           color: '#000339',
-          
+
         },
         4: {
           type: 'scatter',
           color: '#000000',
-          
+
         },
         5: {
           type: 'scatter',
           color: '#000000',
-          
+
         },
         6: {
           type: 'scatter',
           color: '#3A0700',
-          
+
         },
         7: {
           type: 'scatter',
           color: '#750F00',
-          
+
         },
         8: {
           type: 'scatter',
           color: '#B01600',
-          
+
         },
         9: {
           type: 'scatter',
           color: '#EB1E00',
-          
+
         },
         // Period Rating
         10: {
@@ -1500,10 +1501,10 @@ function drawEventsChart() {
 
       },
       annotations: {
-        highContrast : false,
-        datum : {
-          stem : {
-            length: 0,
+        highContrast: false,
+        datum: {
+          stem: {
+            length: 15,
             color: "#000000"
           }
         },
@@ -1553,15 +1554,15 @@ function drawEventsChart() {
      * Returns JSON object of age(x) and rating(y)
      * @param {String} columnLabel Column Label 
      */
-    function getAgeFromThreeWord(columnLabel){
+    function getAgeFromThreeWord(columnLabel) {
 
       rowindex = 0
-      
-      for(var i = 0; i < fileArray.length; i++){
+
+      for (var i = 0; i < fileArray.length; i++) {
         row = fileArray[i]
         eventdes = filterDescription(row[14])
         annotext = getthreeword(eventdes)
-        if(columnLabel == annotext){
+        if (columnLabel == annotext) {
           return row[0]
         }
       }
@@ -1571,17 +1572,17 @@ function drawEventsChart() {
      * Returns Rating given column label
      * @param {String} columnLabel Column Label 
      */
-    function getRatingFromThreeWord(columnLabel){
+    function getRatingFromThreeWord(columnLabel) {
 
       rowindex = 0
-      
-      for(var i = 0; i < fileArray.length; i++){
+
+      for (var i = 0; i < fileArray.length; i++) {
         row = fileArray[i]
         eventdes = filterDescription(row[14])
         annotext = getthreeword(eventdes)
-        if(columnLabel == annotext){
-          for(var j = 2; j<= 11; j++){
-            if(row[j] != ""){
+        if (columnLabel == annotext) {
+          for (var j = 2; j <= 11; j++) {
+            if (row[j] != "") {
               return row[j]
             }
           }
@@ -1590,94 +1591,180 @@ function drawEventsChart() {
     }
 
 
-    // Return True If there is an event offset ages from current event
-    function closeYposition(age, rating, offset){
-      result = false
-      eventTuple.forEach(function(anEvent){
-        if( rating == parseInt(anEvent[1]) && parseInt(anEvent[0]) == age + offset ){
+    /**
+     * Returns the Events locations If there is an event nearby
+     * In other words, if the points (age, rating), lies within a rectangle
+     * @param {Integer} age Age (x)
+     * @param {Integer} rating Rating(y)
+     */
+    function surroundingEvents(age, rating) {
+      result = []
 
-          result =  true
+      // Size of the rectangle
+      x1 = age - 3
+      y1 = rating - 1
+
+      x2 = age + 3
+      y2 = rating + 1
+
+      eventTuple.forEach(function (anEvent) {
+
+        // If the events lies within that rectangle then push to the resulting array
+        if (parseInt(anEvent[0]) > x1 && parseInt(anEvent[0]) < x2 && parseInt(anEvent[1]) > y1 && parseInt(anEvent[1]) < y2) {
+          result.push([parseInt(anEvent[0]), parseInt(anEvent[1])])
         }
       })
       return result
     }
 
-    // Returns True if the offsetTrigger of the same age, rating has
-    // already been triggered
-    offsetAgeRating = []
-    
-    function alreadyOffset(rowAge, mRating){
-      result = false
-      count = 0
-      offsetAgeRating.forEach(function(anEvent){
-        if( mRating == parseInt(anEvent[1]) && parseInt(anEvent[0]) == rowAge  ){
-          
-          if(count >=2){
-            result =  true
-          }
-          count++
-          
-        }
-      })
-      return result
-    }
+
 
 
 
     var container = document.getElementById('eventsChart');
 
     // move annotations
-    var observer = new MutationObserver(function () {
-      Array.prototype.forEach.call(container.getElementsByTagName('text'), function(annotation) {
-        if ((annotation.getAttribute('text-anchor') === 'middle') &&
-            (annotation.getAttribute('fill') === '#750f00' ||
-            annotation.getAttribute('fill') === '#0e0ce5' ||
-            annotation.getAttribute('fill') === '#0e09ab' ||
-            annotation.getAttribute('fill') === '#000672' ||
-            annotation.getAttribute('fill') === '#000339' ||
-            annotation.getAttribute('fill') === '#000000' ||
-            annotation.getAttribute('fill') === '#3A0700' ||
-            annotation.getAttribute('fill') === '#750f00' ||
-            annotation.getAttribute('fill') === '#B01600' ||
-            annotation.getAttribute('fill') === '#eb1e00' ||
-            annotation.getAttribute('fill') === '#b01600' ||
-            annotation.getAttribute('fill') === '#eb1e00' ||
-            annotation.getAttribute('fill') === '#ffffff'
-            )) {
-          var chartLayout = comboChart.getChart().getChartLayoutInterface();
+    // var observer = new MutationObserver(function () {
 
-          label = annotation.innerHTML
-          rowAge = parseInt(getAgeFromThreeWord(label))
-          mRating = parseInt(getRatingFromThreeWord(label))
+    //   // Returns True if the offsetTrigger of the same age, rating has
+    //   // already been triggered
+    //   offsetAgeRating = []
+
+    //   /**
+    //    * Returns true if the given age and rating has alredy been offset
+    //    * @param {*} rowAge 
+    //    * @param {*} mRating 
+    //    */
+    //   function alreadyOffset(rowAge, mRating) {
+    //     result = false
+    //     count = 0
+    //     offsetAgeRating.forEach(function (anEvent) {
+    //       if (mRating == parseInt(anEvent[1]) && parseInt(anEvent[0]) == rowAge) {
+
+    //         if (count >= 2) {
+    //           result = true
+    //         }
+    //         count++
+    //       }
+    //     })
+    //     return result
+    //   }
+
+    //   /**
+    //    * Returns either 1, 2, 3, 4, the qudrant the surrounding position is in 
+    //    * @param {*} currX Current X position
+    //    * @param {*} currY Current Y position
+    //    * @param {*} surrX Surrounding X position
+    //    * @param {*} surrY Surrdounging Y position
+    //    */
+    //   function getQuadrantLocation(currX,currY, surrX,surrY){
+    //     if(surrX > currX && surrY > currY){
+    //       return 1 // in quadrant 1
+    //     }
+    //     if(surrX < currX && surrY > currY){
+    //       return 2 // in quadrant 2
+    //     }
+    //     if(surrX < currX && surrY < currY){
+    //       return 3 // in quadrant 3
+    //     }
+    //     if(surrX > currX && surrY < currY){
+    //       return 4 // in quadrant 4
+    //     }if(surrX == currX && surrY == currY){
+    //       return 5 // the surrouding is the same position as the current position
+    //     }
+    //   }
+    //   Array.prototype.forEach.call(container.getElementsByTagName('text'), function (annotation) {
+    //     if ((annotation.getAttribute('text-anchor') === 'middle') &&
+    //       (annotation.getAttribute('fill') === '#750f00' ||
+    //         annotation.getAttribute('fill') === '#0e0ce5' ||
+    //         annotation.getAttribute('fill') === '#0e09ab' ||
+    //         annotation.getAttribute('fill') === '#000672' ||
+    //         annotation.getAttribute('fill') === '#000339' ||
+    //         annotation.getAttribute('fill') === '#000000' ||
+    //         annotation.getAttribute('fill') === '#3A0700' ||
+    //         annotation.getAttribute('fill') === '#750f00' ||
+    //         annotation.getAttribute('fill') === '#B01600' ||
+    //         annotation.getAttribute('fill') === '#eb1e00' ||
+    //         annotation.getAttribute('fill') === '#b01600' ||
+    //         annotation.getAttribute('fill') === '#eb1e00' ||
+    //         annotation.getAttribute('fill') === '#ffffff'
+    //       )) {
+    //       var chartLayout = comboChart.getChart().getChartLayoutInterface();
+
+    //       label = annotation.innerHTML
+    //       rowAge = parseInt(getAgeFromThreeWord(label))
+    //       mRating = parseInt(getRatingFromThreeWord(label))
 
 
-          // console.log({'label': label, 'age' : rowAge, 'mood' : mRating })
-          if(closeYposition(rowAge, mRating, 3)){
-            console.log('closed distance')
-            // if(alreadyOffset(rowAge, mRating)){
-            //   annotation.setAttribute('y',chartLayout.getYLocation(mRating ) + 50);
-            //   console.log('already offsetd')
-            //   console.log(label)
-            // }
-            annotation.setAttribute('y',chartLayout.getYLocation(mRating ) - 15);
-            offsetAgeRating.push([rowAge, mRating])
-            
-          }
+    //       // console.log({'label': label, 'age' : rowAge, 'mood' : mRating })
 
-          annotation.setAttribute('x',chartLayout.getXLocation(rowAge + 2.7));
-          
-          
-        }
-      });
+    //       // Check If there are surrouding events
+    //       // array of all the events that are surrounding the current one
+    //       surrEvents = surroundingEvents(rowAge, mRating)
+    //       if (surrEvents.length != 0 || surrEvents != undefined) {
+    //         console.log('There is an event close by')
 
-      
+    //         // annotation.setAttribute('y', chartLayout.getYLocation(mRating) - Math.floor(Math.random() * lastNum) + startNum  );
+    //         // If there is, then check if those event have already been offset
+
+    //         closeEventAge = 0
+    //         closeEventRating = 0
+
+    //         offsetPxAmount = 10
+
+    //         surrEvents.forEach(function (surrEvent) {
 
 
-    });
-    observer.observe(container, {
-      childList: true,
-      subtree: true
-    });
+    //           if (alreadyOffset(surrEvent[0], surrEvent[1])) {
+    //             // console.log('already offsetd')
+
+    //             // move annotaion based on quadrant location
+    //             // If it does, then position the current event oposite to where it is.
+
+    //             surrQuadrant = getQuadrantLocation(rowAge,mRating, parseInt(surrEvent[0]),parseInt(surrEvent[1]))
+                
+    //             if (surrQuadrant == 1){
+    //               annotation.setAttribute('x', chartLayout.getXLocation(rowAge) - offsetPxAmount );
+    //               annotation.setAttribute('y', chartLayout.getYLocation(mRating) - offsetPxAmount);
+    //             } else if(surrQuadrant == 2){
+    //               annotation.setAttribute('x', chartLayout.getXLocation(rowAge) + offsetPxAmount );
+    //               annotation.setAttribute('y', chartLayout.getYLocation(mRating) - offsetPxAmount);
+    //             } else if(surrQuadrant == 3){
+    //               annotation.setAttribute('x', chartLayout.getXLocation(rowAge) + offsetPxAmount );
+    //               annotation.setAttribute('y', chartLayout.getYLocation(mRating) + offsetPxAmount);
+    //             } else if(surrQuadrant == 4){
+    //               annotation.setAttribute('x', chartLayout.getXLocation(rowAge) - offsetPxAmount );
+    //               annotation.setAttribute('y', chartLayout.getYLocation(mRating) + offsetPxAmount);
+    //             } else if(surrQuadrant == 5){
+    //               annotation.setAttribute('y', chartLayout.getYLocation(mRating) - 30);
+    //             }
+                
+
+                
+                
+    //           } else {
+    //             // 
+    //           }
+
+    //         })
+    //         annotation.setAttribute('y', chartLayout.getYLocation(mRating) - offsetPxAmount);
+    //         offsetAgeRating.push([rowAge, mRating])
+
+    //       }
+    //       annotation.setAttribute('x', chartLayout.getXLocation(rowAge + 2.7));
+
+
+    //     }
+    //   });
+
+
+
+
+    // });
+    // observer.observe(container, {
+    //   childList: true,
+    //   subtree: true
+    // });
 
 
     eventdashboard.bind(eventCategoryFilter, comboChart);
@@ -1686,7 +1773,7 @@ function drawEventsChart() {
     // console.log(data)
 
 
- 
+
 
     //create trigger to resizeEnd event     
     $(window).resize(function () {
@@ -2116,6 +2203,7 @@ $(document).ready(function () {
   $('#download1').on('click', function () {
     $('#subject, #eventsChart, #epochtitle, #timeline_chart').printThis({
       importCSS: false,
+      loadCSS: 'public/css/print.css',
       // header: "<h1>Tulsa Life Chart</h1>",
       footer: null,
       pageTitle: "Tulsa Life Chart"

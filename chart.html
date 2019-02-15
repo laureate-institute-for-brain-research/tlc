@@ -3,19 +3,17 @@
 
 <head>
   <link rel="stylesheet" href="public/css/chart.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.css" media="screen">
-  <link rel="stylesheet" href="https://bootswatch.com/_assets/css/custom.min.css">
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="public/css/w3.css">
+  <link rel="stylesheet" href="public/css/bootstrap.css" media="screen">
+  <link rel="stylesheet" href="public/css/custom.min.css">
+  <script type="text/javascript" src="public/js/loader.js"></script>
+  <script src="public/js/jquery/3.3.1/jquery.min.js"></script>
+  <script src="public/js/lodash.min.js"></script>
+  <script src="public/js/popper.min.js"></script>
+  <script src="public/js/bootstrap.min.js"></script>
 
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+  <script src="public/js/moment.js"></script>
   <script type="text/javascript" src="public/js/chart.js"></script>
 </head>
 
@@ -57,13 +55,13 @@
   <h1 style="color: black; font-family: Lucida Sans Unicode" id="subject" class="animate-bottom"></h1>
 
   <div class="container">
-    <div class="row" style="padding: 10px; padding-bottom: 0px;">
+    <div class="row" style="padding: 10px; padding-bottom: 15px;">
       <div id="timeline_slider" style="width: 100%; "></div>
     </div>
 
 
     <div class="row">
-      <div class="col" style="max-width: 240px; min-width: 240px;">
+      <div class="col" style="max-width: 200px; min-width: 200px;">
         <div id='eventsPicker' style="display: none;"></div>
         <br>
         <p>Event Type</p>
@@ -114,15 +112,8 @@
     <hr>
 
     <div class="row">
-      <div class="col" style="min-width: 900px;">
-        <div id="timelineCategoryFilter" style="display: none;"></div>
-        <h2 id="epochtitle">All Epochs</h2>
-        <div id='load2wrap' style="padding: 200px; padding-left: 100px;">
-          <div id='load2' class="loader">Loading...</div>
-        </div>
-        <div id="timeline_chart" class="animate-bottom" style="padding-top: 0px; min-height: 900px;"></div>
-      </div>
-      <div class="col" style="max-width: 190px;">
+      
+      <div class="col" style="max-width: 200px;">
         <p>Categories</p>
         <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="drugs" checked>
@@ -166,10 +157,19 @@
           <button id='i' type="button" class="btn btn-secondary btn-sm">Age 45-55</button>
         </div>
       </div>
+
+      <div class="col" style="min-width: 900px; ">
+        <div id="timelineCategoryFilter" style="display: none;"></div>
+        <h2 id="epochtitle">All Epochs</h2>
+        <div id='load2wrap' style="padding: 200px; padding-left: 100px;">
+          <div id='load2' class="loader">Loading...</div>
+        </div>
+        <div id="timeline_chart" class="animate-bottom" style="padding-top: 0px; min-height: 900px;"></div>
+      </div>
     </div>
   </div>
 
-  <script type="text/javascript" src="https://jasonday.github.io/printThis/printThis.js"></script>
+  <script type="text/javascript" src="public/js/printThis.js"></script>
 </body>
 <footer style="color: black; font-family: Lucida Sans Unicode;">
   <center>
