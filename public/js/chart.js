@@ -1394,6 +1394,8 @@ function drawEventsChart() {
 
     data.addRows(finalData)
 
+    var fontsize = 10
+
     var options = {
       height: 445,
       width: 910,
@@ -1509,7 +1511,7 @@ function drawEventsChart() {
           }
         },
         textStyle: {
-          fontSize: 12,
+          fontSize: fontsize,
         }
       }
 
@@ -2100,12 +2102,12 @@ function drawEventsChart() {
 
     });
 
-    var fontsize = 12
+    
 
     $('#font-decrease').click(function () {
 
       var opt = comboChart.getOptions()
-
+      
       fontsize = fontsize - 1
       // //console.log(opt)
       opt['annotations'] = {
@@ -2122,7 +2124,7 @@ function drawEventsChart() {
 
       var opt = comboChart.getOptions()
 
-      fontsize = 12
+      fontsize = 10
       // //console.log(opt)
       opt['annotations'] = {
         'textStyle': {
