@@ -1824,16 +1824,25 @@ function drawEventsChart() {
           for (var i = 0; i < tr.length; i++) {
 
             innerstring = tr[i].innerText
+            
 
             // If the Duration of the clicked point has Years, then we will add a duration line
             if (innerstring.includes('Years')) {
               durationyear = parseInt(innerstring.split('\n')[1].split(/,?\s+/)[1])
-              if (durationyear != '0' && interface.getYLocation(currentrating) != null) {
+              durationmonths = parseInt(innerstring.split('\n')[2].split(/,?\s+/)[1])
+              
+              
+              if (interface.getYLocation(currentrating) != null) {
+
+                
 
                 // Try to keep within the chart area
                 maxWidth = interface.getChartAreaBoundingBox().width // usually always 420
-                pointB = interface.getXLocation(age + durationyear)
-
+                // console.log({year: durationyear, month: durationmonths})
+                // console.log(age + durationyear + (durationmonths / 12))
+                pointB = interface.getXLocation(age + durationyear + (durationmonths / 12))
+                // console.log(pointB)
+                
 
                 if (pointB >= maxWidth) {
                   // console.log('width too big')
