@@ -267,7 +267,7 @@ function drawChart(dataTable) {
     'Healthy Control' : '#4c4c4e',
     'Substance +' : '#42833f',
     'subject' : '#85338a',
-    'background' : '#ded7c4',
+    'background' : '#eddcaf',
     'gridline' : '#f6ebe0'
   }
 
@@ -287,27 +287,37 @@ function drawChart(dataTable) {
 
   serieslines = {
     0 : {
+      pointSize: 18,
+      pointShape: 'square',
       type: 'line',
       color : groupColor['Anxiety'],
+
       // lineWidth : 7
     },
     1 : {
+      pointSize: 9,
+      pointShape: 'circle',
       type : 'line',
       color : groupColor['Comorbid Depression + Anxiety']
     },
     2 : {
+      pointSize: 19,
+      pointShape: 'triangle',
       type : 'line',
       color : groupColor['Depression']
     },
     3 : {
+      pointShape: 'diamond',
       type : 'line',
       color : groupColor['Eating +']
     },
     4 : {
+      pointShape: 'circle',
       type : 'line',
       color : groupColor['Healthy Control']
     },
     5 : {
+      pointSize: 8,
       type : 'line',
       color : groupColor['Substance +']
     }
@@ -315,6 +325,8 @@ function drawChart(dataTable) {
   }
   if (subject != 'NULL'){
     serieslines[6] = {
+      pointSize: 17,
+      pointShape: 'star',
       type : 'line',
       color : groupColor['subject']
     }
@@ -332,8 +344,8 @@ function drawChart(dataTable) {
     'intervals': { 
       'style' : 'bars' ,
       'lineWidth' : 1.1,
-      'barWidth' : .09,
-      'color' : 'black'
+      'barWidth' : .1,
+      
     },
     'lineWidth': linewidth,
     'fontSize' : fontsize,
@@ -384,7 +396,7 @@ function drawChart(dataTable) {
       },
       textPosition : 'out',
       gridlines : {
-        color : groupColor.gridline
+        // color : groupColor.gridline
       }
       
       
@@ -392,6 +404,7 @@ function drawChart(dataTable) {
       // 'Middle School','High School','Young Adult',
       // '25-35','35-45','45-44']
     },
+    pointSize: 13,
     'series' : serieslines,
     'legend' : { 
       position : 'bottom'
@@ -449,6 +462,19 @@ function drawChart(dataTable) {
 
     dashboard.bind(groupCategoryFilter, comboChart);
     dashboard.draw(data);
+
+    //create trigger to resizeEnd event     
+    $(window).resize(function () {
+      if (this.resizeTO) clearTimeout(this.resizeTO);
+      this.resizeTO = setTimeout(function () {
+        $(this).trigger('resizeEnd');
+      }, 500);
+    });
+
+    //redraw graph when window resize is completed  
+    $(window).on('resizeEnd', function () {
+      dashboard.draw(data)
+    });
     var chartDiv = document.getElementById('countchart');
 
     function selected(col){
@@ -458,7 +484,7 @@ function drawChart(dataTable) {
         label = data.getColumnLabel(col)
         if( label == 'CASE-1' || label == 'CASE-2' || label == 'CASE-3' || label == 'CASE-4'){
           label = "subject"
-        } 
+        }
         Array.prototype.forEach.call(chartDiv.getElementsByTagName('path'), function(rect) {
           // console.log(rect)
           if (seriesColors.indexOf(rect.getAttribute('stroke')) > -1) {
@@ -478,22 +504,72 @@ function drawChart(dataTable) {
             // console.log(rect)
             rect.setAttribute('stroke', 'rgba(0,0,0,0.2)');
           }
+
+          
+
+
+        });
+
+        // Point Shapes For Stars
+        Array.prototype.forEach.call(chartDiv.getElementsByTagName('path'), function(rect) {
+          // console.log(rect)
+
+          // Point Shapes
+          if (seriesColors.indexOf(rect.getAttribute('fill')) > -1) {
+
+            if(rect.getAttribute('fill') == groupColor[label]){
+              
+            }else {
+              // Decrease Opacity on the other category
+              rect.setAttribute('fill', rgbaMap[rect.getAttribute('fill')]);
+            }
+          }
+        });
+
+        // Point Shapes For circles
+        Array.prototype.forEach.call(chartDiv.getElementsByTagName('circle'), function(rect) {
+          // console.log(rect)
+
+          // Points
+          if (seriesColors.indexOf(rect.getAttribute('fill')) > -1) {
+
+            if(rect.getAttribute('fill') == groupColor[label]){
+              
+            }else {
+              // Decrease Opacity on the other category
+              rect.setAttribute('fill', rgbaMap[rect.getAttribute('fill')]);
+            }
+          }
         });
       }
     }
 
     function unselect(){
       Array.prototype.forEach.call(chartDiv.getElementsByTagName('path'), function(rect) {
-
         if(rect.getAttribute('stroke') in swap(rgbaMap)){
           // console.log(rect.getAttribute('stroke'))
           rect.setAttribute('stroke', swap(rgbaMap)[rect.getAttribute('stroke')])
         }
-
         // Intervals
         if(rect.getAttribute('stroke') == 'rgba(0,0,0,0.2)' ){
           rect.setAttribute('stroke', '#000000');
         }
+      });
+
+      Array.prototype.forEach.call(chartDiv.getElementsByTagName('path'), function(rect) {
+        if(rect.getAttribute('fill') in swap(rgbaMap)){
+          // console.log(rect.getAttribute('stroke'))
+          rect.setAttribute('fill', swap(rgbaMap)[rect.getAttribute('fill')])
+        }
+       
+      });
+
+      Array.prototype.forEach.call(chartDiv.getElementsByTagName('circle'), function(rect) {
+        if(rect.getAttribute('fill') in swap(rgbaMap)){
+          // console.log(rect.getAttribute('stroke'))
+          rect.setAttribute('fill', swap(rgbaMap)[rect.getAttribute('fill')])
+        }
+       
       });
     }
 

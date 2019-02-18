@@ -1908,7 +1908,7 @@ function drawEventsChart() {
         min = 0
       }
 
-      options.hAxis.viewWindow.max = max + 1 // Show extra age after to show events on the max age
+      options.hAxis.viewWindow.max = max + 2 // Show extra age after to show events on the max age
       options.hAxis.viewWindow.min = min
 
       // Change the Timeline title depending on where in the range it is set are in
