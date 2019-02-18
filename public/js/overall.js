@@ -312,6 +312,7 @@ function drawChart(dataTable) {
       color : groupColor['Eating +']
     },
     4 : {
+      pointSize: 18,
       pointShape: 'circle',
       type : 'line',
       color : groupColor['Healthy Control']
