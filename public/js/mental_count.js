@@ -281,7 +281,6 @@ function drawChart(dataTable) {
     '#4c4c4e' : 'rgba(76, 76, 78, 0.2)',
     '#42833f' : 'rgba(66,131,63, 0.2)',
     '#85338a' : 'rgba(133,51,138, 0.2)'
-
   }
 
   seriesColors = [] // Array of just the colors // used later for legend
@@ -368,13 +367,9 @@ function drawChart(dataTable) {
       ticks : [
         {v : -0.5, f : ''},
         {v : 0, f : '0'},
-        
         {v : 1, f : '1'},
-        
         {v : 2, f : '2'},
-        
         {v : 3, f : '3'},
-        
         {v : 4, f : '4'},
         {v : 4.5, f : ''},
         
@@ -504,6 +499,17 @@ function drawChart(dataTable) {
           // console.log(rect)
 
           // Point Shapes
+          if (seriesColors.indexOf(rect.getAttribute('fill')) > -1) {
+
+            if(rect.getAttribute('fill') == groupColor[label]){
+              
+            }else {
+              // Decrease Opacity on the other category
+              rect.setAttribute('fill', rgbaMap[rect.getAttribute('fill')]);
+            }
+          }
+
+          // Intervals
           if (seriesColors.indexOf(rect.getAttribute('fill')) > -1) {
 
             if(rect.getAttribute('fill') == groupColor[label]){

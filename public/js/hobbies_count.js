@@ -273,7 +273,7 @@ function drawChart(dataTable) {
     'Healthy Control' : '#4c4c4e',
     'Substance +' : '#42833f',
     'subject' : '#85338a',
-    'background' : '#ded7c4',
+    'background' : '#eddcaf',
     'gridline' : '#f6ebe0'
   }
 
@@ -293,27 +293,38 @@ function drawChart(dataTable) {
 
   serieslines = {
     0 : {
+      pointSize: 18,
+      pointShape: 'square',
       type: 'line',
       color : groupColor['Anxiety'],
-      // lineWidth : 7
+
     },
     1 : {
+      pointSize: 9,
+      pointShape: 'circle',
       type : 'line',
       color : groupColor['Comorbid Depression + Anxiety']
     },
     2 : {
+      pointSize: 19,
+      pointShape: 'triangle',
       type : 'line',
       color : groupColor['Depression']
     },
     3 : {
+      pointSize: 17,
+      pointShape: 'diamond',
       type : 'line',
       color : groupColor['Eating +']
     },
     4 : {
+      pointSize: 17,
+      pointShape: 'circle',
       type : 'line',
       color : groupColor['Healthy Control']
     },
     5 : {
+      pointSize: 8,
       type : 'line',
       color : groupColor['Substance +']
     }
@@ -321,6 +332,8 @@ function drawChart(dataTable) {
   }
   if (subject != 'NULL'){
     serieslines[6] = {
+      pointSize: 17,
+      pointShape: 'star',
       type : 'line',
       color : groupColor['subject']
     }
@@ -358,15 +371,12 @@ function drawChart(dataTable) {
       ticks : [
         {v : -0.5, f : ''},
         {v : 0, f : '0'},
-        {v : 0.5, f : ''},
         {v : 1, f : '1'},
-        {v : 1.5, f : ''},
         {v : 2, f : '2'},
-        {v : 2.5, f : ''},
         {v : 3, f : '3'},
-        {v : 3.5, f : ''},
         {v : 4, f : '4'},
-        {v : 4.5, f : ''},
+        {v : 5, f : '5'},
+        {v : 5.5, f : ''},
         
       ]
       

@@ -2102,6 +2102,17 @@ function drawEventsChart() {
 
     });
 
+    $('#periodColor').change(function () {
+      eventstring = 'Period'
+      color = document.getElementById('periodColor').value
+      options.series[10].color = color
+  
+      comboChart.setOptions(options)
+      comboChart.draw()
+
+
+    });
+
     
 
     $('#font-decrease').click(function () {
