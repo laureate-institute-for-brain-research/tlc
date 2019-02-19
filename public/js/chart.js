@@ -1,3 +1,4 @@
+
 function getQueryVariable(variable) {
   var query = window.location.search.substring(1);
   var vars = query.split('&');
@@ -323,6 +324,7 @@ function drawTimelineChart(data) {
     'controlType': 'ChartRangeFilter',
     'containerId': 'timeline_slider',
     'options': {
+      'color' : '#0000',
       // Filter by the date axis.
       'filterColumnIndex': 4,
       'ui': {
@@ -340,6 +342,7 @@ function drawTimelineChart(data) {
         },
         // This, this view has two columns: the start and end dates.
         'chartView': {
+          
           'columns': [4, {
             type: 'number',
             calc: function () {
@@ -1774,6 +1777,8 @@ function drawEventsChart() {
 
     // console.log(data)
 
+    
+
 
 
 
@@ -1794,8 +1799,14 @@ function drawEventsChart() {
     $('#load1').attr('style', "display: none;")
     $('#load1wrap').attr('style', "padding: 0px;")
 
+    google.visualization.events.addOneTimeListener(comboChart, 'ready', function(){
+      // Trigger PerioColor to set the same color
+    $('#periodColor').trigger('change')
+    })
+
 
     google.visualization.events.addListener(comboChart, 'ready', function () {
+      
 
       // Add Duration Line on Hover
       google.visualization.events.addListener(comboChart.getChart(), 'onmouseover', function (e) {
@@ -2102,6 +2113,8 @@ function drawEventsChart() {
 
     });
 
+    var oldColor = ''
+
     $('#periodColor').change(function () {
       eventstring = 'Period'
       color = document.getElementById('periodColor').value
@@ -2109,6 +2122,20 @@ function drawEventsChart() {
   
       comboChart.setOptions(options)
       comboChart.draw()
+
+      // 
+      var slider = document.getElementById('timeline_slider')
+      var paths = slider.getElementsByTagName('path')
+      // console.log(paths)
+
+      for (let element of paths){
+        // console.log(element.getAttribute('stroke'))
+        if(element.getAttribute('stroke') == '#3366cc' || element.getAttribute('stroke') == oldColor){
+          element.setAttribute('stroke', '#' + color)
+          oldColor = '#' + color
+        }
+      }
+     
 
 
     });

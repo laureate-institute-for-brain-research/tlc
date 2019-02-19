@@ -28,10 +28,10 @@ h1,
 h4 {
   text-align: center;
 }
-.rangeSlider {
-  background-color: cyan;
-  white-space: nowrap;
-  color: #ffff;
+.rangeSlider .google-visualization-controls-rangefilter-thumblabel  {
+  background-color: cyan !important;
+  white-space: nowrap !important;
+  color: #ffff !important;
 }
 /* Center the loader */
 #loader {
