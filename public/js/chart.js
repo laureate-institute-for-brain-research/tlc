@@ -2249,15 +2249,12 @@ function getColorFromRating(rating) {
 
 // For Print Button
 $(document).ready(function () {
-
-  
-
   $('#download1').on('click', function () {
     // console.log($('#epochtitle').innerHTML)
     console.log(document.getElementById('epochtitle').innerHTML)
     $('#subject, #eventsChart, #epochtitle, #timeline_chart').printThis({
       importCSS: false,
-      loadCSS: 'public/css/print.css',
+      loadCSS: 'lifechartexamples/public/css/print.css',
       debug: false,
       // header: "<h1>Tulsa Life Chart</h1>",
       footer: null,
