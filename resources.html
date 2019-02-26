@@ -1,0 +1,99 @@
+<!-- lc/templates/index.html -->
+<html>
+
+<head>
+    <link rel="stylesheet" href="public/css/resources.css">
+    <link rel="stylesheet" href="public/css/w3.css">
+    <link rel="stylesheet" href="public/css/bootstrap.css" media="screen">
+    <link rel="stylesheet" href="public/css/custom.min.css">
+    <script type="text/javascript" src="public/js/loader.js"></script>
+    <script src="public/js/jquery/3.3.1/jquery.min.js"></script>
+    <script src="public/js/lodash.min.js"></script>
+    <script src="public/js/popper.min.js"></script>
+    <script src="public/js/bootstrap.min.js"></script>
+    <script src="public/js/jscolor-2.0.5/jscolor.js"></script>
+
+
+    <script src="public/js/moment.js"></script>
+    <script type="text/javascript" src="public/js/chart.js"></script>
+
+</head>
+
+<body style='background-color: white; padding-top: 90px;'>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+        <a id='nav-title' class="navbar-brand" href="./">Tulsa Life Chart</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a id="homenav" class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                        aria-expanded="false">Overall Graphs</a>
+                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
+                        <a id='overall-count-nav-link' class="dropdown-item" href="/overall.html">Overall Mood</a>
+                        <a id='bad-good-count-nav-link' class="dropdown-item" href="/good-bad.html">Good - Bad Event
+                            Counts</a>
+                        <a id='drug-count-nav-link' class="dropdown-item" href="/drugs.html">Drug Counts</a>
+                        <a id='people-count-nav-link' class="dropdown-item" href="/people.html">People Counts</a>
+                        <a id='mental-ratio-nav-link' class="dropdown-item" href="/mental.html">Mental Health Counts</a>
+                        <a id='hobbies-count-nav-link' class="dropdown-item" href="/hobbies.html">Hobbies Counts</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <h2>Resources</h2>
+        </div>
+        <div class="row">
+            <p>
+                The Tulsa Life Chart data was collected through RedCap using custom made instrument.
+                The diffrent epochs from Birth to the current age of the subject was separated within 9 intervals.
+            </p>
+        </div>
+        <div class="row">
+            <h2>RedCap Instruments</h2>
+        </div>
+        <div class="row">
+            <ul>
+                <li><a href="#">Life Chart Interview A: Birth</a></li>
+                <li><a href="#">Life Chart Interview B: Birth to Start of Elementary School</a></li>
+                <li><a href="#">Life Chart Interview C: Elementary School Years</a></li>
+                <li><a href="#">Life Chart Interview D: Middle School or Junior High Years</a></li>
+                <li><a href="#">Life Chart Interview E: High School Years</a></li>
+                <li><a href="#">Life Chart Interview F: Young Adult Years</a></li>
+                <li><a href="#">Life Chart Interview G: Ages 25-35</a></li>
+                <li><a href="#">Life Chart Interview H: Ages 35-45</a></li>
+                <li><a href="#">Life Chart Interview I: Ages 45-55</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="public/js/printThis.js"></script>
+
+    <footer class="navbar fixed-bottom" style="color: black; font-family: Lucida Sans Unicode;">
+        <center>
+            <p>&copy; 2019. All rights reserved</p>
+            <p>Laureate Institute for Brain Research</p>
+        </center>
+    </footer>
+</body>
+
+<!-- Hidden Controls For the Charts -->
+
+
+</html>

@@ -20,7 +20,13 @@ var group = ''
 
 
 $.get('public/subjectsData/subjectsDB.json', function (data) {
-  subjectJSON = data
+  if (typeof data == 'string'){
+    subjectJSON = JSON.parse(data)
+  }else {
+    subjectJSON = data
+  }
+
+  console.log(typeof data)
   birthDate = subjectJSON[subject].birthdate
 
 
