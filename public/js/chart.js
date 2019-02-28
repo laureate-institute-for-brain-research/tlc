@@ -75,6 +75,7 @@ $(document).ready(function () {
   $('#people-count-nav-link').attr('href', 'people.html?subject=' + subject);
   $('#hobbies-count-nav-link').attr('href', 'hobbies.html?subject=' + subject);
   $('#mental-ratio-nav-link').attr('href', 'mental.html?subject=' + subject);
+  $('#resources-nav-link').attr('href', 'resources.html?subject=' + subject);
 
 });
 

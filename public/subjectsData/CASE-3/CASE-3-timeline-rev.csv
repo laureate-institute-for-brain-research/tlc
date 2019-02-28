@@ -1,40 +1,37 @@
-1,Drugs and Alcohol,e,2/21/96,2/21/97,2/21/78,12/2/16,Marijuana ,Daily ,Direct Intake
-1,Drugs and Alcohol,e,2/21/96,2/21/97,2/21/78,12/2/16,Alcohol (3 - 4 Beers),1 -2 X Week (Weekends) ,Direct Intake
-1,Drugs and Alcohol,f,2/21/96,2/21/03,2/21/78,12/2/16,Alcohol (4 -5 Beers) ,1 -2 X Week ,Direct Intake
-1,Drugs and Alcohol,g,2/21/07,1/1/16,2/21/78,12/2/16,Heroin (2g),Daily (IV Use) ,Direct Intake
-1,Drugs and Alcohol,g,2/21/07,1/1/16,2/21/78,12/2/16,Xanax (2mg - 4mg) ,2 -3 X Week (Mainly used for sleep) ,Direct Intake
-1,Drugs and Alcohol,g,2/21/06,1/1/16,2/21/78,12/2/16,Methamphetamine (1g) ,2 - 3 X Month,Direct Intake
-1,Drugs and Alcohol,f,2/21/96,2/21/04,2/21/78,12/2/16,Marijuana (1oz X Week),Daily,Direct Intake
-2,Mental Health,h,2/1/17,3/1/17,2/21/78,12/2/16,Intensive outpatient SUD treatment,12 Steps ,
-2,Mental Health,h,1/1/17,2/30/2017,2/21/78,12/2/16,Inpatient SUD treatment,12 Steps ,
-3,Hobbies,c,2/21/84,2/21/86,2/21/78,12/2/16,Wrestling,,
-3,Hobbies,c,2/21/83,2/21/87,2/21/78,12/2/16,Boy scouts,,
-3,Hobbies,d,2/21/90,2/21/92,2/21/78,12/2/16,Soccer,,
-3,Hobbies,d,2/21/89,2/21/92,2/21/78,12/2/16,Wrestling,,
-3,Hobbies,c,2/21/86,2/21/89,2/21/78,12/2/16,Soccer,,
-3,Hobbies,e,2/21/92,2/21/96,2/21/78,12/2/16,Wrestling,,
-3,Hobbies,e,2/21/92,2/21/96,2/21/78,12/2/16,Football ,,
-3,Hobbies,f,2/21/96,2/21/02,2/21/78,12/2/16,Going to gym  ,,
-3,Hobbies,f,2/21/96,2/21/02,2/21/78,12/2/16,Track,,
-3,Hobbies,d,2/21/88,2/21/92,2/21/78,12/2/16,Track,,
-4,People,b,2/21/78,2/21/83,2/21/78,12/2/16,Father,,
-4,People,b,2/21/80,2/21/83,2/21/78,12/2/16,Younger brother (Joe),,
-4,People,c,2/21/83,2/21/88,2/21/78,12/2/16,Younger brother (Joe),,
-4,People,c,2/21/83,2/21/88,2/21/78,12/2/16,Father,,
-4,People,c,2/21/83,2/21/88,2/21/78,12/2/16,Grandmother (paternal),,
-4,People,d,2/21/88,2/21/92,2/21/78,12/2/16,Grandmother (paternal) ,,
-4,People,d,2/21/88,2/21/92,2/21/78,12/2/16,Father,,
-4,People,d,2/21/88,2/21/93,2/21/78,12/2/16,Younger brother (Joe),,
-4,People,e,2/21/92,2/21/96,2/21/78,12/2/16,Wrestling friends ,,
-4,People,e,2/21/93,2/21/96,2/21/78,12/2/16,Father,,
-4,People,e,2/21/93,2/21/96,2/21/78,12/2/16,Younger brother  (Joe),,
-4,People,f,6/1/96,1/1/03,2/21/78,12/2/16,1st Wife (Caroline),,
-4,People,g,2/21/03,2/21/14,2/21/78,12/2/16,Father ,,
-5,Jobs,e,9/1/94,5/1/96,2/21/78,12/2/16,Sold marijuana to classmates ,Part-Time,
-5,Jobs,f,6/1/96,1/1/04,2/21/78,12/2/16,Construction worker,Full-Time,
-5,Jobs,g,1/15/17,2/17/17,2/21/78,12/2/16,Warehouse worker,Full-Time,
-6,School,b,2/21/81,2/21/83,2/21/78,12/2/16,Daycare,,
-6,School,c,2/21/83,2/21/88,2/21/78,12/2/16,Public elementary school,,
-6,School,d,2/21/89,2/21/92,2/21/78,12/2/16,Public middle School,,
-6,School,e,2/21/93,2/21/96,2/21/78,12/2/16,Public high school ,,
-7,Residence,b3,2/21/78,12/2/16,2/21/78,12/2/16,Sapulpa,OK,US
+1,Drugs and Alcohol,f,2/21/94,2/21/03,12/21/77,12/2/16,Alcohol (4 -5 Beers) ,1 -2 X Week ,Direct Intake
+1,Drugs and Alcohol,g,2/21/07,1/1/16,12/21/77,12/2/16,Heroin (2g),Daily (IV Use) ,Direct Intake
+1,Drugs and Alcohol,g,2/21/07,1/1/16,12/21/77,12/2/16,Opioids (1 pill)) ,2 -3 X Week (Mainly used for sleep) ,Direct Intake
+1,Drugs and Alcohol,g,2/21/06,1/1/16,12/21/77,12/2/16,Methamphetamine (1g) ,2 - 3 X Month,Direct Intake
+1,Drugs and Alcohol,f,2/21/94,2/21/04,12/21/77,12/2/16,Marijuana (1oz X Week),Daily,Direct Intake
+2,Mental Health,h,7/1/16,8/1/16,12/21/77,12/2/16,Intensive outpatient SUD treatment,12 Steps ,
+3,Hobbies,c,2/21/84,2/21/86,12/21/77,12/2/16,Wrestling,,
+3,Hobbies,c,2/21/83,2/21/87,12/21/77,12/2/16,4H organization,,
+3,Hobbies,d,2/21/90,2/21/92,12/21/77,12/2/16,Soccer,,
+3,Hobbies,d,2/21/89,2/21/92,12/21/77,12/2/16,Wrestling,,
+3,Hobbies,c,2/21/86,2/21/89,12/21/77,12/2/16,Soccer,,
+3,Hobbies,e,2/21/92,2/21/96,12/21/77,12/2/16,Wrestling,,
+3,Hobbies,e,2/21/92,2/21/96,12/21/77,12/2/16,Football ,,
+3,Hobbies,f,2/21/96,2/21/02,12/21/77,12/2/16,Going to gym  ,,
+3,Hobbies,f,2/21/96,2/21/02,12/21/77,12/2/16,Track,,
+3,Hobbies,d,2/21/88,2/21/92,12/21/77,12/2/16,Track,,
+4,People,b,2/21/78,2/21/83,12/21/77,12/2/16,Father,,
+4,People,b,2/21/80,2/21/83,12/21/77,12/2/16,Sister (Joanne),,
+4,People,c,2/21/83,2/21/88,12/21/77,12/2/16,Sister (Joanne),,
+4,People,c,2/21/83,2/21/88,12/21/77,12/2/16,Father,,
+4,People,c,2/21/83,2/21/88,12/21/77,12/2/16,Grandmother (maternal),,
+4,People,d,2/21/88,2/21/92,12/21/77,12/2/16,Grandmother (maternal) ,,
+4,People,d,2/21/88,2/21/92,12/21/77,12/2/16,Father,,
+4,People,d,2/21/88,2/21/93,12/21/77,12/2/16,Sister (Joanne),,
+4,People,e,2/21/92,2/21/96,12/21/77,12/2/16,Wrestling friends ,,
+4,People,e,2/21/93,2/21/96,12/21/77,12/2/16,Father,,
+4,People,e,2/21/93,2/21/96,12/21/77,12/2/16,Sister (Joanne),,
+4,People,f,6/1/96,1/1/03,12/21/77,12/2/16,Wife (Caroline),,
+4,People,g,2/21/03,2/21/14,12/21/77,12/2/16,Father ,,
+5,Jobs,e,9/1/94,5/1/96,12/21/77,12/2/16,Sold marijuana to classmates ,Part-Time,
+5,Jobs,f,6/1/96,1/1/04,12/21/77,12/2/16,Construction worker,Full-Time,
+5,Jobs,g,2/21/07,2/21/12,12/21/77,12/2/16,Sold marijuana and cocaine for income ,,
+6,School,b,2/21/81,2/21/83,12/21/77,12/2/16,Daycare,,
+6,School,c,2/21/83,2/21/88,12/21/77,12/2/16,Public elementary school,,
+6,School,d,2/21/89,2/21/92,12/21/77,12/2/16,Public middle School,,
+6,School,e,2/21/93,2/21/96,12/21/77,12/2/16,Public high school ,,
+7,Residence,b,2/21/78,12/2/16,12/21/77,12/2/16,Glenpool,OK,US

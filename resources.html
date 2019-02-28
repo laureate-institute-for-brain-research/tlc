@@ -46,7 +46,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Resources</a>
+                    <a id='resources-nav-link' class="nav-link" href="#">Resources</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"></a>
@@ -57,35 +57,41 @@
 
     <div class="container">
         <div class="row">
-            <h2>Resources</h2>
+                <h1>Resources</h1>
         </div>
+        
+        
         <div class="row">
             <p>
                 The Tulsa Life Chart data was collected through RedCap using custom made instrument.
                 The diffrent epochs from Birth to the current age of the subject was separated within 9 intervals.
             </p>
         </div>
+        
         <div class="row">
-            <h2>RedCap Instruments</h2>
+            <h2>RedCap Instruments Downloads</h2>
         </div>
         <div class="row">
             <ul>
-                <li><a href="#">Life Chart Interview A: Birth</a></li>
-                <li><a href="#">Life Chart Interview B: Birth to Start of Elementary School</a></li>
-                <li><a href="#">Life Chart Interview C: Elementary School Years</a></li>
-                <li><a href="#">Life Chart Interview D: Middle School or Junior High Years</a></li>
-                <li><a href="#">Life Chart Interview E: High School Years</a></li>
-                <li><a href="#">Life Chart Interview F: Young Adult Years</a></li>
-                <li><a href="#">Life Chart Interview G: Ages 25-35</a></li>
-                <li><a href="#">Life Chart Interview H: Ages 35-45</a></li>
-                <li><a href="#">Life Chart Interview I: Ages 45-55</a></li>
+                <li><a href="public/instruments/LifeChartInterviewAB_2019-02-20_1034.zip" download>Life Chart Interview A: Birth</a></li>
+                <li><a href="public/instruments/LifeChartInterviewBB_2019-02-20_1034.zip" download>Life Chart Interview B: Birth to Start of Elementary School</a></li>
+                <li><a href="public/instruments/LifeChartInterviewCE_2019-02-20_1034.zip" download>Life Chart Interview C: Elementary School Years</a></li>
+                <li><a href="public/instruments/LifeChartInterviewDM_2019-02-20_1034.zip" download>Life Chart Interview D: Middle School or Junior High Years</a></li>
+                <li><a href="public/instruments/LifeChartInterviewEH_2019-02-20_1034.zip" download>Life Chart Interview E: High School Years</a></li>
+                <li><a href="public/instruments/LifeChartInterviewFY_2019-02-20_1034.zip" download>Life Chart Interview F: Young Adult Years</a></li>
+                <li><a href="public/instruments/LifeChartInterviewGA_2019-02-20_1034.zip" download>Life Chart Interview G: Ages 25-35</a></li>
+                <li><a href="public/instruments/LifeChartInterviewHA_2019-02-20_1035.zip" download>Life Chart Interview H: Ages 35-45</a></li>
+                <li><a href="public/instruments/LifeChartInterviewIA_2019-02-20_1035.zip" download>Life Chart Interview I: Ages 45-55</a></li>
             </ul>
+            <p>
+                Possible issues when importing to RedCap. 
+                We used a sql field type to reference the employee names for "Interview conducted by:"
+                This code will need to be modified for the specific environment it is placed in.
+            </p>
         </div>
     </div>
 
-    <script type="text/javascript" src="public/js/printThis.js"></script>
-
-    <footer class="navbar fixed-bottom" style="color: black; font-family: Lucida Sans Unicode;">
+    <footer class="fixed-bottom align-items-center" style="color: black; font-family: Lucida Sans Unicode;">
         <center>
             <p>&copy; 2019. All rights reserved</p>
             <p>Laureate Institute for Brain Research</p>
