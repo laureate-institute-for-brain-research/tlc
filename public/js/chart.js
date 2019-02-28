@@ -217,7 +217,7 @@ function drawTimelineChart(data) {
   var colorMap = {
     // should contain a map of category -> color for every category
     'Drugs and Alcohol': color3[0],
-    'Mental Health': color3[1],
+    'Mental Health Tx': color3[1],
     'Hobbies': color3[2],
     'People': color3[3],
     'Jobs': color3[4],
@@ -305,7 +305,7 @@ function drawTimelineChart(data) {
 
   var options = {
     //width : '100%',
-    // height: 900,
+    height: fileArray.length * 16,
     tooltip: {
       isHtml: true
     },
@@ -388,7 +388,7 @@ function drawTimelineChart(data) {
 
   });
 
-  categorySelectValues = ['Drugs and Alcohol', 'Hobbies', 'Jobs', 'Mental Health', 'People', 'Residence', 'School']
+  categorySelectValues = ['Drugs and Alcohol', 'Hobbies', 'Jobs', 'Mental Health Tx', 'People', 'Residence', 'School']
 
   categoryFilter.setState({
     'selectedValues': categorySelectValues
@@ -405,6 +405,7 @@ function drawTimelineChart(data) {
     for (var i = 0; i < rectangles.length; i++) {
       if (parseInt(rectangles[i].getAttribute('width')) <= 200) {
         if (i > 8) {
+    
           text = rectangles[i].nextSibling
 
           if (text != null && text.tagName == 'text' && text.getAttribute('text-anchor') == 'end') {
@@ -417,7 +418,26 @@ function drawTimelineChart(data) {
             text.setAttribute('text-anchor', 'start')
             text.setAttribute('x', newX + '')
 
-            // console.log(text.innerHTML + ': ' + text.getAttribute('x'))
+
+            // Cutoff Text if width of rectangle is really small (< 50 width)
+            if(rectangleWidth <= 50 && text.innerHTML.length <= 50){
+              text.innerHTML = text.innerHTML.substring(0,3)
+            }
+
+            // Cut longer if the width of rectangle is bigger
+            if(rectangleWidth <= 100 && text.innerHTML.length <= 100){
+              text.innerHTML = text.innerHTML.substring(0,10)
+            }
+
+            // If Rectangle is green and text is black, make text white
+            if(rectangles[i].getAttribute('fill') == '#009432' && text.getAttribute('fill') == '#202020'){
+              text.setAttribute('fill', '#ffffff')
+            }
+            // If Rectangle is blue and text is black, make text white
+            if(rectangles[i].getAttribute('fill') == '#0652dd' && text.getAttribute('fill') == '#202020'){
+              text.setAttribute('fill', '#ffffff')
+            }
+            
 
           }
         }
@@ -557,7 +577,7 @@ function drawTimelineChart(data) {
 
 
   $('#mental').change(function () {
-    catstring = 'Mental Health'
+    catstring = 'Mental Health Tx'
     if ($(this).is(":checked")) {
       //'checked' event code
       categorySelectValues.push(catstring)
@@ -1105,6 +1125,7 @@ function drawEventsChart() {
 
       age = parseInt(row[0])
 
+      
 
       periodrating = getNewMoodRating(age, getNumber(row[15]))[1]
 
@@ -1112,7 +1133,6 @@ function drawEventsChart() {
 
       one = getNumber(row[2])
       onenew = getNewMoodRating(age, getNumber(row[2]))[1]
-
 
 
       two = getNumber(row[3])
@@ -1149,6 +1169,53 @@ function drawEventsChart() {
       enddate = returnDateObj(row[13])
 
       eventdes = filterDescription(row[14])
+
+      // If Age is null, there should be a start date.
+      //
+
+      if( one == null && two == null && three == null && four == null 
+        && five == null && six == null && seven == null && eight == null
+        && nine == null && ten == null && eventtype != 'Period'){
+      
+        if(startdate){
+
+          eventAge = getAgeFromDate(startdate, birthdate) 
+          switch(eventAge){
+            case 1:
+            onenew = 1
+            break;
+            case 2:
+            twonew = 2
+            break;
+            case 3:
+            threenew = 3
+            break;
+            case 4:
+            fournew = 4
+            break;
+            case 5:
+            fivenew = 5
+            break;
+            case 6:
+            sixnew = 6
+            break;
+            case 7:
+            sevennew = 7
+            break;
+            case 8:
+            ewightnew = 8
+            break;
+            case 9:
+            ninenew = 9
+            break;
+            case 10:
+            tennew = 10
+            break;
+
+          }
+        }
+      }
+
 
 
 
@@ -1926,7 +1993,7 @@ function drawEventsChart() {
         min = 0
       }
 
-      options.hAxis.viewWindow.max = max + 2 // Show extra age after to show events on the max age
+      options.hAxis.viewWindow.max = max + 4 // Show extra age after to show events on the max age
       options.hAxis.viewWindow.min = min
 
       // Change the Timeline title depending on where in the range it is set are in
@@ -2261,7 +2328,7 @@ $(document).ready(function () {
     console.log(document.getElementById('epochtitle').innerHTML)
     $('#subject, #eventsChart, #epochtitle, #timeline_chart').printThis({
       importCSS: false,
-      loadCSS: 'lifechartexamples/public/css/print.css',
+      loadCSS: 'public/css/print.css',
       debug: false,
       // header: "<h1>Tulsa Life Chart</h1>",
       footer: null,

@@ -21,7 +21,7 @@ Age,Event Type,1,2,3,4,5,6,7,8,9,10,Start Date,End Date,Event Description,Period
 19,Period,,,,,,,,,,,,,,8
 20,Period,,,,,,,,,,,,,,8
 21,Period,,,,,,,,,,,,,,8
-6,Change Event,,,,,5,,,,,,8/11/00,,Brother born (Franky),
+6,Change Event,,,,,,,,,,,8/11/00,,Brother born (Franky),
 5,Change Event,,,,,,,,,9,,9/22/98,,Sister born (Tonya),
 2,Change Event,,,,,,,7,,,,5/30/96,,Sister born (Clara),
 12,Change Event,,,,,,6,,,,,12/10/05,,Brother born (Robert),

@@ -9,9 +9,9 @@
 1,Drugs and Alcohol,g,1/1/06,8/1/16,9/25/80,11/12/16,Heroin (1g),Daily,Direct Intake
 1,Drugs and Alcohol,e,6/1/95,12/30/98,9/25/80,11/12/16,Marijuana (1/4oz X Week w/ Friends) ,Daily ,Direct Intake
 1,Drugs and Alcohol,d,9/25/93,9/1/94,9/25/80,11/12/16,Marijuana (Joint) ,Daily,Direct Intake
-2,Mental Health,d,9/25/95,12/30/98,9/25/80,11/12/16,Outpatient therapy weekly,Behavioral Issues,
-2,Mental Health,g,2/15/09,3/15/10,9/25/80,11/12/16,Inpatient SUD treatment ,12 Steps ,
-2,Mental Health,g,9/25/16,7/1/16,9/25/80,11/12/16,Inpatient SUD treatment ,12 Steps ,
+2,Mental Health Tx,d,9/25/95,12/30/98,9/25/80,11/12/16,Outpatient therapy weekly,Behavioral Issues,
+2,Mental Health Tx,g,2/15/09,3/15/10,9/25/80,11/12/16,Inpatient SUD treatment ,12 Steps ,
+2,Mental Health Tx,g,9/25/16,7/1/16,9/25/80,11/12/16,Inpatient SUD treatment ,12 Steps ,
 3,Hobbies,b,9/1/84,5/1/17,9/25/80,11/12/16,Softball ,,
 3,Hobbies,d,9/1/91,5/1/98,9/25/80,11/12/16,Track,,
 4,People,b,9/25/80,2/21/85,9/25/80,11/12/16,Mother,,

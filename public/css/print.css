@@ -1,16 +1,23 @@
 /* CSS For Printing */
-#eventsChart{
-    position: block;
+#subject{
+    text-align: center;
     width: auto;
-    height: 370px;
+    font-size: 15px;
+    /* height: 10px; */
+}
+
+#eventsChart{
+    width: auto;
+    /* height: 230px; */
 }
 
 #epochtitle{
+    text-align: center;
     width: auto;
-    height: 10px;
+    font-size: 15px;
 }
 
 #timeline_chart{
     width: auto;
-    height: 800px;
+    /* height: 100px; */
 }
