@@ -727,8 +727,8 @@ function drawTimelineChart(data) {
 
     rangeSlider.setState({
       'range': {
-        'start': periodDates('b', birthDate).start,
-        'end': new Date() // by default the age at birthdate
+        'start': periodDates('b', birthDate).start ,
+        'end': new Date()
       }
     })
     rangeSlider.draw()
@@ -1993,8 +1993,8 @@ function drawEventsChart() {
         min = 0
       }
 
-      options.hAxis.viewWindow.max = max + 4 // Show extra age after to show events on the max age
-      options.hAxis.viewWindow.min = min
+      options.hAxis.viewWindow.max = max + 7 // Show extra age after to show events on the max age
+      options.hAxis.viewWindow.min = min - 3
 
       // Change the Timeline title depending on where in the range it is set are in
       changeTimelineTitle(min, max)
@@ -2008,9 +2008,11 @@ function drawEventsChart() {
 
 
     $('#all').click(function () {
-      options.hAxis.viewWindow.max = LC_AGE
+      options.hAxis.viewWindow.max = LC_AGE + 4
       options.hAxis.viewWindow.min = 0
       // options.hAxis.ticks = null
+
+      // rangeSlider.setState({start : 0, end: LC_AGE})
       comboChart.setOptions(options)
       comboChart.draw()
     })
@@ -2328,7 +2330,7 @@ $(document).ready(function () {
     console.log(document.getElementById('epochtitle').innerHTML)
     $('#subject, #eventsChart, #epochtitle, #timeline_chart').printThis({
       importCSS: false,
-      loadCSS: 'public/css/print.css',
+      loadCSS: 'lifechartexamples/public/css/print.css',
       debug: false,
       // header: "<h1>Tulsa Life Chart</h1>",
       footer: null,
