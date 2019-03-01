@@ -1,72 +1,79 @@
 Age,Event Type,1,2,3,4,5,6,7,8,9,10,Start Date,End Date,Event Description,Period Rating
-0,Period,,,,,,,,,,,,,,7
-1,Period,,,,,,,,,,,,,,7
-2,Period,,,,,,,,,,,,,,7
-3,Period,,,,,,,,,,,,,,7
-4,Period,,,,,,,,,,,,,,7
-5,Period,,,,,,,,,,,,,,7
-6,Period,,,,,,,,,,,,,,7
-7,Period,,,,,,,,,,,,,,7
-8,Period,,,,,,,,,,,,,,7
-9,Period,,,,,,,,,,,,,,7
-10,Period,,,,,,,,,,,,,,7
-11,Period,,,,,,,,,,,,,,7
+0,Period,,,,,,,,,,,,,,9
+1,Period,,,,,,,,,,,,,,9
+2,Period,,,,,,,,,,,,,,9
+3,Period,,,,,,,,,,,,,,9
+4,Period,,,,,,,,,,,,,,9
+5,Period,,,,,,,,,,,,,,5
+6,Period,,,,,,,,,,,,,,5
+7,Period,,,,,,,,,,,,,,5
+8,Period,,,,,,,,,,,,,,5
+9,Period,,,,,,,,,,,,,,5
+10,Period,,,,,,,,,,,,,,5
+11,Period,,,,,,,,,,,,,,5
 12,Period,,,,,,,,,,,,,,5
 13,Period,,,,,,,,,,,,,,5
-14,Period,,,,,,,,,,,,,,5
-15,Period,,,,,,,,,,,,,,1
-16,Period,,,,,,,,,,,,,,1
-17,Period,,,,,,,,,,,,,,1
-18,Period,,,,,,,,,,,,,,1
-19,Period,,,,,,,,,,,,,,8
-20,Period,,,,,,,,,,,,,,8
-21,Period,,,,,,,,,,,,,,8
-6,Change Event,,,,,,,,,,,8/11/00,,Brother born (Franky),
-5,Change Event,,,,,,,,,9,,9/22/98,,Sister born (Tonya),
-2,Change Event,,,,,,,7,,,,5/30/96,,Sister born (Clara),
-12,Change Event,,,,,,6,,,,,12/10/05,,Brother born (Robert),
-14,Change Event,,,,,,,7,,,,6/10/08,,Younger cousin born (Charlie),
-15,Change Event,,,,,5,,,,,,9/1/08,,Brother (Franky) started college ,
-18,Change Event,,,,,,,7,,,,10/14/11,,Cousin born (Statler),
-22,Change Event,,,,4,,,,,,,1/1/16,,Sister (Clara) diagnosed with eating disorder,
-21,Change Event,,,,4,,,,,,,6/1/15,,"Brother using drugs, distanced himself (Franky) ",
-14,Good Event,,,,,,,,,9,,6/10/08,,Younger cousin born (Bailey),
-21,Good Event,,,,,,,,,,10,1/1/15,9/1/15,Family time,
-18,Good Event,,,,,,,,8,,,5/1/12,,Soccer Camp,
-6,Good Event,,,,,,,,,9,,5/30/00,,Sister's birth (Clara),
-7,Good Event,,,,,,,,,9,,9/30/00,12/30/204,Big family vacations with counsins,
-10,Good Event,,,,,,,,8,,,3/1/04,,Won soccer tournament,
-11,Good Event,,,,,,,,8,,,1/1/05,12/31/06,Jewelry making,
-12,Good Event,,,,,,,7,,,,1/1/06,12/1/09,Successful academically,
-12,Good Event,,,,,,,7,,,,1/1/06,12/1/09,Had good group of friends,
-14,Good Event,,,,,,,7,,,,6/10/08,,Cousin born (Charlotte),
-19,Good Event,,,,,,,,8,,,5/1/13,,Graduated high school,
-20,Good Event,,,,,,,,,9,,6/1/14,,Spiritual awakening,
-1,Good Event,,,,,,,,,9,,10/18/94,,"Friendship with brother, Franky",
-20,Good Event,,,,,,6,,,,,9/1/13,5/1/14,College (Loyola),
-21,Good Event,,,,,,,,,9,,10/1/14,,Inpatient psychiatric treatment,
-20,Good Event,,,,,,,,,,10,1/1/14,5/1/14,College (Bloomfield),
-21,Good Event,,,,,,,,,,10,1/5/15,,Moving into new apartment,
-11,Other Event,,2,,,,,,,,,1/1/05,,Plucked eyelashes/eyebrows - starting in 4th grade,
-13,Other Event,,,3,,,,,,,,8/1/07,,Conflict with mom,
-14,Other Event,,2,,,,,,,,,1/1/08,,"Preoccupied with food and calories, irritable",
-14,Other Event,1,,,,,,,,,,1/1/08,,Restore and lose weight to make parents feel bad,
-21,Other Event,,,3,,,,,,,,7/25/15,,Inpatient psychiatric treatment,
-12,Bad Event,,,,4,,,,,,,9/1/05,10/20/13,"School was stressful, teased by classmates",
-16,Bad Event,,,,,,,,,,,1/1/10,1/1/11,Plucked all eyelashes/eyebrows,
-14,Bad Event,,,3,,,,,,,,1/1/08,2/9/16,General anxiety present constantly,
-15,Bad Event,,,,4,,,,,,,9/1/08,12/30/08,Brother left for school,
-22,Bad Event,,,3,,,,,,,,11/1/15,,Injury in 9th grade - could not do sports,
-18,Bad Event,1,,,,,,,,,,10/20/11,3/30/12,Quit attending highschool- had tutors for 4 months ,
-20,Bad Event,1,,,,,,,,,,1/1/14,5/1/14,Sskipping school,
-15,Bad Event,1,,,,,,,,,,1/1/09,1/1/13,Family conflict - a lot of fighting,
-15,Bad Event,1,,,,,,,,,,7/1/09,,Eating disorder started,
-21,Bad Event,,2,,,,,,,,,12/1/14,,Sister  raped (Clara),
-20,Bad Event,,,3,,,,,,,,8/1/14,3/1/15,Worsening eating disorder,
-21,Bad Event,,,3,,,,,,,,9/3/14,,Worst anxiety,
-21,Bad Event,1,,,,,,,,,,1/13/15,,Relapsed eating disorder,
-15,Bad Event,1,,,,,,,,,,5/20/09,12/1/09,Depressive episode with SI,
-18,Bad Event,1,,,,,,,,,,6/1/12,2/1/13,Depressive episode,
-10,Bad Event,,2,,,,,,,,,1/1/04,,Skin picking and hair pulling started,
-14,Bad Event,,,,4,,,,,,,3/13/08,,Food restriction and obsessive exercise began,
-20,Bad Event,,,3,,,,,,,,5/1/14,,Dropped out of college (Loyola),
+14,Period,,,,,,,,,,,,,,3
+15,Period,,,,,,,,,,,,,,3
+16,Period,,,,,,,,,,,,,,3
+17,Period,,,,,,,,,,,,,,3
+18,Period,,,,,,,,,,,,,,3
+19,Period,,,,,,,,,,,,,,3
+20,Period,,,,,,,,,,,,,,3
+21,Period,,,,,,,,,,,,,,3
+22,Period,,,,,,,,,,,,,,3
+23,Period,,,,,,,,,,,,,,3
+24,Period,,,,,,,,,,,,,,3
+25,Period,,,,,,,,,,,,,,5
+26,Period,,,,,,,,,,,,,,5
+27,Period,,,,,,,,,,,,,,5
+28,Period,,,,,,,,,,,,,,5
+29,Period,,,,,,,,,,,,,,5
+30,Period,,,,,,,,,,,,,,5
+31,Period,,,,,,,,,,,,,,5
+32,Period,,,,,,,,,,,,,,5
+33,Period,,,,,,,,,,,,,,5
+34,Period,,,,,,,,,,,,,,5
+35,Period,,,,,,,,,,,,,,4
+36,Period,,,,,,,,,,,,,,4
+37,Period,,,,,,,,,,,,,,4
+38,Period,,,,,,,,,,,,,,4
+39,Period,,,,,,,,,,,,,,4
+40,Period,,,,,,,,,,,,,,4
+41,Period,,,,,,,,,,,,,,4
+42,Period,,,,,,,,,,,,,,4
+43,Period,,,,,,,,,,,,,,4
+44,Period,,,,,,,,,,,,,,4
+45,Period,,,,,,,,,,,,,,2
+46,Period,,,,,,,,,,,,,,2
+47,Period,,,,,,,,,,,,,,2
+48,Period,,,,,,,,,,,,,,2
+49,Period,,,,,,,,,,,,,,2
+50,Period,,,,,,,,,,,,,,2
+51,Period,,,,,,,,,,,,,,2
+52,Period,,,,,,,,,,,,,,2
+53,Period,,,,,,,,,,,,,,2
+54,Period,,,,,,,,,,,,,,2
+55,Period,,,,,,,,,,,,,,2
+56,Period,,,,,,,,,,,,,,2
+4,Change Event,,,,,5,,,,,,3/27/65,,Father abandoned family.,
+17,Change Event,,,3,,,,,,,,7/1/78,8/1/78,Ran away from home.,
+17,Good Event,,,,,,,,8,,,8/1/78,,Scholarship to private high school,
+23,Good Event,,,,,,,7,,,,5/1/84,,Graduated college,
+28,Change Event,,,,,,6,,,,,3/5/88,,Divorced 1st husband (Jacob),
+23,Change Event,,,,,,,,8,,,6/6/84,,Married 1st husband (Jacob),
+31,Change Event,,,,,,,,,,10,1/23/93,,"Son (Cooper) born, single mother.",
+33,Change Event,,,,,,,,8,,,2/14/94,,Married 2nd husband (Edward),
+45,Change Event,,,3,,,,,,,,7/1/06,,Divorced 2nd husband (Edward),
+37,Change Event,,,,,,,,,,10,9/1/98,,Daughter born (Allison),
+39,Change Event,,,,,,,,,9,,1/3/01,,Son born (Daniel),
+49,Change Event,,,,,,,,,,10,1/1/10,,Granddaughter born (Arya),
+14,Other Event,,,,,5,,,,,,9/1/75,5/1/79,No running water or electricity in home,
+14,Bad Event,,2,,,,,,,,,1/1/76,,Classmate abducted and raped.,
+15,Bad Event,1,,,,,,,,,,5/1/76,,Depression and SI began,
+51,Other Event,1,,,,,,,,,,4/1/12,2/1/15,Dating boyfriend (Brady),
+4,Bad Event,,,,4,,,,,,,3/27/65,11/1/79,"Getting evicted, moving often",
+19,Bad Event,1,,,,,,,,,,12/21/80,,Had abortion,
+18,Bad Event,,2,,,,,,,,,11/21/79,,Friend was molested,
+24,Bad Event,,,3,,,,,,,,1/1/85,4/15/87,Physically abused by husband (Jacob),
+54,Other Event,,,,,,5,,,,,8/1/14,,Stopped taking sertraline and buproprion,

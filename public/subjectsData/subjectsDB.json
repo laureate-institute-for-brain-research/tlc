@@ -1,5 +1,5 @@
 {
-    "CASE-1" : {
+    "CASE-4" : {
         "group" : "Eating +",
         "age" : 21,
         "birthdate" : "1994-10-18"
@@ -14,7 +14,7 @@
         "age" : 39,
         "birthdate" : "1978-05-10"
     },
-    "CASE-4" : {
+    "CASE-1" : {
         "group" : "Comorbid Depression + Anxiety",
         "age" : 56,
         "birthdate" : "1961-07-07"

@@ -38,7 +38,7 @@ Age,Event Type,1,2,3,4,5,6,7,8,9,10,Start Date,End Date,Event Description,Period
 36,Period,,,,,,,,,,,,,,2
 37,Period,,,,,,,,,,,,,,2
 38,Period,,,,,,,,,,,,,,2
-39,Period,,,,,,,,,,,,,,
+39,Period,,,,,,,,,,,,,,2
 21,Change Event,,,,,,,,,,10,8/1/99,,First son born (James),
 25,Change Event,,,,,,,,,,10,2/12/01,,Married wife (Caroline),
 28,Change Event,,,,,,,,,,10,2/12/04,,Divorced wife (Caroline),
@@ -46,7 +46,7 @@ Age,Event Type,1,2,3,4,5,6,7,8,9,10,Start Date,End Date,Event Description,Period
 22,Change Event,,,,,,,,,,10,9/1/03,,Daughter born (Kara),
 2,Good Event,,,,,,,,,,10,7/20/80,,Sister born (Joanne),
 5,Good Event,,,,,,,,8,,,1/1/83,1/1/88,Spent time w/ grandmother,
-6,Good Event,,,,,,,,,9,,2/21/84,,Success with dirt bike racing,
+6,Good Event,,,,,,,,,9,,2/21/84,,Success with bike racing,
 11,Good Event,,,,,,,,8,,,6/1/89,8/1/89,Church camp,
 18,Good Event,,,,,,,,,9,,2/21/96,,Wrestling - won state,
 23,Good Event,,,,,,,,8,,,2/21/01,,Bought first home ,
