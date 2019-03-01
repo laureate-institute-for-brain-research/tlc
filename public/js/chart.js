@@ -65,7 +65,7 @@ var dashboard; // used for timeline chart
 
 $(document).ready(function () {
 
-  $("#nav-title").attr('href', '/lifechartexamples')
+  $("#nav-title").attr('href', '/tlc')
 
   document.getElementById('homenav').innerHTML = subject.toUpperCase()
 
@@ -2334,7 +2334,7 @@ $(document).ready(function () {
     console.log(document.getElementById('epochtitle').innerHTML)
     $('#subject, #eventsChart, #epochtitle, #timeline_chart').printThis({
       importCSS: false,
-      loadCSS: 'lifechartexamples/public/css/print.css',
+      loadCSS: 'tlc/public/css/print.css',
       debug: false,
       // header: "<h1>Tulsa Life Chart</h1>",
       footer: null,
