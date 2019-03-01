@@ -13,8 +13,9 @@ function getQueryVariable(variable) {
 var subject = getQueryVariable('subject');
 subject = subject.toUpperCase()
 
-var birthDate = ''
-var group = ''
+var birthDate;
+var assesseddate;
+var group;
 
 
 
@@ -81,7 +82,7 @@ $(document).ready(function () {
 
 
 // Loading the Vsualziation API and the timepline package
-google.charts.load('visualization', '1', {
+google.charts.load('visualization', '43', {
   'packages': ['corechart', 'timeline', 'controls']
 });
 
@@ -237,6 +238,8 @@ function drawTimelineChart(data) {
     birthdate = returnDateObj(row[5])
     assesseddate = returnDateObj(row[6])
 
+  
+
     // swaps the date if one end date came before start date
     if (startdate.getTime() > enddate.getTime()) {
       tempdate = startdate;
@@ -313,6 +316,7 @@ function drawTimelineChart(data) {
     // height: 100%,
     forceIFrame: false,
     hAxis: {
+      maxValue: moment(new Date(assesseddate)).add('6','months')._d,
       gridLines: {
         count: 10
       }
@@ -728,7 +732,7 @@ function drawTimelineChart(data) {
     rangeSlider.setState({
       'range': {
         'start': periodDates('b', birthDate).start ,
-        'end': new Date()
+        'end': moment(new Date(assesseddate))._d
       }
     })
     rangeSlider.draw()
