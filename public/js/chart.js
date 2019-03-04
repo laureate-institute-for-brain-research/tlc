@@ -1130,10 +1130,14 @@ function drawEventsChart() {
       age = parseInt(row[0])
 
       
-
       periodrating = getNewMoodRating(age, getNumber(row[15]))[1]
 
       eventtype = row[1]
+
+      // New Data points to help offset overlappint events
+      newPoints = {
+
+      }
 
       one = getNumber(row[2])
       onenew = getNewMoodRating(age, getNumber(row[2]))[1]

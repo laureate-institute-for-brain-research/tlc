@@ -54,8 +54,8 @@ Age,Event Type,1,2,3,4,5,6,7,8,9,10,Start Date,End Date,Event Description,Period
 52,Period,,,,,,,,,,,,,,2
 53,Period,,,,,,,,,,,,,,2
 54,Period,,,,,,,,,,,,,,2
-55,Period,,,,,,,,,,,,,,
-56,Period,,,,,,,,,,,,,,
+55,Period,,,,,,,,,,,,,,2
+56,Period,,,,,,,,,,,,,,2
 4,Change Event,,,,,5,,,,,,3/27/65,,Father abandoned family.,
 17,Change Event,,,3,,,,,,,,7/1/78,8/1/78,Ran away from home.,
 17,Good Event,,,,,,,,8,,,8/1/78,,Scholarship to private high school,
