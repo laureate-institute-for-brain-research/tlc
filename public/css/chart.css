@@ -243,3 +243,24 @@ div.google-visualization-tooltip > ul > li > span {
     width: 0;
   }
 }
+
+
+.rotate {
+  padding-top: 100px;
+  font-size: 14px;
+  font-style: italic;
+  width: 200px; 
+  height: 400px !important;
+  /* FF3.5+ */
+  -moz-transform: rotate(-90.0deg);
+  /* Opera 10.5 */
+  -o-transform: rotate(-90.0deg);
+  /* Saf3.1+, Chrome */
+  -webkit-transform: rotate(-90.0deg);
+  /* IE6,IE7 */
+  filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=0.083);
+  /* IE8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)";
+  /* Standard */
+  transform: rotate(-90.0deg);
+}

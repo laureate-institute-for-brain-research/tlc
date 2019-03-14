@@ -1136,39 +1136,48 @@ function drawEventsChart() {
 
       // New Data points to help offset overlappint events
       newPoints = {
-
+        '1' : getNumber(row[2]),
+        '2' : getNumber(row[3]),
+        '3' : getNumber(row[4]),
+        '4' : getNumber(row[5]),
+        '5' : getNumber(row[6]),
+        '6' : getNumber(row[7]),
+        '7' : getNumber(row[8]),
+        '8' : getNumber(row[9]),
+        '9' : getNumber(row[10]),
+        '10' : getNumber(row[11])
       }
 
       one = getNumber(row[2])
-      onenew = getNewMoodRating(age, getNumber(row[2]))[1]
+      onenew = newPoints['1']
 
 
       two = getNumber(row[3])
-      twonew = getNewMoodRating(age, getNumber(row[3]))[1]
+      twonew = newPoints['2']
 
       three = getNumber(row[4])
-      threenew = getNewMoodRating(age, getNumber(row[4]))[1]
+      threenew = newPoints['3']
 
       four = getNumber(row[5])
-      fournew = getNewMoodRating(age, getNumber(row[5]))[1]
+      fournew = newPoints['4']
 
       five = getNumber(row[6])
-      fivenew = getNewMoodRating(age, getNumber(row[6]))[1]
+      fivenew = newPoints['5']
 
       six = getNumber(row[7])
-      sixnew = getNewMoodRating(age, getNumber(row[7]))[1]
+      sixnew = newPoints['6']
 
       seven = getNumber(row[8])
-      sevennew = getNewMoodRating(age, getNumber(row[8]))[1]
+      sevennew = newPoints['7']
 
       eight = getNumber(row[9])
-      ewightnew = getNewMoodRating(age, getNumber(row[9]))[1]
+      ewightnew = newPoints['8']
 
       nine = getNumber(row[10])
-      ninenew = getNewMoodRating(age, getNumber(row[10]))[1]
+      ninenew = newPoints['9']
 
       ten = getNumber(row[11])
-      tennew = getNewMoodRating(age, getNumber(row[11]))[1]
+      tennew = newPoints['10']
 
       agenew = getNewMoodRating(age, getNumber(row[15]))[0]
 
@@ -1260,13 +1269,30 @@ function drawEventsChart() {
         periodrating,
         eventtype,
       ]
-
       //console.log(finalRow);
 
       finalData.push(finalRow);
     }
 
-    // console.log(finalData);
+    /**
+     * Offset event data to prevent overlapping
+     * @param {2d Array} data finalData
+     */
+    function offsetData(data){
+      data.forEach((row, index)=>{
+        if(index <= 2) return // skip first 2
+        // Handle All 1
+        if(row[1] == 1){
+          ratingOneAges = data.filter(i =>{ i[1] == 1})
+          // row[1] = 0.5
+          console.log(ratingOneAges)
+        }
+      })
+      
+    }
+    offsetData(finalData)
+
+    console.log(finalData);
 
     var data = new google.visualization.DataTable();
     data.addColumn('number', 'Age');
