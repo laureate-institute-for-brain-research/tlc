@@ -36,16 +36,18 @@ Age,Event Type,1,2,3,4,5,6,7,8,9,10,Start Date,End Date,Event Description,Period
 34,Period,,,,,,,,,,,,,,5
 35,Period,,,,,,,,,,,,,,5
 36,Period,,,,,,,,,,,,,,5
-37,Period,,,,,,,,,,,,,,5
+37,Period,,,,,,,,,,,,,,
 4,Change Event,,,,,,,,,,10,12/1/87,,Sister born (Sam),
-18,Change Event,,,,,5,,,,,,10/1/98,,Parents seperated ,
-25,Change Event,,,,,,,,8,,,10/1/05,10/1/07,1st Marriage (Tony),
-32,Change Event,,,,,,,,8,,,5/15/13,8/9/17,2nd Marriage (Jackson),
-22,Change Event,,,,,,,,,,10,8/13/03,,Daughter Born (Kamila),
+18,Change Event,,,,,5,,,,,,10/1/98,,Parents separated ,
+25,Change Event,,,,,,,,8,,,10/1/05,10/1/07,1st marriage (Tony),
+27,Change Event,,,,,5,,,,,,10/1/07,,1st divorce (Tony),
+32,Change Event,,,,,,,,8,,,5/15/13,8/9/17,2nd marriage (Jackson),
+36,Change Event,,,,4,,,,,,,8/9/17,,2nd divorce (Jackson),
+22,Change Event,,,,,,,,,,10,8/13/03,,Daughter born (Kamila),
 5,Good Event,,,,,,,,8,,,3/19/84,9/6/89,Close to sister (Sam),
 12,Good Event,,,,,,,,,,10,6/9/92,5/1/95,Success with softball,
 20,Good Event,,,,,,,,,,10,9/5/01,,Son born (Charlie),
-25,Good Event,,,,,,,,,,,3/1/06,,Daughter Born (Kayli),
+25,Good Event,,,,,,,,,9,,3/1/06,,Daughter born (Kayli),
 7,Bad Event,1,,,,,,,,,,10/1/89,11/1/95,Sexual abuse (uncle),
 16,Bad Event,1,,,,,,,,,,6/30/97,,Depression started,
 15,Bad Event,,,3,,,,,,,,5/1/98,,Parents divorced,

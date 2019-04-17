@@ -54,22 +54,22 @@ Age,Event Type,1,2,3,4,5,6,7,8,9,10,Start Date,End Date,Event Description,Period
 52,Period,,,,,,,,,,,,,,2
 53,Period,,,,,,,,,,,,,,2
 54,Period,,,,,,,,,,,,,,2
-55,Period,,,,,,,,,,,,,,2
-56,Period,,,,,,,,,,,,,,2
+55,Period,,,,,,,,,,,,,,
+56,Period,,,,,,,,,,,,,,
 4,Change Event,,,,,5,,,,,,3/27/65,,Father abandoned family.,
-17,Change Event,,,3,,,,,,,,7/1/78,8/1/78,Ran away from home.,
+17,Change Event,,,3,,,,,,,,7/1/78,8/1/78,Ran away from home,
 17,Good Event,,,,,,,,8,,,8/1/78,,Scholarship to private high school,
 23,Good Event,,,,,,,7,,,,5/1/84,,Graduated college,
 28,Change Event,,,,,,6,,,,,3/5/88,,Divorced 1st husband (Jacob),
 23,Change Event,,,,,,,,8,,,6/6/84,,Married 1st husband (Jacob),
-31,Change Event,,,,,,,,,,10,1/23/93,,"Son (Cooper) born, single mother.",
+31,Change Event,,,,,,,,,,10,1/23/93,,"Son (Cooper) born, single mother",
 33,Change Event,,,,,,,,8,,,2/14/94,,Married 2nd husband (Edward),
 45,Change Event,,,3,,,,,,,,7/1/06,,Divorced 2nd husband (Edward),
 37,Change Event,,,,,,,,,,10,9/1/98,,Daughter born (Allison),
 39,Change Event,,,,,,,,8,,,1/3/01,,Son born (Daniel),
 49,Change Event,,,,,,,,,,10,1/1/10,,Granddaughter born (Arya),
 14,Other Event,,,,,5,,,,,,9/1/75,5/1/79,No running water or electricity in home,
-14,Bad Event,,2,,,,,,,,,1/1/76,,Classmate abducted and raped.,
+14,Bad Event,,2,,,,,,,,,1/1/76,,Classmate abducted and raped,
 15,Bad Event,1,,,,,,,,,,5/1/76,,Depression and SI began,
 51,Other Event,1,,,,,,,,,,4/1/12,2/1/15,Dating boyfriend (Brady),
 4,Bad Event,,,,4,,,,,,,3/27/65,11/1/79,"Getting evicted, moving often",
