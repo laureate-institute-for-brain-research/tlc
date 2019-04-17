@@ -201,7 +201,7 @@ function getTimelineData() {
  * @param {String} category 
  */
 function filterCategory(category){
-  console.log(category)
+  // console.log(category)
   if (category == 'Mental Health'){
     category = 'Mental Health Tx'
   }
