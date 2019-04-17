@@ -196,6 +196,18 @@ function getTimelineData() {
 }
 
 
+/**
+ * Workaround to fix the changed name for the mental tx label
+ * @param {String} category 
+ */
+function filterCategory(category){
+  console.log(category)
+  if (category == 'Mental Health'){
+    category = 'Mental Health Tx'
+  }
+  return category
+}
+
 
 function drawTimelineChart(data) {
   var finalData = [];
@@ -231,7 +243,7 @@ function drawTimelineChart(data) {
 
 
     order = row[0]
-    category = row[1]
+    category = filterCategory(row[1])
     period = row[2]
     startdate = returnDateObj(row[3])
     enddate = returnDateObj(row[4])
