@@ -1687,6 +1687,7 @@ function drawEventsChart() {
           {v: 9, f: '9'},
           {v: 10, f: '10'},
           {v: 11, f: ''},
+          {v: 12, f: ''},
 
         ]
       },
