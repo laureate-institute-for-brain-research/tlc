@@ -1631,20 +1631,15 @@ function drawEventsChart() {
     //  These are key = duplicated ages, and values that are arrays of mood ratings
     // age : [rating, rating]
     for (var age in duplicatesDict){
-
-      if(getMinDifference(duplicatesDict[age]) == 0){
-        // console.log(age)
-        findDuplicates(duplicatesDict[age]).forEach((row,idx) =>{
-          console.log({age: age, rating: row + .5})
-          console.log(returnIndex(finalEventData, parseInt(age),row))
-          rowidx = returnIndex(finalEventData, parseInt(age),row).row
-          colidx = returnIndex(finalEventData, parseInt(age),row).col
-          
-          finalEventData[rowidx][colidx] = row + 0.5
-          
-        })
+      findDuplicates(duplicatesDict[age]).forEach((row,idx) =>{
+        console.log({age: age, rating: row + .5})
+        console.log(returnIndex(finalEventData, parseInt(age),row))
+        rowidx = returnIndex(finalEventData, parseInt(age),row).row
+        colidx = returnIndex(finalEventData, parseInt(age),row).col
         
-      }
+        finalEventData[rowidx][colidx] = row + 0.5
+        
+      })
     }
     // finalEventData[58][11] = 3.5
     // finalEventData[76][11] = 3.5
