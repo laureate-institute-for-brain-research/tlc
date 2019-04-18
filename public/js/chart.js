@@ -1637,7 +1637,7 @@ function drawEventsChart() {
         rowidx = returnIndex(finalEventData, parseInt(age),row).row
         colidx = returnIndex(finalEventData, parseInt(age),row).col
         
-        finalEventData[rowidx][colidx] = row + 0.5
+        finalEventData[rowidx][colidx] = row + 0.3
         
       })
     }
@@ -1657,7 +1657,9 @@ function drawEventsChart() {
       focusTarget: 'datum',
       aggregationTarget: 'category',
       tooltip: {
-        isHtml: true
+        isHtml: true,
+        ignoreBounds: false,
+        trigger: 'hover'
       },
       vAxis: {
         title: 'Mood Rating',
@@ -1709,58 +1711,115 @@ function drawEventsChart() {
       //curveType : 'funtion',
       //steppedArea
       series: {
-
+        // Mood Rating: 1
         0: {
           type: 'scatter',
           color: '#0E0CE5',
+          annotations: {
+            stem: {
+              length: -20
+            }
+          }
 
         },
-
+        // Mood Rating: 2
         1: {
           type: 'scatter',
           color: '#0E09AB',
+          annotations: {
+            stem: {
+              length: -15
+            }
+          }
 
         },
-
+        // Mood Rating 3
         2: {
           type: 'scatter',
           color: '#000672',
+          annotations: {
+            stem: {
+              length: 10
+            }
+          }
 
         },
-        // Other Event
+        // Mood Rating 4
         3: {
           type: 'scatter',
           color: '#000339',
+          annotations: {
+            stem: {
+              length: 15
+            }
+          }
 
         },
+        // Mood Rating 5
         4: {
           type: 'scatter',
           color: '#000000',
+          annotations: {
+            stem: {
+              length: 20
+            }
+          }
 
         },
+        // Mood Rating 6
         5: {
           type: 'scatter',
           color: '#000000',
+          annotations: {
+            stem: {
+              length: 15
+            }
+          }
 
         },
+        // Mood Rating 7
         6: {
           type: 'scatter',
           color: '#3A0700',
+          annotations: {
+            stem: {
+              length: 20
+            }
+          }
 
         },
+        // Mood Rating 8
         7: {
           type: 'scatter',
           color: '#750F00',
+          annotations: {
+            stem: {
+              length: 12
+            }
+          }
 
         },
+        // Mood Rating 9
         8: {
           type: 'scatter',
           color: '#B01600',
+          annotations: {
+            stem: {
+              length: 10
+            }
+          }
 
         },
+        // Mood Rating 10
         9: {
           type: 'scatter',
           color: '#EB1E00',
+          annotations: {
+            stem: {
+              length: 17
+            }
+          }
+
 
         },
         // Period Rating
@@ -1769,7 +1828,9 @@ function drawEventsChart() {
           lineWidth: 4,
           color: '#666666',
           visibleInLegend: false,
-          areaOpacity: 1
+          areaOpacity: 1,
+          enableInteractivity: false,
+          // lineDashStyle: [20,1]
         }
 
       },
