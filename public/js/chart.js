@@ -210,7 +210,7 @@ function filterCategory(category){
 
 
 function drawTimelineChart(data) {
-  var finalData = [];
+  finalData = [];
 
   fileArray = stringToArray(data);
 
@@ -1033,7 +1033,7 @@ function getNewMoodRating(age, mood) {
   // mood already in that corresponding age
   // return a shifted mood
 
-  var DODGE_WIDTH = .3
+  var DODGE_WIDTH = 0
 
 
   try {
@@ -1112,6 +1112,84 @@ function filterDescription(value) {
 
 
 /**
+ * Return Duplicates
+ * @param {Array} data 
+ */
+function findDuplicates(data) {
+
+  let result = [];
+
+  data.forEach(function(element, index) {
+    
+    // Find if there is a duplicate or not
+    if (data.indexOf(element, index + 1) > -1) {
+      
+      // Find if the element is already in the result array or not
+      if (result.indexOf(element) === -1) {
+        result.push(element);
+      }
+    }
+  });
+
+  return result;
+}
+
+/**
+ * returns the min difference of given array
+ * @param {array} array 
+ */
+function getMinDifference(array){
+  diff = 1
+  array.forEach(function(element,index){
+    try{
+      if (array[index + 1] - array[index] <= diff) {
+        diff = array[index + 1] - array[index] 
+      }
+    } catch(e){
+
+    }
+  })
+
+  return diff
+  
+}
+
+
+/**
+ * Returns object of row and column index given age and rating
+ * @param {googleDatatable} dataTable 
+ * @param {Int} age 
+ * @param {Int} rating 
+ */
+function returnIndex(finalData, age,rating){
+  idxojb = {}
+  ratingColumnMap = {
+    1 : 1,
+    2 : 6,
+    3 : 11,
+    4 : 16,
+    5 : 21,
+    6 : 26,
+    7 : 31,
+    8 : 36,
+    9 : 41,
+    10 : 46
+  }
+  finalData.forEach((row,idx)=>{
+    
+    if (row[0] == age && row[ratingColumnMap[rating]] == rating){
+      // console.log(ratingColumnMap[rating])
+      idxojb.row = idx
+      idxojb.col = ratingColumnMap[rating]
+    }
+  })
+
+  return idxojb
+  
+}
+
+
+/**
  * Use to get the events data  and draw the events chart
  */
 function drawEventsChart() {
@@ -1119,12 +1197,14 @@ function drawEventsChart() {
   var progressBar = document.getElementById("eventProgess");
 
   $.get('public/subjectsData/' + subject + '/' + subject + '-events-rev.csv', function (data) {
-    var finalData = [];
+    finalEventData = [];
 
     // console.log('events data')
     // console.log(data)
 
     fileArray = stringToArray(data);
+
+    
 
     // 2D array of age, rating) of all events
     eventTuple = []
@@ -1283,7 +1363,7 @@ function drawEventsChart() {
       ]
       //console.log(finalRow);
 
-      finalData.push(finalRow);
+      finalEventData.push(finalRow);
     }
 
     /**
@@ -1302,9 +1382,9 @@ function drawEventsChart() {
       })
       
     }
-    offsetData(finalData)
+    // offsetData(finalData)
 
-    console.log(finalData);
+    // console.log(finalData);
 
     var data = new google.visualization.DataTable();
     data.addColumn('number', 'Age');
@@ -1515,7 +1595,63 @@ function drawEventsChart() {
       'role': 'domain'
     });
 
-    data.addRows(finalData)
+
+    // console.log(finalData)
+    
+
+    // console.log(data.getNumberOfRows())
+
+    ages = []
+
+    finalEventData.forEach((row,idx)=>{
+      ages.push(row[0])
+    })
+    ratingsindex = [1,6,11,16,21,26,31,36,41,46,51]
+    duplicatesDict = {}
+    // console.log(ages)
+    findDuplicates(ages).forEach((row,index) =>{
+      // console.log(row)
+      ratings = []
+      duplicatesDict[row] = []
+
+      finalEventData.forEach((elem, idx) =>{
+        if(row == elem[0]){
+
+          elem.forEach((colElemn,colidx)=>{
+            if(ratingsindex.includes(colidx) && !isNaN(elem[colidx]) && elem[colidx] != null){
+              // console.log({age: row, rating: elem[colidx]})
+              duplicatesDict[row].push(elem[colidx])
+            }
+          })
+        }
+      })
+    })
+
+    // Iterate over the duplicates
+    //  These are key = duplicated ages, and values that are arrays of mood ratings
+    // age : [rating, rating]
+    for (var age in duplicatesDict){
+
+      if(getMinDifference(duplicatesDict[age]) == 0){
+        // console.log(age)
+        findDuplicates(duplicatesDict[age]).forEach((row,idx) =>{
+          console.log({age: age, rating: row + .5})
+          console.log(returnIndex(finalEventData, parseInt(age),row))
+          rowidx = returnIndex(finalEventData, parseInt(age),row).row
+          colidx = returnIndex(finalEventData, parseInt(age),row).col
+          
+          finalEventData[rowidx][colidx] = row + 0.5
+          
+        })
+        
+      }
+    }
+    // finalEventData[58][11] = 3.5
+    // finalEventData[76][11] = 3.5
+
+    data.addRows(finalEventData)
+
+  
 
     var fontsize = 10
 
@@ -1524,6 +1660,7 @@ function drawEventsChart() {
       width: 910,
       enableInteractivity: true,
       focusTarget: 'datum',
+      aggregationTarget: 'category',
       tooltip: {
         isHtml: true
       },
@@ -1536,7 +1673,22 @@ function drawEventsChart() {
           min: null,
           max: null
         },
-        ticks: _.range(0, 11, 1)
+        // Show values from 1 - 10 ,but don't show the 0 and 11 values
+        ticks: [
+          {v: 0, f: ''},
+          {v: 1, f: '1'},
+          {v: 2, f: '2'},
+          {v: 3, f: '3'},
+          {v: 4, f: '4'},
+          {v: 5, f: '5'},
+          {v: 6, f: '6'},
+          {v: 7, f: '7'},
+          {v: 8, f: '8'},
+          {v: 9, f: '9'},
+          {v: 10, f: '10'},
+          {v: 11, f: ''},
+
+        ]
       },
       hAxis: {
         title: 'Age',
@@ -1629,7 +1781,7 @@ function drawEventsChart() {
         highContrast: false,
         datum: {
           stem: {
-            length: 15,
+            length: 20,
             color: "#000000"
           }
         },
@@ -1923,7 +2075,6 @@ function drawEventsChart() {
       // Trigger PerioColor to set the same color
     $('#periodColor').trigger('change')
     })
-
 
     google.visualization.events.addListener(comboChart, 'ready', function () {
       
