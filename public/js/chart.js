@@ -436,8 +436,10 @@ function drawTimelineChart(data) {
 
 
             // Cutoff Text if width of rectangle is really small (< 50 width)
+            // Decided not to substring the text 
             if(rectangleWidth <= 50 && text.innerHTML.length <= 50){
-              text.innerHTML = text.innerHTML.substring(0,3)
+              // text.innerHTML = text.innerHTML.substring(0,3)
+              
             }
 
             // Cut longer if the width of rectangle is bigger
