@@ -1,0 +1,65 @@
+"Variable / Field Name","Form Name","Section Header","Field Type","Field Label","Choices, Calculations, OR Slider Labels","Field Note","Text Validation Type OR Show Slider Number","Text Validation Min","Text Validation Max",Identifier?,"Branching Logic (Show field only if...)","Required Field?","Custom Alignment","Question Number (surveys only)","Matrix Group Name","Matrix Ranking?","Field Annotation"
+lci_assessed_at,life_chart_interview_a_birth,"==========
+Instructions
+==========
+
+""We are now going to complete what we refer to as the life chart. With this study, we are interested in understanding events in your life that may contribute to how you think and feel now. We understand that you will be asked to complete many multiple choice questionnaires as well, but some events cannot be captured as well in that format. The life chart is a way to compile, or organize, events in your life into a timeline.
+
+The format of the life chart is as follows:
+(1) We divide your life from birth to now into different time periods.
+(2) For each time period we are going to ask you a series of questions.
+(3) We would like you to tell us in your words what the events were, when they happened and how they affected you.
+(4) These events may include things that happened to you at home, at school, at work, with family or friends.
+(5) Sometimes details are difficult to remember or discuss, but we would like you to do the best you can.
+(6) For each time period we will ask you to rate how you felt overall on a scale from 1 (the worst you have ever felt) to 10 (the best you have ever felt). You can rate the time period as a 5 if it is neutral.
+
+At the end of this interview, we will generate a graph that summarizes the events that happened throughout your life. We would like to audio record the interview to make sure we don't miss any important information to be included in the graph. We will provide you with a copy of the audio file.
+
+Do you have any questions before we get started?""""
+
+----------
+
+For each time period, the interviewer asks each of the questions/prompts listed. For the most recent period, the number of years covered may be decreased to the number of years since the beginning of that specific period (e.g., if they are 28 years old, the last period would be from age 25-28). At follow-up, questions will only be asked for the time that has lapsed since the previous interview (e.g., the past 3 months).
+
+Via a REDCap/R interface, a summary of the information collected in this interview will be generated and printed out. This print out can then be used as a reference when conducting the MINI and other psychological interviews and can be provided to the subject for them to keep.",text,"Assessed at",,,date_ymd,,,y,,y,,,,,
+lci_assessed_by,life_chart_interview_a_birth,,sql,"Interview conducted by","select t1.username, concat(t2.user_firstname, ' ', t2.user_lastname) from redcap_user_rights as t1 inner join redcap_user_information as t2 on t1.username = t2.username where t1.project_id=116",,autocomplete,,,,,,,,,,
+lci_timeline,life_chart_interview_a_birth,,file,"Timeline
+
+----------
+
+Generating a timeline will upload an image file to this field. Refreshing this page may be necessary.",,,,,,,,,,,,,
+lci_a1i,life_chart_interview_a_birth,"Section A: Birth",text,"A1. When were you born?
+
+Date:
+
+<i>*The DOB used to determine # of sections to administer (e.g. if 24 years old, only administer Sections A-E)</i>",,,date_ymd,,,y,,y,,,,,
+lci_a1ii,life_chart_interview_a_birth,,text,"A1. Where were you born?
+
+City",,,,,,,,,,,,,
+lci_a1iii,life_chart_interview_a_birth,,text,"A1. Where were you born?
+
+State",,,,,,,,,,,,,
+lci_a1iv,life_chart_interview_a_birth,,text,"A1. Where were you born?
+
+Country",,,,,,,,,,,,,
+lci_a2_count,life_chart_interview_a_birth,,dropdown,"A2#. Were there any significant problems or details about your birth? (medical issues, premature, twins, etc.)
+
+Count:","0, 0 | 1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9",,,,,,,,,,,,
+lci_a2_1,life_chart_interview_a_birth,,notes,"Event #1
+Summary:",,,,,,,"[lci_a2_count] >= 1",,,,,,
+lci_a2_2,life_chart_interview_a_birth,,notes,"Event #2
+Summary:",,,,,,,"[lci_a2_count] >= 2",,,,,,
+lci_a2_3,life_chart_interview_a_birth,,notes,"Event #3
+Summary:",,,,,,,"[lci_a2_count] >= 3",,,,,,
+lci_a2_4,life_chart_interview_a_birth,,notes,"Event #4
+Summary:",,,,,,,"[lci_a2_count] >= 4",,,,,,
+lci_a2_5,life_chart_interview_a_birth,,notes,"Event #5
+Summary:",,,,,,,"[lci_a2_count] >= 5",,,,,,
+lci_a2_6,life_chart_interview_a_birth,,notes,"Event #6
+Summary:",,,,,,,"[lci_a2_count] >= 6",,,,,,
+lci_a2_7,life_chart_interview_a_birth,,notes,"Event #7
+Summary:",,,,,,,"[lci_a2_count] >= 7",,,,,,
+lci_a2_8,life_chart_interview_a_birth,,notes,"Event #8
+Summary:",,,,,,,"[lci_a2_count] >= 8",,,,,,
+lci_a2_9,life_chart_interview_a_birth,,notes,"Event #9
+Summary:",,,,,,,"[lci_a2_count] >= 9",,,,,,

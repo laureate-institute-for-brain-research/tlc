@@ -1,3 +1,6 @@
+// Tulsa Life Chart 
+// Source Code
+
 
 function getQueryVariable(variable) {
   var query = window.location.search.substring(1);
@@ -17,13 +20,10 @@ var birthDate;
 var assesseddate;
 var group;
 
-
-
-
 $.get('public/subjectsData/subjectsDB.json', function (data) {
-  if (typeof data == 'string'){
+  if (typeof data == 'string') {
     subjectJSON = JSON.parse(data)
-  }else {
+  } else {
     subjectJSON = data
   }
 
@@ -80,7 +80,6 @@ $(document).ready(function () {
 
 });
 
-
 // Loading the Vsualziation API and the timepline package
 google.charts.load('visualization', '43', {
   'packages': ['corechart', 'timeline', 'controls']
@@ -90,10 +89,7 @@ google.charts.load('visualization', '43', {
 // Draw T
 google.charts.setOnLoadCallback(getTimelineData);
 
-
 // Draw Events Chart
-// google.charts.setOnLoadCallback(drawEventsChart);
-
 
 function stringToArray(string) {
   // body...
@@ -200,9 +196,9 @@ function getTimelineData() {
  * Workaround to fix the changed name for the mental tx label
  * @param {String} category 
  */
-function filterCategory(category){
+function filterCategory(category) {
   // console.log(category)
-  if (category == 'Mental Health'){
+  if (category == 'Mental Health') {
     category = 'Mental Health Tx'
   }
   return category
@@ -250,7 +246,7 @@ function drawTimelineChart(data) {
     birthdate = returnDateObj(row[5])
     assesseddate = returnDateObj(row[6])
 
-  
+
 
     // swaps the date if one end date came before start date
     if (startdate.getTime() > enddate.getTime()) {
@@ -328,7 +324,7 @@ function drawTimelineChart(data) {
     // height: 100%,
     forceIFrame: false,
     hAxis: {
-      maxValue: moment(new Date(assesseddate)).add('6','months')._d,
+      maxValue: moment(new Date(assesseddate)).add('6', 'months')._d,
       gridLines: {
         count: 10
       }
@@ -347,7 +343,7 @@ function drawTimelineChart(data) {
     'controlType': 'ChartRangeFilter',
     'containerId': 'timeline_slider',
     'options': {
-      'color' : '#0000',
+      'color': '#0000',
       // Filter by the date axis.
       'filterColumnIndex': 4,
       'ui': {
@@ -365,7 +361,7 @@ function drawTimelineChart(data) {
         },
         // This, this view has two columns: the start and end dates.
         'chartView': {
-          
+
           'columns': [4, {
             type: 'number',
             calc: function () {
@@ -421,7 +417,7 @@ function drawTimelineChart(data) {
     for (var i = 0; i < rectangles.length; i++) {
       if (parseInt(rectangles[i].getAttribute('width')) <= 200) {
         if (i > 8) {
-    
+
           text = rectangles[i].nextSibling
 
           if (text != null && text.tagName == 'text' && text.getAttribute('text-anchor') == 'end') {
@@ -437,25 +433,25 @@ function drawTimelineChart(data) {
 
             // Cutoff Text if width of rectangle is really small (< 50 width)
             // Decided not to substring the text 
-            if(rectangleWidth <= 50 && text.innerHTML.length <= 50){
+            if (rectangleWidth <= 50 && text.innerHTML.length <= 50) {
               // text.innerHTML = text.innerHTML.substring(0,3)
-              
+
             }
 
             // Cut longer if the width of rectangle is bigger
-            if(rectangleWidth <= 100 && text.innerHTML.length <= 100){
-              text.innerHTML = text.innerHTML.substring(0,10)
+            if (rectangleWidth <= 100 && text.innerHTML.length <= 100) {
+              text.innerHTML = text.innerHTML.substring(0, 10)
             }
 
             // If Rectangle is green and text is black, make text white
-            if(rectangles[i].getAttribute('fill') == '#009432' && text.getAttribute('fill') == '#202020'){
+            if (rectangles[i].getAttribute('fill') == '#009432' && text.getAttribute('fill') == '#202020') {
               text.setAttribute('fill', '#ffffff')
             }
             // If Rectangle is blue and text is black, make text white
-            if(rectangles[i].getAttribute('fill') == '#0652dd' && text.getAttribute('fill') == '#202020'){
+            if (rectangles[i].getAttribute('fill') == '#0652dd' && text.getAttribute('fill') == '#202020') {
               text.setAttribute('fill', '#ffffff')
             }
-            
+
 
           }
         }
@@ -745,7 +741,7 @@ function drawTimelineChart(data) {
 
     rangeSlider.setState({
       'range': {
-        'start': periodDates('b', birthDate).start ,
+        'start': periodDates('b', birthDate).start,
         'end': moment(new Date(assesseddate))._d
       }
     })
@@ -1121,11 +1117,11 @@ function findDuplicates(data) {
 
   let result = [];
 
-  data.forEach(function(element, index) {
-    
+  data.forEach(function (element, index) {
+
     // Find if there is a duplicate or not
     if (data.indexOf(element, index + 1) > -1) {
-      
+
       // Find if the element is already in the result array or not
       if (result.indexOf(element) === -1) {
         result.push(element);
@@ -1140,22 +1136,21 @@ function findDuplicates(data) {
  * returns the min difference of given array
  * @param {array} array 
  */
-function getMinDifference(array){
+function getMinDifference(array) {
   diff = 1
-  array.forEach(function(element,index){
-    try{
+  array.forEach(function (element, index) {
+    try {
       if (array[index + 1] - array[index] <= diff) {
-        diff = array[index + 1] - array[index] 
+        diff = array[index + 1] - array[index]
       }
-    } catch(e){
+    } catch (e) {
 
     }
   })
 
   return diff
-  
-}
 
+}
 
 /**
  * Returns object of row and column index given age and rating
@@ -1163,23 +1158,23 @@ function getMinDifference(array){
  * @param {Int} age 
  * @param {Int} rating 
  */
-function returnIndex(finalData, age,rating){
+function returnIndex(finalData, age, rating) {
   idxojb = {}
   ratingColumnMap = {
-    1 : 1,
-    2 : 6,
-    3 : 11,
-    4 : 16,
-    5 : 21,
-    6 : 26,
-    7 : 31,
-    8 : 36,
-    9 : 41,
-    10 : 46
+    1: 1,
+    2: 6,
+    3: 11,
+    4: 16,
+    5: 21,
+    6: 26,
+    7: 31,
+    8: 36,
+    9: 41,
+    10: 46
   }
-  finalData.forEach((row,idx)=>{
-    
-    if (row[0] == age && row[ratingColumnMap[rating]] == rating){
+  finalData.forEach((row, idx) => {
+
+    if (row[0] == age && row[ratingColumnMap[rating]] == rating) {
       // console.log(ratingColumnMap[rating])
       idxojb.row = idx
       idxojb.col = ratingColumnMap[rating]
@@ -1187,9 +1182,8 @@ function returnIndex(finalData, age,rating){
   })
 
   return idxojb
-  
-}
 
+}
 
 /**
  * Use to get the events data  and draw the events chart
@@ -1206,7 +1200,7 @@ function drawEventsChart() {
 
     fileArray = stringToArray(data);
 
-    
+
 
     // 2D array of age, rating) of all events
     eventTuple = []
@@ -1223,23 +1217,23 @@ function drawEventsChart() {
 
       age = parseInt(row[0])
 
-      
+
       periodrating = getNewMoodRating(age, getNumber(row[15]))[1]
 
       eventtype = row[1]
 
       // New Data points to help offset overlappint events
       newPoints = {
-        '1' : getNumber(row[2]),
-        '2' : getNumber(row[3]),
-        '3' : getNumber(row[4]),
-        '4' : getNumber(row[5]),
-        '5' : getNumber(row[6]),
-        '6' : getNumber(row[7]),
-        '7' : getNumber(row[8]),
-        '8' : getNumber(row[9]),
-        '9' : getNumber(row[10]),
-        '10' : getNumber(row[11])
+        '1': getNumber(row[2]),
+        '2': getNumber(row[3]),
+        '3': getNumber(row[4]),
+        '4': getNumber(row[5]),
+        '5': getNumber(row[6]),
+        '6': getNumber(row[7]),
+        '7': getNumber(row[8]),
+        '8': getNumber(row[9]),
+        '9': getNumber(row[10]),
+        '10': getNumber(row[11])
       }
 
       one = getNumber(row[2])
@@ -1284,52 +1278,48 @@ function drawEventsChart() {
       // If Age is null, there should be a start date.
       //
 
-      if( one == null && two == null && three == null && four == null 
-        && five == null && six == null && seven == null && eight == null
-        && nine == null && ten == null && eventtype != 'Period'){
-      
-        if(startdate){
+      if (one == null && two == null && three == null && four == null &&
+        five == null && six == null && seven == null && eight == null &&
+        nine == null && ten == null && eventtype != 'Period') {
 
-          eventAge = getAgeFromDate(startdate, birthdate) 
-          switch(eventAge){
+        if (startdate) {
+
+          eventAge = getAgeFromDate(startdate, birthdate)
+          switch (eventAge) {
             case 1:
-            onenew = 1
-            break;
+              onenew = 1
+              break;
             case 2:
-            twonew = 2
-            break;
+              twonew = 2
+              break;
             case 3:
-            threenew = 3
-            break;
+              threenew = 3
+              break;
             case 4:
-            fournew = 4
-            break;
+              fournew = 4
+              break;
             case 5:
-            fivenew = 5
-            break;
+              fivenew = 5
+              break;
             case 6:
-            sixnew = 6
-            break;
+              sixnew = 6
+              break;
             case 7:
-            sevennew = 7
-            break;
+              sevennew = 7
+              break;
             case 8:
-            ewightnew = 8
-            break;
+              ewightnew = 8
+              break;
             case 9:
-            ninenew = 9
-            break;
+              ninenew = 9
+              break;
             case 10:
-            tennew = 10
-            break;
+              tennew = 10
+              break;
 
           }
         }
       }
-
-
-
-
       onetooltip = getEventTooltipHTML(eventtype, eventdes, age, startdate, enddate, one)
       twotooltip = getEventTooltipHTML(eventtype, eventdes, age, startdate, enddate, two)
       threetooltip = getEventTooltipHTML(eventtype, eventdes, age, startdate, enddate, three)
@@ -1346,8 +1336,6 @@ function drawEventsChart() {
       if (enddate == "") {
         enddate = "NA"
       }
-
-
       finalRow = [
         agenew,
         onenew, onetooltip, getthreeword(eventdes), eventdes, getStyle(startdate, enddate),
@@ -1372,17 +1360,19 @@ function drawEventsChart() {
      * Offset event data to prevent overlapping
      * @param {2d Array} data finalData
      */
-    function offsetData(data){
-      data.forEach((row, index)=>{
-        if(index <= 2) return // skip first 2
+    function offsetData(data) {
+      data.forEach((row, index) => {
+        if (index <= 2) return // skip first 2
         // Handle All 1
-        if(row[1] == 1){
-          ratingOneAges = data.filter(i =>{ i[1] == 1})
+        if (row[1] == 1) {
+          ratingOneAges = data.filter(i => {
+            i[1] == 1
+          })
           // row[1] = 0.5
           console.log(ratingOneAges)
         }
       })
-      
+
     }
     // offsetData(finalData)
 
@@ -1597,30 +1587,24 @@ function drawEventsChart() {
       'role': 'domain'
     });
 
-
-    // console.log(finalData)
-    
-
-    // console.log(data.getNumberOfRows())
-
     ages = []
 
-    finalEventData.forEach((row,idx)=>{
+    finalEventData.forEach((row, idx) => {
       ages.push(row[0])
     })
-    ratingsindex = [1,6,11,16,21,26,31,36,41,46,51]
+    ratingsindex = [1, 6, 11, 16, 21, 26, 31, 36, 41, 46, 51]
     duplicatesDict = {}
     // console.log(ages)
-    findDuplicates(ages).forEach((row,index) =>{
+    findDuplicates(ages).forEach((row, index) => {
       // console.log(row)
       ratings = []
       duplicatesDict[row] = []
 
-      finalEventData.forEach((elem, idx) =>{
-        if(row == elem[0]){
+      finalEventData.forEach((elem, idx) => {
+        if (row == elem[0]) {
 
-          elem.forEach((colElemn,colidx)=>{
-            if(ratingsindex.includes(colidx) && !isNaN(elem[colidx]) && elem[colidx] != null){
+          elem.forEach((colElemn, colidx) => {
+            if (ratingsindex.includes(colidx) && !isNaN(elem[colidx]) && elem[colidx] != null) {
               // console.log({age: row, rating: elem[colidx]})
               duplicatesDict[row].push(elem[colidx])
             }
@@ -1632,15 +1616,18 @@ function drawEventsChart() {
     // Iterate over the duplicates
     //  These are key = duplicated ages, and values that are arrays of mood ratings
     // age : [rating, rating]
-    for (var age in duplicatesDict){
-      findDuplicates(duplicatesDict[age]).forEach((row,idx) =>{
-        console.log({age: age, rating: row + .5})
-        console.log(returnIndex(finalEventData, parseInt(age),row))
-        rowidx = returnIndex(finalEventData, parseInt(age),row).row
-        colidx = returnIndex(finalEventData, parseInt(age),row).col
-        
+    for (var age in duplicatesDict) {
+      findDuplicates(duplicatesDict[age]).forEach((row, idx) => {
+        console.log({
+          age: age,
+          rating: row + .5
+        })
+        console.log(returnIndex(finalEventData, parseInt(age), row))
+        rowidx = returnIndex(finalEventData, parseInt(age), row).row
+        colidx = returnIndex(finalEventData, parseInt(age), row).col
+
         finalEventData[rowidx][colidx] = row + 0.3
-        
+
       })
     }
     // finalEventData[58][11] = 3.5
@@ -1648,7 +1635,7 @@ function drawEventsChart() {
 
     data.addRows(finalEventData)
 
-  
+
 
     var fontsize = 10
 
@@ -1673,20 +1660,58 @@ function drawEventsChart() {
           max: null
         },
         // Show values from 1 - 10 ,but don't show the 0 and 11 values
-        ticks: [
-          {v: 0, f: ''},
-          {v: 1, f: '1'},
-          {v: 2, f: '2'},
-          {v: 3, f: '3'},
-          {v: 4, f: '4'},
-          {v: 5, f: '5'},
-          {v: 6, f: '6'},
-          {v: 7, f: '7'},
-          {v: 8, f: '8'},
-          {v: 9, f: '9'},
-          {v: 10, f: '10'},
-          {v: 11, f: ''},
-          {v: 12, f: ''},
+        ticks: [{
+            v: 0,
+            f: ''
+          },
+          {
+            v: 1,
+            f: '1'
+          },
+          {
+            v: 2,
+            f: '2'
+          },
+          {
+            v: 3,
+            f: '3'
+          },
+          {
+            v: 4,
+            f: '4'
+          },
+          {
+            v: 5,
+            f: '5'
+          },
+          {
+            v: 6,
+            f: '6'
+          },
+          {
+            v: 7,
+            f: '7'
+          },
+          {
+            v: 8,
+            f: '8'
+          },
+          {
+            v: 9,
+            f: '9'
+          },
+          {
+            v: 10,
+            f: '10'
+          },
+          {
+            v: 11,
+            f: ''
+          },
+          {
+            v: 12,
+            f: ''
+          },
 
         ]
       },
@@ -1953,165 +1978,9 @@ function drawEventsChart() {
       return result
     }
 
-
-
-
-
     var container = document.getElementById('eventsChart');
-
-    // move annotations
-    // var observer = new MutationObserver(function () {
-
-    //   // Returns True if the offsetTrigger of the same age, rating has
-    //   // already been triggered
-    //   offsetAgeRating = []
-
-    //   /**
-    //    * Returns true if the given age and rating has alredy been offset
-    //    * @param {*} rowAge 
-    //    * @param {*} mRating 
-    //    */
-    //   function alreadyOffset(rowAge, mRating) {
-    //     result = false
-    //     count = 0
-    //     offsetAgeRating.forEach(function (anEvent) {
-    //       if (mRating == parseInt(anEvent[1]) && parseInt(anEvent[0]) == rowAge) {
-
-    //         if (count >= 2) {
-    //           result = true
-    //         }
-    //         count++
-    //       }
-    //     })
-    //     return result
-    //   }
-
-    //   /**
-    //    * Returns either 1, 2, 3, 4, the qudrant the surrounding position is in 
-    //    * @param {*} currX Current X position
-    //    * @param {*} currY Current Y position
-    //    * @param {*} surrX Surrounding X position
-    //    * @param {*} surrY Surrdounging Y position
-    //    */
-    //   function getQuadrantLocation(currX,currY, surrX,surrY){
-    //     if(surrX > currX && surrY > currY){
-    //       return 1 // in quadrant 1
-    //     }
-    //     if(surrX < currX && surrY > currY){
-    //       return 2 // in quadrant 2
-    //     }
-    //     if(surrX < currX && surrY < currY){
-    //       return 3 // in quadrant 3
-    //     }
-    //     if(surrX > currX && surrY < currY){
-    //       return 4 // in quadrant 4
-    //     }if(surrX == currX && surrY == currY){
-    //       return 5 // the surrouding is the same position as the current position
-    //     }
-    //   }
-    //   Array.prototype.forEach.call(container.getElementsByTagName('text'), function (annotation) {
-    //     if ((annotation.getAttribute('text-anchor') === 'middle') &&
-    //       (annotation.getAttribute('fill') === '#750f00' ||
-    //         annotation.getAttribute('fill') === '#0e0ce5' ||
-    //         annotation.getAttribute('fill') === '#0e09ab' ||
-    //         annotation.getAttribute('fill') === '#000672' ||
-    //         annotation.getAttribute('fill') === '#000339' ||
-    //         annotation.getAttribute('fill') === '#000000' ||
-    //         annotation.getAttribute('fill') === '#3A0700' ||
-    //         annotation.getAttribute('fill') === '#750f00' ||
-    //         annotation.getAttribute('fill') === '#B01600' ||
-    //         annotation.getAttribute('fill') === '#eb1e00' ||
-    //         annotation.getAttribute('fill') === '#b01600' ||
-    //         annotation.getAttribute('fill') === '#eb1e00' ||
-    //         annotation.getAttribute('fill') === '#ffffff'
-    //       )) {
-    //       var chartLayout = comboChart.getChart().getChartLayoutInterface();
-
-    //       label = annotation.innerHTML
-    //       rowAge = parseInt(getAgeFromThreeWord(label))
-    //       mRating = parseInt(getRatingFromThreeWord(label))
-
-
-    //       // console.log({'label': label, 'age' : rowAge, 'mood' : mRating })
-
-    //       // Check If there are surrouding events
-    //       // array of all the events that are surrounding the current one
-    //       surrEvents = surroundingEvents(rowAge, mRating)
-    //       if (surrEvents.length != 0 || surrEvents != undefined) {
-    //         console.log('There is an event close by')
-
-    //         // annotation.setAttribute('y', chartLayout.getYLocation(mRating) - Math.floor(Math.random() * lastNum) + startNum  );
-    //         // If there is, then check if those event have already been offset
-
-    //         closeEventAge = 0
-    //         closeEventRating = 0
-
-    //         offsetPxAmount = 10
-
-    //         surrEvents.forEach(function (surrEvent) {
-
-
-    //           if (alreadyOffset(surrEvent[0], surrEvent[1])) {
-    //             // console.log('already offsetd')
-
-    //             // move annotaion based on quadrant location
-    //             // If it does, then position the current event oposite to where it is.
-
-    //             surrQuadrant = getQuadrantLocation(rowAge,mRating, parseInt(surrEvent[0]),parseInt(surrEvent[1]))
-                
-    //             if (surrQuadrant == 1){
-    //               annotation.setAttribute('x', chartLayout.getXLocation(rowAge) - offsetPxAmount );
-    //               annotation.setAttribute('y', chartLayout.getYLocation(mRating) - offsetPxAmount);
-    //             } else if(surrQuadrant == 2){
-    //               annotation.setAttribute('x', chartLayout.getXLocation(rowAge) + offsetPxAmount );
-    //               annotation.setAttribute('y', chartLayout.getYLocation(mRating) - offsetPxAmount);
-    //             } else if(surrQuadrant == 3){
-    //               annotation.setAttribute('x', chartLayout.getXLocation(rowAge) + offsetPxAmount );
-    //               annotation.setAttribute('y', chartLayout.getYLocation(mRating) + offsetPxAmount);
-    //             } else if(surrQuadrant == 4){
-    //               annotation.setAttribute('x', chartLayout.getXLocation(rowAge) - offsetPxAmount );
-    //               annotation.setAttribute('y', chartLayout.getYLocation(mRating) + offsetPxAmount);
-    //             } else if(surrQuadrant == 5){
-    //               annotation.setAttribute('y', chartLayout.getYLocation(mRating) - 30);
-    //             }
-                
-
-                
-                
-    //           } else {
-    //             // 
-    //           }
-
-    //         })
-    //         annotation.setAttribute('y', chartLayout.getYLocation(mRating) - offsetPxAmount);
-    //         offsetAgeRating.push([rowAge, mRating])
-
-    //       }
-    //       annotation.setAttribute('x', chartLayout.getXLocation(rowAge + 2.7));
-
-
-    //     }
-    //   });
-
-
-
-
-    // });
-    // observer.observe(container, {
-    //   childList: true,
-    //   subtree: true
-    // });
-
-
     eventdashboard.bind(eventCategoryFilter, comboChart);
     eventdashboard.draw(data);
-
-    // console.log(data)
-
-    
-
-
-
 
     //create trigger to resizeEnd event     
     $(window).resize(function () {
@@ -2130,13 +1999,13 @@ function drawEventsChart() {
     $('#load1').attr('style', "display: none;")
     $('#load1wrap').attr('style', "padding: 0px;")
 
-    google.visualization.events.addOneTimeListener(comboChart, 'ready', function(){
+    google.visualization.events.addOneTimeListener(comboChart, 'ready', function () {
       // Trigger PerioColor to set the same color
-    $('#periodColor').trigger('change')
+      $('#periodColor').trigger('change')
     })
 
     google.visualization.events.addListener(comboChart, 'ready', function () {
-      
+
 
       // Add Duration Line on Hover
       google.visualization.events.addListener(comboChart.getChart(), 'onmouseover', function (e) {
@@ -2167,17 +2036,17 @@ function drawEventsChart() {
           for (var i = 0; i < tr.length; i++) {
 
             innerstring = tr[i].innerText
-            
+
 
             // If the Duration of the clicked point has Years, then we will add a duration line
             if (innerstring.includes('Years')) {
               durationyear = parseInt(innerstring.split('\n')[1].split(/,?\s+/)[1])
               durationmonths = parseInt(innerstring.split('\n')[2].split(/,?\s+/)[1])
-              
-              
+
+
               if (interface.getYLocation(currentrating) != null) {
 
-                
+
 
                 // Try to keep within the chart area
                 maxWidth = interface.getChartAreaBoundingBox().width // usually always 420
@@ -2185,7 +2054,7 @@ function drawEventsChart() {
                 // console.log(age + durationyear + (durationmonths / 12))
                 pointB = interface.getXLocation(age + durationyear + (durationmonths / 12))
                 // console.log(pointB)
-                
+
 
                 if (pointB >= maxWidth) {
                   // console.log('width too big')
@@ -2451,7 +2320,7 @@ function drawEventsChart() {
       eventstring = 'Period'
       color = document.getElementById('periodColor').value
       options.series[10].color = color
-  
+
       comboChart.setOptions(options)
       comboChart.draw()
 
@@ -2460,24 +2329,18 @@ function drawEventsChart() {
       var paths = slider.getElementsByTagName('path')
       // console.log(paths)
 
-      for (let element of paths){
+      for (let element of paths) {
         // console.log(element.getAttribute('stroke'))
-        if(element.getAttribute('stroke') == '#3366cc' || element.getAttribute('stroke') == oldColor){
+        if (element.getAttribute('stroke') == '#3366cc' || element.getAttribute('stroke') == oldColor) {
           element.setAttribute('stroke', '#' + color)
           oldColor = '#' + color
         }
       }
-     
-
-
     });
-
-    
-
     $('#font-decrease').click(function () {
 
       var opt = comboChart.getOptions()
-      
+
       fontsize = fontsize - 1
       // //console.log(opt)
       opt['annotations'] = {
@@ -2520,63 +2383,26 @@ function drawEventsChart() {
       comboChart.draw()
       //
     })
-
-
-
-
-
-
-
   });
 
 }
-
 /**
  * Returns the color give rating
  * @param {Number} rating 
  */
 function getColorFromRating(rating) {
-  if (rating == 1) {
-    return '#0E09AB'
-  }
-  if (rating == 2) {
-    return '#0E09AB'
-  }
-
-  if (rating == 3) {
-    return '#000339'
-  }
-
-  if (rating == 4) {
-    return '#000000'
-  }
-
-  if (rating == 5) {
-    return '#000000'
-  }
-
-  if (rating == 6) {
-    return '#3A0700'
-  }
-
-  if (rating == 7) {
-    return '#750F00'
-  }
-
-  if (rating == 8) {
-    return '#B01600'
-  }
-  if (rating == 9) {
-    return '#EB1E00'
-  }
-  if (rating == 10) {
-    return '#666666'
-  }
-
+  if (rating == 1) { return '#0E09AB' }
+  if (rating == 2) { return '#0E09AB' }
+  if (rating == 3) { return '#000339' }
+  if (rating == 4) { return '#000000' }
+  if (rating == 5) { return '#000000' }
+  if (rating == 6) { return '#3A0700' }
+  if (rating == 7) { return '#750F00' }
+  if (rating == 8) { return '#B01600' }
+  if (rating == 9) { return '#EB1E00' }
+  if (rating == 10) { return '#666666' }
   // Default
   return '#2e68c7'
-
-
 }
 
 // For Print Button
@@ -2594,10 +2420,6 @@ $(document).ready(function () {
     });
   })
 })
-
-
-
-
 
 /**
  * Changes the Timeline Title depedning on range

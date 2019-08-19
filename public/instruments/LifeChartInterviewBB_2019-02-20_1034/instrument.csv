@@ -1,0 +1,940 @@
+"Variable / Field Name","Form Name","Section Header","Field Type","Field Label","Choices, Calculations, OR Slider Labels","Field Note","Text Validation Type OR Show Slider Number","Text Validation Min","Text Validation Max",Identifier?,"Branching Logic (Show field only if...)","Required Field?","Custom Alignment","Question Number (surveys only)","Matrix Group Name","Matrix Ranking?","Field Annotation"
+lci_b1,life_chart_interview_b_birth_to_start_of_elementar,"Section B: Birth to Start of Elementary School",text,"B1. What was the approximate date you started elementary school?
+
+Date:
+
+<i>(if they can only say their age, help them to calculate what year that would have been and then ask for month)
+(combining this answer with their birthdate gives the start and end date of this first time period)
+*If the subject did not attend elementary school, this period would pertain to ages 0-5.</i>",,,date_ymd,,,y,,y,,,,,
+lci_b2,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"The next several questions will cover the period from birth until the time you started elementary school ""in (insert year)"" or ""at age (insert age)"" (repeat year or age indicated above)
+
+B2. How would you rate your general mood during this period of your life? While we recognize your mood was not the same throughout, we would like a rating of how your mood was <i>on average</i>. As a reminder, this is on a scale of 1-10, with 1 being the worst and 10 being the best mood you have experienced.
+
+Average Mood Rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,,y,,,,,
+lci_b3_count,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"B3#. During this time period, where did you live (for example, city, state, country if not U.S.)?
+
+Count:","0, 0 | 1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9",,,,,,,y,,,,,
+lci_b3i_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #1
+Start date:
+
+<i>(Follow up questions: Did you live in that location during the entire period of childhood up until elementary school? If not: Where else did you live and when did you move? Use additional prompts as needed to obtain the approximate dates in which they lived in each location.)
+
+*If the subject lived in multiple places during this time (e.g., moved during this period), allow to add lines as needed)</i>",,,date_ymd,,,y,"[lci_b3_count] >= 1",y,,,,,
+lci_b3ii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #1
+End Date:",,,date_ymd,,,y,"[lci_b3_count] >= 1",y,,,,,
+lci_b3iii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #1
+City:",,,,,,,"[lci_b3_count] >= 1",,,,,,
+lci_b3iv_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #1
+State:",,,,,,,"[lci_b3_count] >= 1",,,,,,
+lci_b3v_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #1
+Country:",,,,,,,"[lci_b3_count] >= 1",,,,,,
+lci_b3i_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #2
+Start date:
+
+<i>(Follow up questions: Did you live in that location during the entire period of childhood up until elementary school? If not: Where else did you live and when did you move? Use additional prompts as needed to obtain the approximate dates in which they lived in each location.)
+
+*If the subject lived in multiple places during this time (e.g., moved during this period), allow to add lines as needed)</i>",,,date_ymd,,,y,"[lci_b3_count] >= 2",y,,,,,
+lci_b3ii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #2
+End Date:",,,date_ymd,,,y,"[lci_b3_count] >= 2",y,,,,,
+lci_b3iii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #2
+City:",,,,,,,"[lci_b3_count] >= 2",,,,,,
+lci_b3iv_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #2
+State:",,,,,,,"[lci_b3_count] >= 2",,,,,,
+lci_b3v_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #2
+Country:",,,,,,,"[lci_b3_count] >= 2",,,,,,
+lci_b3i_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #3
+Start date:
+
+<i>(Follow up questions: Did you live in that location during the entire period of childhood up until elementary school? If not: Where else did you live and when did you move? Use additional prompts as needed to obtain the approximate dates in which they lived in each location.)
+
+*If the subject lived in multiple places during this time (e.g., moved during this period), allow to add lines as needed)</i>",,,date_ymd,,,y,"[lci_b3_count] >= 3",y,,,,,
+lci_b3ii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #3
+End Date:",,,date_ymd,,,y,"[lci_b3_count] >= 3",y,,,,,
+lci_b3iii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #3
+City:",,,,,,,"[lci_b3_count] >= 3",,,,,,
+lci_b3iv_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #3
+State:",,,,,,,"[lci_b3_count] >= 3",,,,,,
+lci_b3v_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #3
+Country:",,,,,,,"[lci_b3_count] >= 3",,,,,,
+lci_b3i_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #4
+Start date:
+
+<i>(Follow up questions: Did you live in that location during the entire period of childhood up until elementary school? If not: Where else did you live and when did you move? Use additional prompts as needed to obtain the approximate dates in which they lived in each location.)
+
+*If the subject lived in multiple places during this time (e.g., moved during this period), allow to add lines as needed)</i>",,,date_ymd,,,y,"[lci_b3_count] >= 4",y,,,,,
+lci_b3ii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #4
+End Date:",,,date_ymd,,,y,"[lci_b3_count] >= 4",y,,,,,
+lci_b3iii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #4
+City:",,,,,,,"[lci_b3_count] >= 4",,,,,,
+lci_b3iv_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #4
+State:",,,,,,,"[lci_b3_count] >= 4",,,,,,
+lci_b3v_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #4
+Country:",,,,,,,"[lci_b3_count] >= 4",,,,,,
+lci_b3i_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #5
+Start date:
+
+<i>(Follow up questions: Did you live in that location during the entire period of childhood up until elementary school? If not: Where else did you live and when did you move? Use additional prompts as needed to obtain the approximate dates in which they lived in each location.)
+
+*If the subject lived in multiple places during this time (e.g., moved during this period), allow to add lines as needed)</i>",,,date_ymd,,,y,"[lci_b3_count] >= 5",y,,,,,
+lci_b3ii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #5
+End Date:",,,date_ymd,,,y,"[lci_b3_count] >= 5",y,,,,,
+lci_b3iii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #5
+City:",,,,,,,"[lci_b3_count] >= 5",,,,,,
+lci_b3iv_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #5
+State:",,,,,,,"[lci_b3_count] >= 5",,,,,,
+lci_b3v_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #5
+Country:",,,,,,,"[lci_b3_count] >= 5",,,,,,
+lci_b3i_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #6
+Start date:
+
+<i>(Follow up questions: Did you live in that location during the entire period of childhood up until elementary school? If not: Where else did you live and when did you move? Use additional prompts as needed to obtain the approximate dates in which they lived in each location.)
+
+*If the subject lived in multiple places during this time (e.g., moved during this period), allow to add lines as needed)</i>",,,date_ymd,,,y,"[lci_b3_count] >= 6",y,,,,,
+lci_b3ii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #6
+End Date:",,,date_ymd,,,y,"[lci_b3_count] >= 6",y,,,,,
+lci_b3iii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #6
+City:",,,,,,,"[lci_b3_count] >= 6",,,,,,
+lci_b3iv_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #6
+State:",,,,,,,"[lci_b3_count] >= 6",,,,,,
+lci_b3v_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #6
+Country:",,,,,,,"[lci_b3_count] >= 6",,,,,,
+lci_b3i_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #7
+Start date:
+
+<i>(Follow up questions: Did you live in that location during the entire period of childhood up until elementary school? If not: Where else did you live and when did you move? Use additional prompts as needed to obtain the approximate dates in which they lived in each location.)
+
+*If the subject lived in multiple places during this time (e.g., moved during this period), allow to add lines as needed)</i>",,,date_ymd,,,y,"[lci_b3_count] >= 7",y,,,,,
+lci_b3ii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #7
+End Date:",,,date_ymd,,,y,"[lci_b3_count] >= 7",y,,,,,
+lci_b3iii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #7
+City:",,,,,,,"[lci_b3_count] >= 7",,,,,,
+lci_b3iv_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #7
+State:",,,,,,,"[lci_b3_count] >= 7",,,,,,
+lci_b3v_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #7
+Country:",,,,,,,"[lci_b3_count] >= 7",,,,,,
+lci_b3i_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #8
+Start date:
+
+<i>(Follow up questions: Did you live in that location during the entire period of childhood up until elementary school? If not: Where else did you live and when did you move? Use additional prompts as needed to obtain the approximate dates in which they lived in each location.)
+
+*If the subject lived in multiple places during this time (e.g., moved during this period), allow to add lines as needed)</i>",,,date_ymd,,,y,"[lci_b3_count] >= 8",y,,,,,
+lci_b3ii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #8
+End Date:",,,date_ymd,,,y,"[lci_b3_count] >= 8",y,,,,,
+lci_b3iii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #8
+City:",,,,,,,"[lci_b3_count] >= 8",,,,,,
+lci_b3iv_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #8
+State:",,,,,,,"[lci_b3_count] >= 8",,,,,,
+lci_b3v_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #8
+Country:",,,,,,,"[lci_b3_count] >= 8",,,,,,
+lci_b3i_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #9
+Start date:
+
+<i>(Follow up questions: Did you live in that location during the entire period of childhood up until elementary school? If not: Where else did you live and when did you move? Use additional prompts as needed to obtain the approximate dates in which they lived in each location.)
+
+*If the subject lived in multiple places during this time (e.g., moved during this period), allow to add lines as needed)</i>",,,date_ymd,,,y,"[lci_b3_count] >= 9",y,,,,,
+lci_b3ii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #9
+End Date:",,,date_ymd,,,y,"[lci_b3_count] >= 9",y,,,,,
+lci_b3iii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #9
+City:",,,,,,,"[lci_b3_count] >= 9",,,,,,
+lci_b3iv_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #9
+State:",,,,,,,"[lci_b3_count] >= 9",,,,,,
+lci_b3v_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Location #9
+Country:",,,,,,,"[lci_b3_count] >= 9",,,,,,
+lci_b4,life_chart_interview_b_birth_to_start_of_elementar,,yesno,"B4. Prior to elementary school, did you attend a daycare or any other type of school?",,,,,,,,y,,,,,
+lci_b4b_count,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"B4b#. Describe approximately what dates/years you attended each:
+
+Count:","0, 0 | 1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9",,,,,,"[lci_b4] = '1'",y,,,,,
+lci_b4bi_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #1
+Start date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 1",y,,,,,
+lci_b4bii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #1
+End date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 1",y,,,,,
+lci_b4biii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #1
+Type:
+*Enter ""daycare"" or ""Pre-K"" or something similar.",,,,,,,"[lci_b4] = '1' and [lci_b4b_count] >= 1",,,,,,
+lci_b4bi_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #2
+Start date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 2",y,,,,,
+lci_b4bii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #2
+End date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 2",y,,,,,
+lci_b4biii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #2
+Type:
+*Enter ""daycare"" or ""Pre-K"" or something similar.",,,,,,,"[lci_b4] = '1' and [lci_b4b_count] >= 2",,,,,,
+lci_b4bi_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #3
+Start date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 3",y,,,,,
+lci_b4bii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #3
+End date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 3",y,,,,,
+lci_b4biii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #3
+Type:
+*Enter ""daycare"" or ""Pre-K"" or something similar.",,,,,,,"[lci_b4] = '1' and [lci_b4b_count] >= 3",,,,,,
+lci_b4bi_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #4
+Start date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 4",y,,,,,
+lci_b4bii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #4
+End date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 4",y,,,,,
+lci_b4biii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #4
+Type:
+*Enter ""daycare"" or ""Pre-K"" or something similar.",,,,,,,"[lci_b4] = '1' and [lci_b4b_count] >= 4",,,,,,
+lci_b4bi_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #5
+Start date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 5",y,,,,,
+lci_b4bii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #5
+End date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 5",y,,,,,
+lci_b4biii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #5
+Type:
+*Enter ""daycare"" or ""Pre-K"" or something similar.",,,,,,,"[lci_b4] = '1' and [lci_b4b_count] >= 5",,,,,,
+lci_b4bi_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #6
+Start date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 6",y,,,,,
+lci_b4bii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #6
+End date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 6",y,,,,,
+lci_b4biii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #6
+Type:
+*Enter ""daycare"" or ""Pre-K"" or something similar.",,,,,,,"[lci_b4] = '1' and [lci_b4b_count] >= 6",,,,,,
+lci_b4bi_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #7
+Start date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 7",y,,,,,
+lci_b4bii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #7
+End date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 7",y,,,,,
+lci_b4biii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #7
+Type:
+*Enter ""daycare"" or ""Pre-K"" or something similar.",,,,,,,"[lci_b4] = '1' and [lci_b4b_count] >= 7",,,,,,
+lci_b4bi_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #8
+Start date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 8",y,,,,,
+lci_b4bii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #8
+End date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 8",y,,,,,
+lci_b4biii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #8
+Type:
+*Enter ""daycare"" or ""Pre-K"" or something similar.",,,,,,,"[lci_b4] = '1' and [lci_b4b_count] >= 8",,,,,,
+lci_b4bi_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #9
+Start date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 9",y,,,,,
+lci_b4bii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #9
+End date:",,,date_ymd,,,y,"[lci_b4] = '1' and [lci_b4b_count] >= 9",y,,,,,
+lci_b4biii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Daycare or School #9
+Type:
+*Enter ""daycare"" or ""Pre-K"" or something similar.",,,,,,,"[lci_b4] = '1' and [lci_b4b_count] >= 9",,,,,,
+lci_b5_count,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"B5#. What are some of the things you liked doing, for example hobbies or activities (for example, reading, playing with balls, etc.)?
+
+Count:","0, 0 | 1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9",,,,,,,y,,,,,
+lci_b5i_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #1
+Start date:
+
+<i>*Some hobbies may have been present during the entire time period and so start and end would be the same as the time period in question. However, they could have really gotten into one hobby for part of the time period (e.g. for just a few months), in which case the start and end date could be different.)</i>",,,date_ymd,,,y,"[lci_b5_count] >= 1",y,,,,,
+lci_b5ii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #1
+End date:",,,date_ymd,,,y,"[lci_b5_count] >= 1",y,,,,,
+lci_b5iii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #1
+Type:",,,,,,,"[lci_b5_count] >= 1",,,,,,
+lci_b5i_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #2
+Start date:
+
+<i>*Some hobbies may have been present during the entire time period and so start and end would be the same as the time period in question. However, they could have really gotten into one hobby for part of the time period (e.g. for just a few months), in which case the start and end date could be different.)</i>",,,date_ymd,,,y,"[lci_b5_count] >= 2",y,,,,,
+lci_b5ii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #2
+End date:",,,date_ymd,,,y,"[lci_b5_count] >= 2",y,,,,,
+lci_b5iii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #2
+Type:",,,,,,,"[lci_b5_count] >= 2",,,,,,
+lci_b5i_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #3
+Start date:
+
+<i>*Some hobbies may have been present during the entire time period and so start and end would be the same as the time period in question. However, they could have really gotten into one hobby for part of the time period (e.g. for just a few months), in which case the start and end date could be different.)</i>",,,date_ymd,,,y,"[lci_b5_count] >= 3",y,,,,,
+lci_b5ii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #3
+End date:",,,date_ymd,,,y,"[lci_b5_count] >= 3",y,,,,,
+lci_b5iii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #3
+Type:",,,,,,,"[lci_b5_count] >= 3",,,,,,
+lci_b5i_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #4
+Start date:
+
+<i>*Some hobbies may have been present during the entire time period and so start and end would be the same as the time period in question. However, they could have really gotten into one hobby for part of the time period (e.g. for just a few months), in which case the start and end date could be different.)</i>",,,date_ymd,,,y,"[lci_b5_count] >= 4",y,,,,,
+lci_b5ii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #4
+End date:",,,date_ymd,,,y,"[lci_b5_count] >= 4",y,,,,,
+lci_b5iii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #4
+Type:",,,,,,,"[lci_b5_count] >= 4",,,,,,
+lci_b5i_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #5
+Start date:
+
+<i>*Some hobbies may have been present during the entire time period and so start and end would be the same as the time period in question. However, they could have really gotten into one hobby for part of the time period (e.g. for just a few months), in which case the start and end date could be different.)</i>",,,date_ymd,,,y,"[lci_b5_count] >= 5",y,,,,,
+lci_b5ii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #5
+End date:",,,date_ymd,,,y,"[lci_b5_count] >= 5",y,,,,,
+lci_b5iii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #5
+Type:",,,,,,,"[lci_b5_count] >= 5",,,,,,
+lci_b5i_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #6
+Start date:
+
+<i>*Some hobbies may have been present during the entire time period and so start and end would be the same as the time period in question. However, they could have really gotten into one hobby for part of the time period (e.g. for just a few months), in which case the start and end date could be different.)</i>",,,date_ymd,,,y,"[lci_b5_count] >= 6",y,,,,,
+lci_b5ii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #6
+End date:",,,date_ymd,,,y,"[lci_b5_count] >= 6",y,,,,,
+lci_b5iii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #6
+Type:",,,,,,,"[lci_b5_count] >= 6",,,,,,
+lci_b5i_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #7
+Start date:
+
+<i>*Some hobbies may have been present during the entire time period and so start and end would be the same as the time period in question. However, they could have really gotten into one hobby for part of the time period (e.g. for just a few months), in which case the start and end date could be different.)</i>",,,date_ymd,,,y,"[lci_b5_count] >= 7",y,,,,,
+lci_b5ii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #7
+End date:",,,date_ymd,,,y,"[lci_b5_count] >= 7",y,,,,,
+lci_b5iii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #7
+Type:",,,,,,,"[lci_b5_count] >= 7",,,,,,
+lci_b5i_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #8
+Start date:
+
+<i>*Some hobbies may have been present during the entire time period and so start and end would be the same as the time period in question. However, they could have really gotten into one hobby for part of the time period (e.g. for just a few months), in which case the start and end date could be different.)</i>",,,date_ymd,,,y,"[lci_b5_count] >= 8",y,,,,,
+lci_b5ii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #8
+End date:",,,date_ymd,,,y,"[lci_b5_count] >= 8",y,,,,,
+lci_b5iii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #8
+Type:",,,,,,,"[lci_b5_count] >= 8",,,,,,
+lci_b5i_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #9
+Start date:
+
+<i>*Some hobbies may have been present during the entire time period and so start and end would be the same as the time period in question. However, they could have really gotten into one hobby for part of the time period (e.g. for just a few months), in which case the start and end date could be different.)</i>",,,date_ymd,,,y,"[lci_b5_count] >= 9",y,,,,,
+lci_b5ii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #9
+End date:",,,date_ymd,,,y,"[lci_b5_count] >= 9",y,,,,,
+lci_b5iii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Hobby or Activity #9
+Type:",,,,,,,"[lci_b5_count] >= 9",,,,,,
+lci_b6_count,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"B6#. What individuals were you closest to during this time? (for example, friends, family, teachers, etc.)
+
+Count:","0, 0 | 1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9",,,,,,,y,,,,,
+lci_b6i_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #1
+Start date:",,,date_ymd,,,y,"[lci_b6_count] >= 1",y,,,,,
+lci_b6ii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #1
+End date:",,,date_ymd,,,y,"[lci_b6_count] >= 1",y,,,,,
+lci_b6iii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #1
+Relationship:",,,,,,,"[lci_b6_count] >= 1",,,,,,
+lci_b6i_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #2
+Start date:",,,date_ymd,,,y,"[lci_b6_count] >= 2",y,,,,,
+lci_b6ii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #2
+End date:",,,date_ymd,,,y,"[lci_b6_count] >= 2",y,,,,,
+lci_b6iii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #2
+Relationship:",,,,,,,"[lci_b6_count] >= 2",,,,,,
+lci_b6i_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #3
+Start date:",,,date_ymd,,,y,"[lci_b6_count] >= 3",y,,,,,
+lci_b6ii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #3
+End date:",,,date_ymd,,,y,"[lci_b6_count] >= 3",y,,,,,
+lci_b6iii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #3
+Relationship:",,,,,,,"[lci_b6_count] >= 3",,,,,,
+lci_b6i_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #4
+Start date:",,,date_ymd,,,y,"[lci_b6_count] >= 4",y,,,,,
+lci_b6ii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #4
+End date:",,,date_ymd,,,y,"[lci_b6_count] >= 4",y,,,,,
+lci_b6iii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #4
+Relationship:",,,,,,,"[lci_b6_count] >= 4",,,,,,
+lci_b6i_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #5
+Start date:",,,date_ymd,,,y,"[lci_b6_count] >= 5",y,,,,,
+lci_b6ii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #5
+End date:",,,date_ymd,,,y,"[lci_b6_count] >= 5",y,,,,,
+lci_b6iii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #5
+Relationship:",,,,,,,"[lci_b6_count] >= 5",,,,,,
+lci_b6i_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #6
+Start date:",,,date_ymd,,,y,"[lci_b6_count] >= 6",y,,,,,
+lci_b6ii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #6
+End date:",,,date_ymd,,,y,"[lci_b6_count] >= 6",y,,,,,
+lci_b6iii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #6
+Relationship:",,,,,,,"[lci_b6_count] >= 6",,,,,,
+lci_b6i_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #7
+Start date:",,,date_ymd,,,y,"[lci_b6_count] >= 7",y,,,,,
+lci_b6ii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #7
+End date:",,,date_ymd,,,y,"[lci_b6_count] >= 7",y,,,,,
+lci_b6iii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #7
+Relationship:",,,,,,,"[lci_b6_count] >= 7",,,,,,
+lci_b6i_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #8
+Start date:",,,date_ymd,,,y,"[lci_b6_count] >= 8",y,,,,,
+lci_b6ii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #8
+End date:",,,date_ymd,,,y,"[lci_b6_count] >= 8",y,,,,,
+lci_b6iii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #8
+Relationship:",,,,,,,"[lci_b6_count] >= 8",,,,,,
+lci_b6i_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #9
+Start date:",,,date_ymd,,,y,"[lci_b6_count] >= 9",y,,,,,
+lci_b6ii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #9
+End date:",,,date_ymd,,,y,"[lci_b6_count] >= 9",y,,,,,
+lci_b6iii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Person #9
+Relationship:",,,,,,,"[lci_b6_count] >= 9",,,,,,
+lci_b7,life_chart_interview_b_birth_to_start_of_elementar,,yesno,"B7. Did you have any experiences with alcohol or drugs during this period?",,,,,,,,y,,,,,
+lci_b7b_count,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"B7b#. Describe briefly (if known) what drugs you were exposed to and how.
+
+Count:","0, 0 | 1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9",,,,,,"[lci_b7] = '1'",y,,,,,
+lci_b7bi_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #1
+Start date:
+
+<i>*If exposed to the same thing, in the same way, multiple times, include the start and stop dates of that entire time period (e.g., if exposed a few times per year, insert the start and end dates of that period).</i>",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 1",y,,,,,
+lci_b7bii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #1
+End date:",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 1",y,,,,,
+lci_b7biii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #1
+Name of Drug:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 1",,,,,,
+lci_b7biv_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #1
+Frequency:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 1",,,,,,
+lci_b7bv_1,life_chart_interview_b_birth_to_start_of_elementar,,radio,"Drug #1
+How:","1, Direct intake | 2, Second-hand exposure (e.g., parents smoking around them as a child)",,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 1",y,,,,,
+lci_b7bi_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #2
+Start date:
+
+<i>*If exposed to the same thing, in the same way, multiple times, include the start and stop dates of that entire time period (e.g., if exposed a few times per year, insert the start and end dates of that period).</i>",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 2",y,,,,,
+lci_b7bii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #2
+End date:",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 2",y,,,,,
+lci_b7biii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #2
+Name of Drug:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 2",,,,,,
+lci_b7biv_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #2
+Frequency:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 2",,,,,,
+lci_b7bv_2,life_chart_interview_b_birth_to_start_of_elementar,,radio,"Drug #2
+How:","1, Direct intake | 2, Second-hand exposure (e.g., parents smoking around them as a child)",,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 2",y,,,,,
+lci_b7bi_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #3
+Start date:
+
+<i>*If exposed to the same thing, in the same way, multiple times, include the start and stop dates of that entire time period (e.g., if exposed a few times per year, insert the start and end dates of that period).</i>",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 3",y,,,,,
+lci_b7bii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #3
+End date:",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 3",y,,,,,
+lci_b7biii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #3
+Name of Drug:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 3",,,,,,
+lci_b7biv_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #3
+Frequency:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 3",,,,,,
+lci_b7bv_3,life_chart_interview_b_birth_to_start_of_elementar,,radio,"Drug #3
+How:","1, Direct intake | 2, Second-hand exposure (e.g., parents smoking around them as a child)",,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 3",y,,,,,
+lci_b7bi_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #4
+Start date:
+
+<i>*If exposed to the same thing, in the same way, multiple times, include the start and stop dates of that entire time period (e.g., if exposed a few times per year, insert the start and end dates of that period).</i>",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 4",y,,,,,
+lci_b7bii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #4
+End date:",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 4",y,,,,,
+lci_b7biii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #4
+Name of Drug:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 4",,,,,,
+lci_b7biv_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #4
+Frequency:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 4",,,,,,
+lci_b7bv_4,life_chart_interview_b_birth_to_start_of_elementar,,radio,"Drug #4
+How:","1, Direct intake | 2, Second-hand exposure (e.g., parents smoking around them as a child)",,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 4",y,,,,,
+lci_b7bi_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #5
+Start date:
+
+<i>*If exposed to the same thing, in the same way, multiple times, include the start and stop dates of that entire time period (e.g., if exposed a few times per year, insert the start and end dates of that period).</i>",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 5",y,,,,,
+lci_b7bii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #5
+End date:",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 5",y,,,,,
+lci_b7biii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #5
+Name of Drug:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 5",,,,,,
+lci_b7biv_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #5
+Frequency:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 5",,,,,,
+lci_b7bv_5,life_chart_interview_b_birth_to_start_of_elementar,,radio,"Drug #5
+How:","1, Direct intake | 2, Second-hand exposure (e.g., parents smoking around them as a child)",,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 5",y,,,,,
+lci_b7bi_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #6
+Start date:
+
+<i>*If exposed to the same thing, in the same way, multiple times, include the start and stop dates of that entire time period (e.g., if exposed a few times per year, insert the start and end dates of that period).</i>",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 6",y,,,,,
+lci_b7bii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #6
+End date:",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 6",y,,,,,
+lci_b7biii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #6
+Name of Drug:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 6",,,,,,
+lci_b7biv_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #6
+Frequency:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 6",,,,,,
+lci_b7bv_6,life_chart_interview_b_birth_to_start_of_elementar,,radio,"Drug #6
+How:","1, Direct intake | 2, Second-hand exposure (e.g., parents smoking around them as a child)",,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 6",y,,,,,
+lci_b7bi_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #7
+Start date:
+
+<i>*If exposed to the same thing, in the same way, multiple times, include the start and stop dates of that entire time period (e.g., if exposed a few times per year, insert the start and end dates of that period).</i>",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 7",y,,,,,
+lci_b7bii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #7
+End date:",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 7",y,,,,,
+lci_b7biii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #7
+Name of Drug:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 7",,,,,,
+lci_b7biv_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #7
+Frequency:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 7",,,,,,
+lci_b7bv_7,life_chart_interview_b_birth_to_start_of_elementar,,radio,"Drug #7
+How:","1, Direct intake | 2, Second-hand exposure (e.g., parents smoking around them as a child)",,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 7",y,,,,,
+lci_b7bi_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #8
+Start date:
+
+<i>*If exposed to the same thing, in the same way, multiple times, include the start and stop dates of that entire time period (e.g., if exposed a few times per year, insert the start and end dates of that period).</i>",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 8",y,,,,,
+lci_b7bii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #8
+End date:",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 8",y,,,,,
+lci_b7biii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #8
+Name of Drug:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 8",,,,,,
+lci_b7biv_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #8
+Frequency:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 8",,,,,,
+lci_b7bv_8,life_chart_interview_b_birth_to_start_of_elementar,,radio,"Drug #8
+How:","1, Direct intake | 2, Second-hand exposure (e.g., parents smoking around them as a child)",,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 8",y,,,,,
+lci_b7bi_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #9
+Start date:
+
+<i>*If exposed to the same thing, in the same way, multiple times, include the start and stop dates of that entire time period (e.g., if exposed a few times per year, insert the start and end dates of that period).</i>",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 9",y,,,,,
+lci_b7bii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #9
+End date:",,,date_ymd,,,y,"[lci_b7] = '1' and [lci_b7b_count] >= 9",y,,,,,
+lci_b7biii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #9
+Name of Drug:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 9",,,,,,
+lci_b7biv_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Drug #9
+Frequency:",,,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 9",,,,,,
+lci_b7bv_9,life_chart_interview_b_birth_to_start_of_elementar,,radio,"Drug #9
+How:","1, Direct intake | 2, Second-hand exposure (e.g., parents smoking around them as a child)",,,,,,"[lci_b7] = '1' and [lci_b7b_count] >= 9",y,,,,,
+lci_b8,life_chart_interview_b_birth_to_start_of_elementar,,yesno,"B8. Did you see a mental health professional for any reason? (For example, for mood or anxiety, behavior problems, learning difficulties, to help with adjustment to divorce, etc.)",,,,,,,,y,,,,,
+lci_b8b_count,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"B8b#. Describe briefly each period in which you were seen by a mental health professional.
+
+Count:","0, 0 | 1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9",,,,,,"[lci_b8] = '1'",,,,,,
+lci_b8bi_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #1
+Start date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 1",y,,,,,
+lci_b8bii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #1
+End date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 1",y,,,,,
+lci_b8biii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #1
+Reason for going:
+
+<i>*Reason for going could include ""mood"" or ""behavior"" while the type of treatment may include ""family therapy"" or ""medications"", etc.</i>",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 1",,,,,,
+lci_b8biv_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #1
+Type of treatment:",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 1",,,,,,
+lci_b8bi_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #2
+Start date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 2",y,,,,,
+lci_b8bii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #2
+End date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 2",y,,,,,
+lci_b8biii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #2
+Reason for going:
+
+<i>*Reason for going could include ""mood"" or ""behavior"" while the type of treatment may include ""family therapy"" or ""medications"", etc.</i>",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 2",,,,,,
+lci_b8biv_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #2
+Type of treatment:",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 2",,,,,,
+lci_b8bi_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #3
+Start date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 3",y,,,,,
+lci_b8bii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #3
+End date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 3",y,,,,,
+lci_b8biii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #3
+Reason for going:
+
+<i>*Reason for going could include ""mood"" or ""behavior"" while the type of treatment may include ""family therapy"" or ""medications"", etc.</i>",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 3",,,,,,
+lci_b8biv_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #3
+Type of treatment:",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 3",,,,,,
+lci_b8bi_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #4
+Start date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 4",y,,,,,
+lci_b8bii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #4
+End date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 4",y,,,,,
+lci_b8biii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #4
+Reason for going:
+
+<i>*Reason for going could include ""mood"" or ""behavior"" while the type of treatment may include ""family therapy"" or ""medications"", etc.</i>",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 4",,,,,,
+lci_b8biv_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #4
+Type of treatment:",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 4",,,,,,
+lci_b8bi_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #5
+Start date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 5",y,,,,,
+lci_b8bii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #5
+End date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 5",y,,,,,
+lci_b8biii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #5
+Reason for going:
+
+<i>*Reason for going could include ""mood"" or ""behavior"" while the type of treatment may include ""family therapy"" or ""medications"", etc.</i>",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 5",,,,,,
+lci_b8biv_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #5
+Type of treatment:",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 5",,,,,,
+lci_b8bi_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #6
+Start date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 6",y,,,,,
+lci_b8bii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #6
+End date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 6",y,,,,,
+lci_b8biii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #6
+Reason for going:
+
+<i>*Reason for going could include ""mood"" or ""behavior"" while the type of treatment may include ""family therapy"" or ""medications"", etc.</i>",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 6",,,,,,
+lci_b8biv_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #6
+Type of treatment:",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 6",,,,,,
+lci_b8bi_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #7
+Start date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 7",y,,,,,
+lci_b8bii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #7
+End date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 7",y,,,,,
+lci_b8biii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #7
+Reason for going:
+
+<i>*Reason for going could include ""mood"" or ""behavior"" while the type of treatment may include ""family therapy"" or ""medications"", etc.</i>",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 7",,,,,,
+lci_b8biv_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #7
+Type of treatment:",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 7",,,,,,
+lci_b8bi_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #8
+Start date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 8",y,,,,,
+lci_b8bii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #8
+End date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 8",y,,,,,
+lci_b8biii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #8
+Reason for going:
+
+<i>*Reason for going could include ""mood"" or ""behavior"" while the type of treatment may include ""family therapy"" or ""medications"", etc.</i>",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 8",,,,,,
+lci_b8biv_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #8
+Type of treatment:",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 8",,,,,,
+lci_b8bi_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #9
+Start date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 9",y,,,,,
+lci_b8bii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #9
+End date:",,,date_ymd,,,y,"[lci_b8] = '1'  and [lci_b8b_count] >= 9",y,,,,,
+lci_b8biii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #9
+Reason for going:
+
+<i>*Reason for going could include ""mood"" or ""behavior"" while the type of treatment may include ""family therapy"" or ""medications"", etc.</i>",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 9",,,,,,
+lci_b8biv_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Period #9
+Type of treatment:",,,,,,,"[lci_b8] = '1'  and [lci_b8b_count] >= 9",,,,,,
+lci_b9,life_chart_interview_b_birth_to_start_of_elementar,,yesno,"B9. Did anything change with your family during this period? (for example, were there births or adoptions of siblings, did your parents get married or divorced, etc.)",,,,,,,,y,,,,,
+lci_b9b_count,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"B9b#. Please provide a brief description of these changes and the approximate date each occurred. In addition, we would like you estimate how your mood was (on the scale of 1-10) in response to this change.
+
+Count:","0, 0 | 1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9",,,,,,"[lci_b9] = '1'",y,,,,,
+lci_b9bi_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #1
+Start Date:
+
+<i>*Most of these will only have one date to enter (e.g., date of sibling birth, date of divorce, etc.) but we are putting a start and end date possibility for the sake of consistency.</i>",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 1",y,,,,,
+lci_b9bii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #1
+End Date:",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 1",,,,,,
+lci_b9biii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #1
+Event Type:
+
+<i>*For event type, enter brief explanation, such as ""Parent remarried"", or ""Sister was born"".</i>",,,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 1",y,,,,,
+lci_b9biv_1,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #1
+Mood rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 1",y,,,,,
+lci_b9bi_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #2
+Start Date:
+
+<i>*Most of these will only have one date to enter (e.g., date of sibling birth, date of divorce, etc.) but we are putting a start and end date possibility for the sake of consistency.</i>",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 2",y,,,,,
+lci_b9bii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #2
+End Date:",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 2",,,,,,
+lci_b9biii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #2
+Event Type:
+
+<i>*For event type, enter brief explanation, such as ""Parent remarried"", or ""Sister was born"".</i>",,,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 2",y,,,,,
+lci_b9biv_2,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #2
+Mood rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 2",y,,,,,
+lci_b9bi_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #3
+Start Date:
+
+<i>*Most of these will only have one date to enter (e.g., date of sibling birth, date of divorce, etc.) but we are putting a start and end date possibility for the sake of consistency.</i>",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 3",y,,,,,
+lci_b9bii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #3
+End Date:",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 3",,,,,,
+lci_b9biii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #3
+Event Type:
+
+<i>*For event type, enter brief explanation, such as ""Parent remarried"", or ""Sister was born"".</i>",,,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 3",y,,,,,
+lci_b9biv_3,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #3
+Mood rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 3",y,,,,,
+lci_b9bi_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #4
+Start Date:
+
+<i>*Most of these will only have one date to enter (e.g., date of sibling birth, date of divorce, etc.) but we are putting a start and end date possibility for the sake of consistency.</i>",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 4",y,,,,,
+lci_b9bii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #4
+End Date:",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 4",,,,,,
+lci_b9biii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #4
+Event Type:
+
+<i>*For event type, enter brief explanation, such as ""Parent remarried"", or ""Sister was born"".</i>",,,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 4",y,,,,,
+lci_b9biv_4,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #4
+Mood rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 4",y,,,,,
+lci_b9bi_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #5
+Start Date:
+
+<i>*Most of these will only have one date to enter (e.g., date of sibling birth, date of divorce, etc.) but we are putting a start and end date possibility for the sake of consistency.</i>",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 5",y,,,,,
+lci_b9bii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #5
+End Date:",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 5",,,,,,
+lci_b9biii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #5
+Event Type:
+
+<i>*For event type, enter brief explanation, such as ""Parent remarried"", or ""Sister was born"".</i>",,,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 5",y,,,,,
+lci_b9biv_5,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #5
+Mood rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 5",y,,,,,
+lci_b9bi_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #6
+Start Date:
+
+<i>*Most of these will only have one date to enter (e.g., date of sibling birth, date of divorce, etc.) but we are putting a start and end date possibility for the sake of consistency.</i>",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 6",y,,,,,
+lci_b9bii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #6
+End Date:",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 6",,,,,,
+lci_b9biii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #6
+Event Type:
+
+<i>*For event type, enter brief explanation, such as ""Parent remarried"", or ""Sister was born"".</i>",,,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 6",y,,,,,
+lci_b9biv_6,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #6
+Mood rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 6",y,,,,,
+lci_b9bi_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #7
+Start Date:
+
+<i>*Most of these will only have one date to enter (e.g., date of sibling birth, date of divorce, etc.) but we are putting a start and end date possibility for the sake of consistency.</i>",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 7",y,,,,,
+lci_b9bii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #7
+End Date:",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 7",,,,,,
+lci_b9biii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #7
+Event Type:
+
+<i>*For event type, enter brief explanation, such as ""Parent remarried"", or ""Sister was born"".</i>",,,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 7",y,,,,,
+lci_b9biv_7,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #7
+Mood rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 7",y,,,,,
+lci_b9bi_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #8
+Start Date:
+
+<i>*Most of these will only have one date to enter (e.g., date of sibling birth, date of divorce, etc.) but we are putting a start and end date possibility for the sake of consistency.</i>",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 8",y,,,,,
+lci_b9bii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #8
+End Date:",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 8",,,,,,
+lci_b9biii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #8
+Event Type:
+
+<i>*For event type, enter brief explanation, such as ""Parent remarried"", or ""Sister was born"".</i>",,,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 8",y,,,,,
+lci_b9biv_8,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #8
+Mood rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 8",y,,,,,
+lci_b9bi_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #9
+Start Date:
+
+<i>*Most of these will only have one date to enter (e.g., date of sibling birth, date of divorce, etc.) but we are putting a start and end date possibility for the sake of consistency.</i>",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 9",y,,,,,
+lci_b9bii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #9
+End Date:",,,date_ymd,,,y,"[lci_b9] = '1' and [lci_b9b_count] >= 9",,,,,,
+lci_b9biii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #9
+Event Type:
+
+<i>*For event type, enter brief explanation, such as ""Parent remarried"", or ""Sister was born"".</i>",,,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 9",y,,,,,
+lci_b9biv_9,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #9
+Mood rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b9] = '1' and [lci_b9b_count] >= 9",y,,,,,
+lci_b10,life_chart_interview_b_birth_to_start_of_elementar,,yesno,"B10. Did any bad things happen during this period (for example, illnesses, deaths in the family, divorce, problems in the family, or a parent, relative or friend treating you badly)?",,,,,,,,y,,,,,
+lci_b10b_count,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"B10b#. Describe briefly each bad event that happened and the approximate date each occurred. In addition, we would like you to estimate how your mood was (on the scale of (1-10) in response to each of these events.
+
+Count:","0, 0 | 1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9",,,,,,"[lci_b10] = '1'",y,,,,,
+lci_b10bi_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #1
+Start date:
+
+<i>*Some events may just have one date (e.g., the date someone died) while others may have a start and end date (e.g., abuse by a parent that lasted years).
+*Please prompt them to also indicate any events they may have mentioned in other sections that did not include mood ratings. For example, if they would count one of their moves as stressful - this should be entered here as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 1",y,,,,,
+lci_b10bii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #1
+End date:",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 1",,,,,,
+lci_b10biii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #1
+Type:",,,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 1",,,,,,
+lci_b10biv_1,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #1
+Mood Rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 1",y,,,,,
+lci_b10bi_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #2
+Start date:
+
+<i>*Some events may just have one date (e.g., the date someone died) while others may have a start and end date (e.g., abuse by a parent that lasted years).
+*Please prompt them to also indicate any events they may have mentioned in other sections that did not include mood ratings. For example, if they would count one of their moves as stressful - this should be entered here as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 2",y,,,,,
+lci_b10bii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #2
+End date:",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 2",,,,,,
+lci_b10biii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #2
+Type:",,,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 2",,,,,,
+lci_b10biv_2,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #2
+Mood Rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 2",y,,,,,
+lci_b10bi_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #3
+Start date:
+
+<i>*Some events may just have one date (e.g., the date someone died) while others may have a start and end date (e.g., abuse by a parent that lasted years).
+*Please prompt them to also indicate any events they may have mentioned in other sections that did not include mood ratings. For example, if they would count one of their moves as stressful - this should be entered here as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 3",y,,,,,
+lci_b10bii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #3
+End date:",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 3",,,,,,
+lci_b10biii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #3
+Type:",,,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 3",,,,,,
+lci_b10biv_3,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #3
+Mood Rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 3",y,,,,,
+lci_b10bi_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #4
+Start date:
+
+<i>*Some events may just have one date (e.g., the date someone died) while others may have a start and end date (e.g., abuse by a parent that lasted years).
+*Please prompt them to also indicate any events they may have mentioned in other sections that did not include mood ratings. For example, if they would count one of their moves as stressful - this should be entered here as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 4",y,,,,,
+lci_b10bii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #4
+End date:",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 4",,,,,,
+lci_b10biii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #4
+Type:",,,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 4",,,,,,
+lci_b10biv_4,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #4
+Mood Rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 4",y,,,,,
+lci_b10bi_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #5
+Start date:
+
+<i>*Some events may just have one date (e.g., the date someone died) while others may have a start and end date (e.g., abuse by a parent that lasted years).
+*Please prompt them to also indicate any events they may have mentioned in other sections that did not include mood ratings. For example, if they would count one of their moves as stressful - this should be entered here as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 5",y,,,,,
+lci_b10bii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #5
+End date:",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 5",,,,,,
+lci_b10biii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #5
+Type:",,,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 5",,,,,,
+lci_b10biv_5,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #5
+Mood Rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 5",y,,,,,
+lci_b10bi_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #6
+Start date:
+
+<i>*Some events may just have one date (e.g., the date someone died) while others may have a start and end date (e.g., abuse by a parent that lasted years).
+*Please prompt them to also indicate any events they may have mentioned in other sections that did not include mood ratings. For example, if they would count one of their moves as stressful - this should be entered here as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 6",y,,,,,
+lci_b10bii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #6
+End date:",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 6",,,,,,
+lci_b10biii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #6
+Type:",,,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 6",,,,,,
+lci_b10biv_6,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #6
+Mood Rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 6",y,,,,,
+lci_b10bi_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #7
+Start date:
+
+<i>*Some events may just have one date (e.g., the date someone died) while others may have a start and end date (e.g., abuse by a parent that lasted years).
+*Please prompt them to also indicate any events they may have mentioned in other sections that did not include mood ratings. For example, if they would count one of their moves as stressful - this should be entered here as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 7",y,,,,,
+lci_b10bii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #7
+End date:",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 7",,,,,,
+lci_b10biii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #7
+Type:",,,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 7",,,,,,
+lci_b10biv_7,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #7
+Mood Rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 7",y,,,,,
+lci_b10bi_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #8
+Start date:
+
+<i>*Some events may just have one date (e.g., the date someone died) while others may have a start and end date (e.g., abuse by a parent that lasted years).
+*Please prompt them to also indicate any events they may have mentioned in other sections that did not include mood ratings. For example, if they would count one of their moves as stressful - this should be entered here as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 8",y,,,,,
+lci_b10bii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #8
+End date:",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 8",,,,,,
+lci_b10biii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #8
+Type:",,,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 8",,,,,,
+lci_b10biv_8,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #8
+Mood Rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 8",y,,,,,
+lci_b10bi_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #9
+Start date:
+
+<i>*Some events may just have one date (e.g., the date someone died) while others may have a start and end date (e.g., abuse by a parent that lasted years).
+*Please prompt them to also indicate any events they may have mentioned in other sections that did not include mood ratings. For example, if they would count one of their moves as stressful - this should be entered here as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 9",y,,,,,
+lci_b10bii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #9
+End date:",,,date_ymd,,,y,"[lci_b10] = '1' and [lci_b10b_count] >= 9",,,,,,
+lci_b10biii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #9
+Type:",,,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 9",,,,,,
+lci_b10biv_9,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #9
+Mood Rating:","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b10] = '1' and [lci_b10b_count] >= 9",y,,,,,
+lci_b11,life_chart_interview_b_birth_to_start_of_elementar,,yesno,"B11. Did any good things happen during this period (for example, births, memorable family vacations, etc.)?",,,,,,,,y,,,,,
+lci_b11b_count,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"B11b#. Describe briefly each good event that happened and the approximate date each occurred. In addition, we would like you to estimate how your mood was (on the scale of 1-10) in response to each of these events.
+
+Count:","0, 0 | 1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9",,,,,,"[lci_b11] = '1'",y,,,,,
+lci_b11bi_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #1
+Start date:
+
+<i>*Some events may just have one date (e.g., the date their sister was born) while others may have a start and end date (e.g., going to a meaningful summer camp)
+*Please prompt them to also indicate any events they may have mentioned in other sections. For example, if they would count one of their moves as a positive event - this should be entered h ere as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 1",y,,,,,
+lci_b11bii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #1
+End date:",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 1",,,,,,
+lci_b11biii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #1
+Type:",,,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 1",,,,,,
+lci_b11biv_1,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #1
+Mood Rating","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 1",y,,,,,
+lci_b11bi_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #2
+Start date:
+
+<i>*Some events may just have one date (e.g., the date their sister was born) while others may have a start and end date (e.g., going to a meaningful summer camp)
+*Please prompt them to also indicate any events they may have mentioned in other sections. For example, if they would count one of their moves as a positive event - this should be entered h ere as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 2",y,,,,,
+lci_b11bii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #2
+End date:",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 2",,,,,,
+lci_b11biii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #2
+Type:",,,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 2",,,,,,
+lci_b11biv_2,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #2
+Mood Rating","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 2",y,,,,,
+lci_b11bi_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #3
+Start date:
+
+<i>*Some events may just have one date (e.g., the date their sister was born) while others may have a start and end date (e.g., going to a meaningful summer camp)
+*Please prompt them to also indicate any events they may have mentioned in other sections. For example, if they would count one of their moves as a positive event - this should be entered h ere as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 3",y,,,,,
+lci_b11bii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #3
+End date:",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 3",,,,,,
+lci_b11biii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #3
+Type:",,,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 3",,,,,,
+lci_b11biv_3,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #3
+Mood Rating","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 3",y,,,,,
+lci_b11bi_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #4
+Start date:
+
+<i>*Some events may just have one date (e.g., the date their sister was born) while others may have a start and end date (e.g., going to a meaningful summer camp)
+*Please prompt them to also indicate any events they may have mentioned in other sections. For example, if they would count one of their moves as a positive event - this should be entered h ere as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 4",y,,,,,
+lci_b11bii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #4
+End date:",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 4",,,,,,
+lci_b11biii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #4
+Type:",,,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 4",,,,,,
+lci_b11biv_4,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #4
+Mood Rating","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 4",y,,,,,
+lci_b11bi_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #5
+Start date:
+
+<i>*Some events may just have one date (e.g., the date their sister was born) while others may have a start and end date (e.g., going to a meaningful summer camp)
+*Please prompt them to also indicate any events they may have mentioned in other sections. For example, if they would count one of their moves as a positive event - this should be entered h ere as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 5",y,,,,,
+lci_b11bii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #5
+End date:",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 5",,,,,,
+lci_b11biii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #5
+Type:",,,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 5",,,,,,
+lci_b11biv_5,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #5
+Mood Rating","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 5",y,,,,,
+lci_b11bi_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #6
+Start date:
+
+<i>*Some events may just have one date (e.g., the date their sister was born) while others may have a start and end date (e.g., going to a meaningful summer camp)
+*Please prompt them to also indicate any events they may have mentioned in other sections. For example, if they would count one of their moves as a positive event - this should be entered h ere as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 6",y,,,,,
+lci_b11bii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #6
+End date:",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 6",,,,,,
+lci_b11biii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #6
+Type:",,,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 6",,,,,,
+lci_b11biv_6,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #6
+Mood Rating","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 6",y,,,,,
+lci_b11bi_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #7
+Start date:
+
+<i>*Some events may just have one date (e.g., the date their sister was born) while others may have a start and end date (e.g., going to a meaningful summer camp)
+*Please prompt them to also indicate any events they may have mentioned in other sections. For example, if they would count one of their moves as a positive event - this should be entered h ere as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 7",y,,,,,
+lci_b11bii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #7
+End date:",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 7",,,,,,
+lci_b11biii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #7
+Type:",,,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 7",,,,,,
+lci_b11biv_7,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #7
+Mood Rating","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 7",y,,,,,
+lci_b11bi_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #8
+Start date:
+
+<i>*Some events may just have one date (e.g., the date their sister was born) while others may have a start and end date (e.g., going to a meaningful summer camp)
+*Please prompt them to also indicate any events they may have mentioned in other sections. For example, if they would count one of their moves as a positive event - this should be entered h ere as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 8",y,,,,,
+lci_b11bii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #8
+End date:",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 8",,,,,,
+lci_b11biii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #8
+Type:",,,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 8",,,,,,
+lci_b11biv_8,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #8
+Mood Rating","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 8",y,,,,,
+lci_b11bi_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #9
+Start date:
+
+<i>*Some events may just have one date (e.g., the date their sister was born) while others may have a start and end date (e.g., going to a meaningful summer camp)
+*Please prompt them to also indicate any events they may have mentioned in other sections. For example, if they would count one of their moves as a positive event - this should be entered h ere as well. Changes to their family makeup are covered in the previous question, so no need to enter these.</i>",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 9",y,,,,,
+lci_b11bii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #9
+End date:",,,date_ymd,,,y,"[lci_b11] = '1' and [lci_b11b_count] >= 9",,,,,,
+lci_b11biii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #9
+Type:",,,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 9",,,,,,
+lci_b11biv_9,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #9
+Mood Rating","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b11] = '1' and [lci_b11b_count] >= 9",y,,,,,
+lci_b12_count,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"B12#. Is there anything else that happened during this time period that you would like to share, which has not already been covered?
+
+Count:","0, 0 | 1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9",,,,,,,y,,,,,
+lci_b12i_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #1
+Start date:",,,date_ymd,,,y,"[lci_b12_count] >= 1",y,,,,,
+lci_b12ii_1,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #1
+End date:",,,date_ymd,,,y,"[lci_b12_count] >= 1",,,,,,
+lci_b12iii_1,life_chart_interview_b_birth_to_start_of_elementar,,notes,"Event #1
+Brief Description:",,,,,,,"[lci_b12_count] >= 1",,,,,,
+lci_b12iv_1,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #1
+Mood Rating (if applicable)","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b12_count] >= 1",,,,,,
+lci_b12i_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #2
+Start date:",,,date_ymd,,,y,"[lci_b12_count] >= 2",y,,,,,
+lci_b12ii_2,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #2
+End date:",,,date_ymd,,,y,"[lci_b12_count] >= 2",,,,,,
+lci_b12iii_2,life_chart_interview_b_birth_to_start_of_elementar,,notes,"Event #2
+Brief Description:",,,,,,,"[lci_b12_count] >= 2",,,,,,
+lci_b12iv_2,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #2
+Mood Rating (if applicable)","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b12_count] >= 2",,,,,,
+lci_b12i_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #3
+Start date:",,,date_ymd,,,y,"[lci_b12_count] >= 3",y,,,,,
+lci_b12ii_3,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #3
+End date:",,,date_ymd,,,y,"[lci_b12_count] >= 3",,,,,,
+lci_b12iii_3,life_chart_interview_b_birth_to_start_of_elementar,,notes,"Event #3
+Brief Description:",,,,,,,"[lci_b12_count] >= 3",,,,,,
+lci_b12iv_3,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #3
+Mood Rating (if applicable)","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b12_count] >= 3",,,,,,
+lci_b12i_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #4
+Start date:",,,date_ymd,,,y,"[lci_b12_count] >= 4",y,,,,,
+lci_b12ii_4,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #4
+End date:",,,date_ymd,,,y,"[lci_b12_count] >= 4",,,,,,
+lci_b12iii_4,life_chart_interview_b_birth_to_start_of_elementar,,notes,"Event #4
+Brief Description:",,,,,,,"[lci_b12_count] >= 4",,,,,,
+lci_b12iv_4,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #4
+Mood Rating (if applicable)","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b12_count] >= 4",,,,,,
+lci_b12i_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #5
+Start date:",,,date_ymd,,,y,"[lci_b12_count] >= 5",y,,,,,
+lci_b12ii_5,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #5
+End date:",,,date_ymd,,,y,"[lci_b12_count] >= 5",,,,,,
+lci_b12iii_5,life_chart_interview_b_birth_to_start_of_elementar,,notes,"Event #5
+Brief Description:",,,,,,,"[lci_b12_count] >= 5",,,,,,
+lci_b12iv_5,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #5
+Mood Rating (if applicable)","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b12_count] >= 5",,,,,,
+lci_b12i_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #6
+Start date:",,,date_ymd,,,y,"[lci_b12_count] >= 6",y,,,,,
+lci_b12ii_6,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #6
+End date:",,,date_ymd,,,y,"[lci_b12_count] >= 6",,,,,,
+lci_b12iii_6,life_chart_interview_b_birth_to_start_of_elementar,,notes,"Event #6
+Brief Description:",,,,,,,"[lci_b12_count] >= 6",,,,,,
+lci_b12iv_6,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #6
+Mood Rating (if applicable)","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b12_count] >= 6",,,,,,
+lci_b12i_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #7
+Start date:",,,date_ymd,,,y,"[lci_b12_count] >= 7",y,,,,,
+lci_b12ii_7,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #7
+End date:",,,date_ymd,,,y,"[lci_b12_count] >= 7",,,,,,
+lci_b12iii_7,life_chart_interview_b_birth_to_start_of_elementar,,notes,"Event #7
+Brief Description:",,,,,,,"[lci_b12_count] >= 7",,,,,,
+lci_b12iv_7,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #7
+Mood Rating (if applicable)","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b12_count] >= 7",,,,,,
+lci_b12i_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #8
+Start date:",,,date_ymd,,,y,"[lci_b12_count] >= 8",y,,,,,
+lci_b12ii_8,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #8
+End date:",,,date_ymd,,,y,"[lci_b12_count] >= 8",,,,,,
+lci_b12iii_8,life_chart_interview_b_birth_to_start_of_elementar,,notes,"Event #8
+Brief Description:",,,,,,,"[lci_b12_count] >= 8",,,,,,
+lci_b12iv_8,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #8
+Mood Rating (if applicable)","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b12_count] >= 8",,,,,,
+lci_b12i_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #9
+Start date:",,,date_ymd,,,y,"[lci_b12_count] >= 9",y,,,,,
+lci_b12ii_9,life_chart_interview_b_birth_to_start_of_elementar,,text,"Event #9
+End date:",,,date_ymd,,,y,"[lci_b12_count] >= 9",,,,,,
+lci_b12iii_9,life_chart_interview_b_birth_to_start_of_elementar,,notes,"Event #9
+Brief Description:",,,,,,,"[lci_b12_count] >= 9",,,,,,
+lci_b12iv_9,life_chart_interview_b_birth_to_start_of_elementar,,dropdown,"Event #9
+Mood Rating (if applicable)","1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6 | 7, 7 | 8, 8 | 9, 9 | 10, 10",,,,,,"[lci_b12_count] >= 9",,,,,,
