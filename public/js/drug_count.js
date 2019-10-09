@@ -249,7 +249,7 @@ function drawChart(dataTable) {
   data.addColumn({id:'d0', type:'number', role:'interval'});
   data.addColumn({id:'d1', type:'number', role:'interval'});
 
-  data.addColumn('number', 'Healthy Control');
+  data.addColumn('number', 'Healthy');
   data.addColumn({id:'e0', type:'number', role:'interval'});
   data.addColumn({id:'e1', type:'number', role:'interval'});
 
@@ -266,7 +266,7 @@ function drawChart(dataTable) {
     'Comorbid Depression + Anxiety' : '#005e9d',
     'Depression' : '#00aeea',
     'Eating +' : '#ffc938',
-    'Healthy Control' : '#4c4c4e',
+    'Healthy' : '#4c4c4e',
     'Substance +' : '#42833f',
     'subject' : '#85338a',
     'background' : '#eddcaf',
@@ -318,7 +318,7 @@ function drawChart(dataTable) {
       pointSize: 17,
       pointShape: 'circle',
       type : 'line',
-      color : groupColor['Healthy Control']
+      color : groupColor['Healthy']
     },
     5 : {
       pointSize: 8,
@@ -450,7 +450,7 @@ function drawChart(dataTable) {
     // var comboChart = new google.visualization.ComboChart(document.getElementById('countchart'))
 
 
-    groupSelected = ['Anxiety', 'Comorbid Depression + Anxiety', 'Depression', 'Eating +','Healthy Control ', 'Substance +']
+    groupSelected = ['Anxiety', 'Comorbid Depression + Anxiety', 'Depression', 'Eating +','Healthy', 'Substance +']
 
     if (subject != 'NULL'){
       groupSelected.push('Subject')
@@ -697,7 +697,7 @@ function drawChart(dataTable) {
       });
 
     $('#healthy').change(function() {
-        eventstring = 'Healthy Control '
+        eventstring = 'Healthy'
          if($(this).is(":checked")) {
             //'checked' event code
             groupSelected.push(eventstring)
