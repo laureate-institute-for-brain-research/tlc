@@ -23,7 +23,7 @@ $(document).ready( () => {
     $('#subjectLabel').hide();
   } else {
     $('#homenav').text(subject.toUpperCase());
-    $("#nav-title").attr('href', '/lifechartexamples')
+    $("#nav-title").attr('href', '/tlc')
     $('#homenav').attr('href','chart.html?subject=' + subject)
     $('#overall-count-nav-link').attr('href', 'overall.html?subject=' + subject);
     $('#bad-good-count-nav-link').attr('href', 'good-bad.html?subject=' + subject);
